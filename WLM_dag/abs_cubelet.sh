@@ -28,7 +28,7 @@ untar_name=(${ms_name//.tar/ })
 tar -xvf /projects/vla-processing/measurement_sets/${src_name}/raw_measurement_sets/${ms_name} --directory .
 
 ## define input values
-output_name=$2'_'$3
+output_name=$2'_'$3'_nouv'
 
 # make casa call to imaging script
 casa-6.5.0-15-py3.8/bin/casa --logfile $output_name".log" -c abs_cubelet.py -v ${untar_name} -o ${output_name} -r ${ra_phase_center} -d${dec_phase_center} -n ${n_chan} -f ${field_id} -s ${start_velocity}
