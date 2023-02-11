@@ -41,7 +41,7 @@ def main():
 	uvdist='>1.5Klambda'
 	field_id = f_id
 	tot_iter = 750000
-	threshold_value = '10mJy'
+	threshold_value = '2mJy'
 	tclean(vis=vis_path, imagename=output_name, field = field_id, reffreq=ref_freq, restfreq=rest_freq, 
 		phasecenter=phasecenter, uvrange=uvdist, imsize=50, weighting='natural',gridder='standard',
 		pbcor=True, threshold = threshold_value, cell='0.75arcsec', specmode = 'cube', start = start_vel, nchan = n_chan, usemask='pb', niter=tot_iter)
