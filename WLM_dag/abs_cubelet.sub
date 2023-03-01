@@ -32,7 +32,7 @@ Requirements=(Target.HasCHTCStaging == true)
 transfer_input_files = abs_cubelet.py, abs_cubelet.sh
 request_cpus = 1
 request_memory = 50GB
-request_disk = 300GB
+request_disk = 750GB
 #
 # Tell HTCondor to run  instances of our job:
 queue phase_ra,phase_dec from phase_center_list.txt

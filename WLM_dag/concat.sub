@@ -32,7 +32,7 @@ Requirements=(Target.HasCHTCStaging == true)
 transfer_input_files = concat.sh, concat.py
 request_cpus = 1
 request_memory = 10GB
-request_disk = 100GB
+request_disk = 750GB
 #
 # Tell HTCondor to run 1 instances of our job:
 queue 1

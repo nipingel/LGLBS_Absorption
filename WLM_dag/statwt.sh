@@ -14,6 +14,9 @@ tar -xvf casa-6.5.0-15-py3.8.tar
 ## change home directory so CASA will run
 HOME=$PWD
 
+## set PYTHONPATH environment variable so statwt.py can import analysis tools
+export PYTHONPATH=./analysis_scripts:$PYTHONPATH
+
 ##  set measurement set name, copy and untar
 ## untar measurement set
 ms_name=$1

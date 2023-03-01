@@ -17,7 +17,7 @@ output_vis_name=$1
 src_name=$2
 
 ##  set measurement set name, copy and untar
-cp /projects/vla-processing/measurement_sets/${src_name}/raw_measurement_sets*.wt.tar .
+cp /projects/vla-processing/measurement_sets/${src_name}/raw_measurement_sets*.transformed.tar .
 
 ## copy and untar measurement sets
 for s in *.tar
@@ -29,7 +29,7 @@ done
 casa-6.5.0-15-py3.8/bin/casa -c concat.py -o $output_vis_name
 
 ## pack up and copy back
-tar -cvf ${}output_vis_name}".tar" ${output_vis_name}
+tar -cvf ${output_vis_name}".tar" ${output_vis_name}
 
 mv ${output_vis_name}".tar" /projects/vla-processing/measurement_sets/${src_name}/raw_measurement_sets
 

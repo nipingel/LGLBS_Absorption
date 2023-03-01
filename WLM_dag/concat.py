@@ -22,7 +22,7 @@ args, unknown = parser.parse_known_args()
 output_vis = args.output
 
 ## get list of input measurement sets
-ms_list = glob.glob('./*.wt')
+ms_list = glob.glob('./*.transformed')
 
 def main():
 	concat_params = {

@@ -6,7 +6,7 @@
 #VARS A src_name="WLM"
 #PARENT A CHILD B
 
-## run split_channels.sub to split off the HI or OH spectral windows
+## run split_spw.sub to split off the HI or OH spectral windows
 ## executable:
 ## - split_spw.sh (runs split_spw.py)
 ## inputs: 
@@ -15,9 +15,9 @@
 ## - spw_str: string denoting spectral window to be split ('5' for HI line)
 ## output:
 ## - tarball of measurement sets that have had spectral window split out with 'spw#' where # is the spectral window index appended to name
-## JOB B split_spw.sub
-## VARS B spw_str="5"
-## PARENT B CHILD C
+JOB B split_spw.sub
+VARS B spw_str="5"
+PARENT B CHILD C
 
 ## place all split-out measurement sets on same spectral axis & reference frame
 ## executable:
@@ -29,9 +29,9 @@
 ## - src_name: source name
 ## output:
 ## - tarball of measurement sets that have been transformed to the user provided reference frame and spectral channel width
-#JOB B ms_transform.sub
-#VARS B ref_frame="LSRK" chan_width="1953.71094083786" src_name="WLM"
-#PARENT B CHILD C
+JOB C ms_transform.sub
+VARS C ref_frame="LSRK" chan_width="1953.71094083786" src_name="WLM"
+PARENT C CHILD D
 
 ## re-weight visibilities based on root mean square noise in emission-free regions. Use systemic velocity and velocity width to mask channels with expected emission. 
 ## executable:
@@ -43,9 +43,9 @@
 ## - src_name: source name
 ## output:
 ## - tarball of re-weighted, transformed, and split-out measurement sets with '.wt' appended to tarball name
-#JOB C statwt.sub
-#VARS C v_sys="-125" v_width="210" src_name="WLM"
-#PARENT C CHILD D
+JOB D statwt.sub
+VARS D v_sys="-125" v_width="210" src_name="WLM"
+PARENT D CHILD E
 
 ## concatenate (combine) measurement sets from all VLA configurations
 ## executable:
@@ -55,8 +55,9 @@
 ## - src_name: source name
 ## output:
 ## - tarball of concatenated measurement set (combines VLA configurations A+B)
-#JOB D concat.sub
-#VARS D src_name="WLM" outfile_name="WLM_A+B.ms"
+JOB E concat.sub
+VARS E src_name="WLM" outfile_name="WLM_A+B+C.ms"
+PARENT E CHILD F
 
 ## run tclean to get cubelets centered on each background source
 ## executable:
@@ -72,16 +73,4 @@
 ## - output:
 ## - tarball of 2D cubelets for each source
 JOB F abs_cubelet.sub
-VARS F ms_name="WLM_A+B.ms.tar" start_velocity="-200" chan_nums="500" src_name="WLM" field_id="3"
-## PARENT F CHILD G
-
-## finally, combine the 2D images into 3-dimensional data cube (dims: sky position, sky position, frequency/velocity)
-## executable:
-## - combine_images.sh (runs combine_image.py)
-## arguments:
-## - (in combine_images.sh for combine_images.py) suffix (combine all files with *.residual, *.image, etc...)
-## - (in combine_images.sh for combine_images.py) name of output data cube (in FITS format)
-## - (in combine_images.sh for combine_images.py) spectral width of channels in kHz
-## output:
-## - final data cube
-#condor_submit combine_images.sub
+VARS F ms_name="WLM_A+B+C.ms.tar" start_velocity="-200" chan_nums="750" src_name="WLM" field_id="3"
