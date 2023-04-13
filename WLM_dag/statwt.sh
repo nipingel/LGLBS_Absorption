@@ -6,10 +6,6 @@
 mv statwt.py tmp
 mv analysis_scripts.tar tmp
 cd tmp
-tar -xvf analysis_scripts.tar
-cp /scratch/casa-6.5.0-15-py3.8.tar.xz .
-xz -d casa-6.5.0-15-py3.8.tar.xz
-tar -xvf casa-6.5.0-15-py3.8.tar
 
 ## change home directory so CASA will run
 HOME=$PWD
@@ -27,7 +23,7 @@ untar_name=(${ms_name//.tar/ })
 tar -xvf /projects/vla-processing/measurement_sets/${src_name}/raw_measurement_sets/${ms_name} --directory .
 
 ## make call to casa
-casa-6.5.0-15-py3.8/bin/casa -c statwt.py -n ${untar_name} -v ${v_sys} -w ${v_width}
+/casa-6.5.0-15-py3.8/bin/casa -c statwt.py -n ${untar_name} -v ${v_sys} -w ${v_width}
 
 ## append ".wt" suffix to denote that these measurement sets have been re-weighted
 mv ${untar_name} ${untar_name}".wt"

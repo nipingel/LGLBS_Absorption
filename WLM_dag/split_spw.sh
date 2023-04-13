@@ -8,9 +8,6 @@
 ## set up working directory
 mv split_spw.py tmp
 cd tmp
-cp /scratch/casa-6.5.0-15-py3.8.tar.xz .
-xz -d casa-6.5.0-15-py3.8.tar.xz
-tar -xvf casa-6.5.0-15-py3.8.tar
 
 ## change home directory so CASA will run
 HOME=$PWD
@@ -28,7 +25,7 @@ untar_name=(${truncated_ms_name//.tar/ })
 tar -xvf /projects/vla-processing/measurement_sets/WLM/raw_measurement_sets/$ms_name --directory .
 
 # make casa call to imaging script
-casa-6.5.0-15-py3.8/bin/casa --logfile split_spw.log -c split_spw.py -p $untar_name -s $spw_str
+/casa-6.5.0-15-py3.8/bin/casa --logfile split_spw.log -c split_spw.py -p $untar_name -s $spw_str
 
 tar -cvf $untar_name"_spw"$spw_str".tar" $untar_name"_spw"$spw_str
 

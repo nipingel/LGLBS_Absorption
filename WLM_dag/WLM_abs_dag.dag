@@ -49,13 +49,13 @@ PARENT D CHILD E
 
 ## untar measurement sets form all VLA configurations to perform concatenation in staging area
 ## executable: 
-## - untar.sh
+## - untar_measurement_sets.sh
 ### arguments:
 ## - ms_name: file name in input text file
 ## - src_name: source name
 ## output:
 ## - untarred measurement set
-JOB E concat.sub
+JOB E untar_measurement_sets.sub
 VARS E src_name="WLM" 
 #PARENT E CHILD F
 
