@@ -16,13 +16,14 @@ HOME=$PWD
 output_vis_name=$1
 src_name=$2
 
-##  set measurement set name, copy and untar
-cp /projects/vla-processing/measurement_sets/${src_name}/raw_measurement_sets*.transformed.tar .
+## JUST FOR WLM
+cp /projects/vla-processing/measurement_sets/${src_name}/raw_measurement_sets/*.transformed.wt.tar --directory .
+mv WLM_A+B.ms WLM_A+B.transformed.wt
 
 ## copy and untar measurement sets
-for s in *.tar
+for s in /projects/vla-processing/measurement_sets/${src_name}/raw_measurement_sets/*.tar
 do
-	tar -xvf $s".tar" 
+	tar -xvf $s --directory .
 done
 
 ## make call to casa
