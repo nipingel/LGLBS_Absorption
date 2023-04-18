@@ -11,13 +11,16 @@
 ## - split_spw.sh (runs split_spw.py)
 ## inputs: 
 ## - ms_name: file name in input textfile
-## - src_name: source name in input textfile
-## - spw_str: string denoting spectral window to be split ('5' for HI line)
+## - src_config: source and config (prefix on file name from Google drive)
+## - timebin_str: number of seconds to average visibilties (config-dependent) 
+## - v_sys: systemic velocity of source
+## - v_width: velocity width of source
+## - rest_freq: rest frequency of spectral line
 ## output:
-## - tarball of measurement sets that have had spectral window split out with 'spw#' where # is the spectral window index appended to name
-#JOB B split_spw.sub
-#VARS B spw_str="2"
-#PARENT B CHILD C
+## - tarball of measurement sets that have had spectral window split out with '_spw' appended to file name
+JOB B split_spw.sub
+VARS B src_name="WLM" v_sys="-125" v_width="210" rest_freq="1.420406"
+PARENT B CHILD C
 
 ## place all split-out measurement sets on same spectral axis & reference frame
 ## executable:
