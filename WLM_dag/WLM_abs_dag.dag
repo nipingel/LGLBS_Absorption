@@ -36,21 +36,7 @@ JOB C ms_transform.sub
 VARS C ref_frame="LSRK" chan_width="1953.71094083786" src_name="WLM"
 PARENT C CHILD D
 
-## re-weight visibilities based on root mean square noise in emission-free regions. Use systemic velocity and velocity width to mask channels with expected emission. 
-## executable:
-## - statwt.sh (runs statwt.py)
-## arguments:
-## - ms_name: file name in textfile
-## - v_sys: systemic velocity of source
-## - v_width: velocity width of source
-## - src_name: source name
-## output:
-## - tarball of re-weighted, transformed, and split-out measurement sets with '.wt' appended to tarball name
-JOB D statwt.sub
-VARS D v_sys="-125" v_width="210" src_name="WLM"
-PARENT D CHILD E
-
-## untar measurement sets form all VLA configurations to perform concatenation in staging area
+## untar measurement sets from input textfile
 ## executable: 
 ## - untar_measurement_sets.sh
 ### arguments:
@@ -58,10 +44,36 @@ PARENT D CHILD E
 ## - src_name: source name
 ## output:
 ## - untarred measurement set
-JOB E untar_measurement_sets.sub
-VARS E src_name="WLM" 
-#PARENT E CHILD F
+JOB D untar_measurement_sets.sub
+VARS D src_name="WLM" 
+PARENT D CHILD E
 
+## GENERATE INPUT  FOR SPLIT CONCAT STEP
+## call generate_spit_file.py to generate input for SPLIT OF CONCAT step
+## executable:
+## - generate_spit_file.sh (runs generate_spit_file.py)
+## arguments:
+## - src_name: source name
+## - extension: file extension for measurement sets to be analyzed
+## - output: output name for generated csv file
+## output:
+## - a csv file that has three columns: name of measurement set, starting channel to split, ending channel to split for concat
+JOB E generate_spit_files.sub
+VARS E src_name="WLM" extension="transformed" output="split_concat_list"
+## PARENT E CHILD F 
+
+## SPLIT FOR CONCAT
+## split out channels from measurement sets with more than minumum number of total channels
+## to ensure all measurement sets have same number of channels for concat step (runs in staging area)
+## executable:
+## - split_channels_concat.sh (runs split_channels.py)
+## arguments:
+## - src_name: source name
+## output:
+## - split out measurement sets with equal number of channels so concat step will combine into a single spw
+## JOB F split_channels_concat.sub
+## VARS F src_name="WLM"
+## PARENT F CHILD G
 
 ## concatenate (combine) measurement sets from all VLA configurations
 ## executable:
@@ -74,6 +86,20 @@ VARS E src_name="WLM"
 ## JOB E concat.sub
 ## VARS E src_name="WLM" outfile_name="WLM_A+B+C.ms"
 ## PARENT E CHILD F
+
+## re-weight visibilities based on root mean square noise in emission-free regions. Use systemic velocity and velocity width to mask channels with expected emission. 
+## executable:
+## - statwt.sh (runs statwt.py)
+## arguments:
+## - ms_name: file name in textfile
+## - v_sys: systemic velocity of source
+## - v_width: velocity width of source
+## - src_name: source name
+## output:
+## - tarball of re-weighted, transformed, and split-out measurement sets with '.wt' appended to tarball name
+##JOB D statwt.sub
+##VARS D v_sys="-125" v_width="210" src_name="WLM"
+##PARENT D CHILD E
 
 ## run tclean to get cubelets centered on each background source
 ## executable:

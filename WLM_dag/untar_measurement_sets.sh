@@ -9,4 +9,3 @@ file_name=$2
 cd /projects/vla-processing/measurement_sets/${src_name}/raw_measurement_sets
 ## untar 
 tar -xvf ${file_name}
-

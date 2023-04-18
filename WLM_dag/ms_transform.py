@@ -35,9 +35,18 @@ ref_frame =  args.frame
 ## get transformed visibility name
 output_vis = args.output_vis
 
-
 def main():
-	mstransform(vis = ms_path, outputvis = output_vis, datacolumn = 'data', regridms = True, mode = 'frequency', width = channel_width, outframe = ref_frame)
+	mstransform_params = {
+		'vis': 'ms_path',
+		'outputvis': output_vis,
+		'datacolumn': 'data',
+		'regridms': regridms, 
+		'mode': 'frequency',
+		'width': channel_width,
+		'outfame': ref_frame
+	}
+
+	mstransform(**mstransform_params)
 if __name__=='__main__':
 	main()
 	exit()
