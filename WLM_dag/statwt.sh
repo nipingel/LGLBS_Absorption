@@ -6,6 +6,7 @@
 mv statwt.py tmp
 mv analysis_scripts.tar tmp
 cd tmp
+tar -xvf analysis_scripts.tar
 
 ## change home directory so CASA will run
 HOME=$PWD

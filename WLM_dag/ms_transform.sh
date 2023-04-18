@@ -1,17 +1,11 @@
 #!/bin/bash
 #
-# split_channels.sh
-# execution script to split out range of channels from a staged and calibrated LGLBS measurement set 
-
-## TODO include ms_name and untar_name variables as argument into this executable script
+# ms_transform.sh
+# execution script to run ms_transform 
 
 ## set up working directory
 mv ms_transform.py tmp
 cd tmp
-
-cp /scratch/casa-6.5.0-15-py3.8.tar.xz .
-xz -d casa-6.5.0-15-py3.8.tar.xz
-tar -xvf casa-6.5.0-15-py3.8.tar
 
 ## change home directory so CASA will run
 HOME=$PWD
@@ -33,6 +27,7 @@ tar -xvf /projects/vla-processing/measurement_sets/${src_name}/raw_measurement_s
 tar -cvf ${output_ms_name}".tar" ${output_ms_name}
 
 mv ${output_ms_name}".tar" /projects/vla-processing/measurement_sets/${src_name}/raw_measurement_sets
+mv ${output_ms_name}".log" /projects/vla-processing/measurement_sets/${src_name}/raw_measurement_sets
 
 ## clean up
 rm -rf ${untar_name}

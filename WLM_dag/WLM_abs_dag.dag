@@ -29,9 +29,9 @@
 ## - src_name: source name
 ## output:
 ## - tarball of measurement sets that have been transformed to the user provided reference frame and spectral channel width
-#JOB C ms_transform.sub
-#VARS C ref_frame="LSRK" chan_width="1953.71094083786" src_name="WLM"
-#PARENT C CHILD D
+JOB C ms_transform.sub
+VARS C ref_frame="LSRK" chan_width="1953.71094083786" src_name="WLM"
+PARENT C CHILD D
 
 ## re-weight visibilities based on root mean square noise in emission-free regions. Use systemic velocity and velocity width to mask channels with expected emission. 
 ## executable:
@@ -85,5 +85,5 @@ VARS E src_name="WLM"
 ## - src_name: source name
 ## - output:
 ## - tarball of 2D cubelets for each source
-JOB F abs_cubelet.sub
-VARS F ms_name="WLM_A+B+C.ms.tar" start_velocity="-200" chan_nums="750" src_name="WLM" field_id="3"
+#JOB F abs_cubelet.sub
+#VARS F ms_name="WLM_A+B+C.ms.tar" start_velocity="-200" chan_nums="750" src_name="WLM" field_id="3"
