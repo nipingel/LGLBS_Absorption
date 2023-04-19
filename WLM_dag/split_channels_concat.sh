@@ -8,9 +8,7 @@
 HOME=$PWD
 
 ## assign variables
-ms_name=$1
-source_name=$2
-full_path=/projects/vla-processing/measurement_sets/${source_name}/raw_measurement_sets/${ms_name}
+full_path=$1
 
 # make casa call to imaging script
-/casa-6.5.0-15-py3.8/bin/casa -c split_channels.py -p ${full_path} -s $3 -e $4 --split_concat
+/casa-6.5.0-15-py3.8/bin/casa --nologfile -c split_channels.py -p ${full_path} -s $2 -e $3 --split_concat
