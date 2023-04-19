@@ -16,5 +16,3 @@ HOME=$PWD
 
 ## make call to casa
 /casa-6.5.0-15-py3.8/bin/casa -c generate_split_file.py -p ${path} -o ${outfile_name} -e ${extension}
-
-mv *.csv ${path}

@@ -70,7 +70,8 @@ def parse_lists(ms_list, tot_chans_list, freq_chan_list, ext):
 	## append 'split_concat' file extension so subsequent concat can capture all measurement sets
 	for old_name in extracted_min_ms_list:
 		new_name = old_name.replace(ext, '%s.split_concat' % ext)
-		os.rename(old_name, new_name)
+		#os.rename(old_name, new_name)
+		print(old_name, new_name)
 	## account for instance where extracted_min_freq_chan_list is only a single element
 	if len(extracted_min_freq_chan_list) > 1:
 		return extracted_ms_list, extracted_freq_chan_list, extracted_min_freq_chan_list[0]
@@ -95,8 +96,8 @@ def define_start_and_end_channels(min_freq_chans, freq_chan_list):
 	return start_chan_list, end_chan_list
 
 ## function to write name of measurement set, starting chan, and ending chan as a row in output text file
-def write_to_file(ms_list, s_list, e_list, output):
-	with open('%s.csv' % output, 'w') as csvfile:
+def write_to_file(path, ms_list, s_list, e_list, output):
+	with open('%s/%s.csv' % (path, output), 'w') as csvfile:
 		writer = csv.writer(csvfile, delimiter=",")
 		for i in range(0, len(ms_list)):
 			row = []
@@ -126,13 +127,8 @@ def main():
 	start_chan_list, end_chan_list = define_start_and_end_channels(min_freq_chans, extracted_freq_chan_list)
 
 	## finally, write name of measurement sets, starting, and ending channels to comma-separated text file
-	write_to_file(extracted_ms_list, start_chan_list, end_chan_list, output_name)
+	write_to_file(ms_path, extracted_ms_list, start_chan_list, end_chan_list, output_name)
 
 if __name__=='__main__':
 	main()
 	exit()
-
-
-
-
-
