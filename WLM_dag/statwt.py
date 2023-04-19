@@ -4,7 +4,7 @@ reweight measurement sets based on rms of emission-free channels
 User inputs:
 -v --vsys - systemic velocity of source (assumed LSRK)
 -w --vwidth - velocity width of source
--n --msPath - path of measurement set
+-n --ms_path - path of measurement set
 __author__="Nickolas Pingel"
 __version__="1.0"
 __email__="nmpingel@wisc.edu"
@@ -23,7 +23,7 @@ import analysisUtils as au
 parser = argparse.ArgumentParser()
 parser.add_argument('-v', '--vsys', help='<required> systematic velocity (assumed LSRK)', type = int, required = True)
 parser.add_argument('-w', '--vwidth', help='<required> velocity width', type = int, required = True)
-parser.add_argument('-n', '--msPath', help = '<required> FULL path of ms file', required = True)
+parser.add_argument('-n', '--ms_path', help = '<required> FULL path of ms file', required = True)
 args, unknown = parser.parse_known_args()
 
 ## function to construct MW mask
@@ -77,20 +77,19 @@ def construct_spw_str(msName, vsys, vwidth):
 	return spw_flagging_string
 
 ## parse name of visibiltiy from input path
-msName = args.msPath
+ms_name = args.ms_path
 
 ## parse velocities
 vsys = args.vsys
 vwidth = args.vwidth
 def main():
 	fitspwStr = '0:'
-	chan_str = construct_spw_str(msName, vsys, vwidth)
+	chan_str = construct_spw_str(ms_name, vsys, vwidth)
 	fitspwStr += chan_str
 	statwt_params = {
-		'vis': msName,
+		'vis': ms_name,
 		'fitspw': fitspwStr,
 		'excludechans': True,
-		'timebin': '0.001s',
 		'datacolumn': 'data'}
 	statwt(**statwt_params)
 if __name__=='__main__':

@@ -8,7 +8,6 @@
 #  queue number assigned to this set of jobs at the time of submission.
 universe = docker
 docker_image = nipingel/casa:latest
-log = merge_all_vis.log
 
 #
 # Specify your executable (single binary or a script that runs several
@@ -17,9 +16,11 @@ log = merge_all_vis.log
 #  $(Process) will be a integer number for each job, starting with "0"
 #  and increasing for the relevant number of jobs.
 executable = concat.sh
-arguments = $(outfile_name) $(src_name)
+
+arguments = $(extension) $(outfile_name) $(src_name)
 output = merge_all_vis.out
 error = merge_all_vis.err
+log = merge_all_vis.log
 
 #
 # Specify that HTCondor should transfer files to and from the
@@ -32,7 +33,7 @@ Requirements=(Target.HasCHTCStaging == true)
 transfer_input_files = concat.sh, concat.py
 request_cpus = 1
 request_memory = 10GB
-request_disk = 1500GB
+request_disk = 10GB
 #
 # Tell HTCondor to run 1 instances of our job:
 queue 1

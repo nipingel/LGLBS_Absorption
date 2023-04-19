@@ -1,8 +1,10 @@
 """
-11/14/2i022
+04/19/2023
 concatenate input measurement sets into a single file
 User inputs:
 -o --output_name - name of output concatentated measurement set
+-p --path - path to measurement sets
+-e --extension - file extension to use to create list of input measurement sets
 __author__="Nickolas Pingel"
 __version__="1.0"
 __email__="nmpingel@wisc.edu"
@@ -14,17 +16,22 @@ import glob as glob
 
 ## parse user inputs
 parser = argparse.ArgumentParser()
-#parser.add_argument('-l', '--ms_list', nargs = '+', help='<required> list of measurement sets to concatentate', required = True)
 parser.add_argument('-o', '--output', help='<required> name of output concatentated measurement set', required = True)
+parser.add_argument('-p', '--path', help = '<required> path to measurement sets', required = True)
+parser.add_argument('-e', '--extension', help = '<required> file extension to use to create list of input measurement sets', required = True)
 args, unknown = parser.parse_known_args()
 
 ## parse measurement set list & output
 output_vis = args.output
+path = args.path
+ext = args.extension
 
 ## get list of input measurement sets
 ms_list = glob.glob('./*.transformed.wt')
 
 def main():
+	## get list of input measurement sets
+	ms_list = glob.glob('%s/%s' % (path, ext))
 	concat_params = {
 		'vis': ms_list,
 		'concatvis':output_vis,

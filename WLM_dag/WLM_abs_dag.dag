@@ -73,35 +73,36 @@
 ## - end_chan - ending channel to split (input text file)
 ## output:
 ## - split out measurement sets with equal number of channels so concat step will combine into a single spw
-JOB F split_channels_concat.sub
-VARS F src_name="WLM"
-#PARENT F CHILD G
+## JOB F split_channels_concat.sub
+## VARS F src_name="WLM"
+## PARENT F CHILD G
 
 ## concatenate (combine) measurement sets from all VLA configurations
 ## executable:
 ## - concat.sh (runs concat.py)
 ## arguments:
 ## - outfile_name: name of concatenated measurement set
+## - extension: file extension to use for concatenation
 ## - src_name: source name
 ## output:
 ## - tarball of concatenated measurement set (combines VLA configurations A+B)
-## JOB E concat.sub
-## VARS E src_name="WLM" outfile_name="WLM_A+B+C.ms"
-## PARENT E CHILD F
+JOB G concat.sub
+VARS G src_name="WLM" extension="split_concat" outfile_name="WLM_A+B+C.ms"
+PARENT G CHILD H
 
 ## re-weight visibilities based on root mean square noise in emission-free regions. Use systemic velocity and velocity width to mask channels with expected emission. 
 ## executable:
 ## - statwt.sh (runs statwt.py)
 ## arguments:
-## - ms_name: file name in textfile
+## - ms_name: file name of concatenated measurement set
 ## - v_sys: systemic velocity of source
 ## - v_width: velocity width of source
 ## - src_name: source name
 ## output:
-## - tarball of re-weighted, transformed, and split-out measurement sets with '.wt' appended to tarball name
-##JOB D statwt.sub
-##VARS D v_sys="-125" v_width="210" src_name="WLM"
-##PARENT D CHILD E
+## - re-weighted concatenated measurement sets with '.wt' appended to name
+JOB H statwt.sub
+VARS H ms_name="WLM_A+B+C.ms" v_sys="-125" v_width="210" src_name="WLM"
+PARENT H CHILD I
 
 ## run tclean to get cubelets centered on each background source
 ## executable:
@@ -116,5 +117,5 @@ VARS F src_name="WLM"
 ## - src_name: source name
 ## - output:
 ## - tarball of 2D cubelets for each source
-#JOB F abs_cubelet.sub
-#VARS F ms_name="WLM_A+B+C.ms.tar" start_velocity="-200" chan_nums="750" src_name="WLM" field_id="3"
+JOB I abs_cubelet.sub
+VARS I ms_name="WLM_A+B+C.ms.wt" start_velocity="-200" chan_nums="750" src_name="WLM"
