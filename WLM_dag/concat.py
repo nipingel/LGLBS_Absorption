@@ -26,9 +26,6 @@ output_vis = args.output
 path = args.path
 ext = args.extension
 
-## get list of input measurement sets
-ms_list = glob.glob('./*.transformed.wt')
-
 def main():
 	## get list of input measurement sets
 	ms_list = glob.glob('%s/%s' % (path, ext))
