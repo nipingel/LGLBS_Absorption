@@ -37,7 +37,7 @@ output_vis = args.output_vis
 
 def main():
 	mstransform_params = {
-		'vis': 'ms_path',
+		'vis': ms_path,
 		'outputvis': output_vis,
 		'datacolumn': 'data',
 		'regridms': True, 
