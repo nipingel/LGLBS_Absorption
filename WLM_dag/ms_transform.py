@@ -43,7 +43,7 @@ def main():
 		'regridms': True, 
 		'mode': 'frequency',
 		'width': channel_width,
-		'outfame': ref_frame
+		'outframe': ref_frame
 	}
 
 	mstransform(**mstransform_params)
