@@ -97,7 +97,7 @@ def define_start_and_end_channels(min_freq_chans, freq_chan_list):
 
 ## function to write name of measurement set, starting chan, and ending chan as a row in output text file
 def write_to_file(path, ms_list, s_list, e_list, output):
-	with open('%s/%s.csv' % (path, output), 'w') as csvfile:
+	with open('./%s.csv' % (output), 'w') as csvfile:
 		writer = csv.writer(csvfile, delimiter=",")
 		for i in range(0, len(ms_list)):
 			row = []

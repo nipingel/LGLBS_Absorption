@@ -71,9 +71,9 @@ PARENT E CHILD F
 ## - src_name: source name
 ## output:
 ## - split out measurement sets with equal number of channels so concat step will combine into a single spw
-JOB F split_channels_concat.sub
-VARS F src_name="WLM"
-PARENT F CHILD G
+## JOB F split_channels_concat.sub
+## VARS F src_name="WLM"
+## PARENT F CHILD G
 
 ## concatenate (combine) measurement sets from all VLA configurations
 ## executable:
