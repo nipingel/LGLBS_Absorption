@@ -40,7 +40,7 @@ def main():
 		'vis': 'ms_path',
 		'outputvis': output_vis,
 		'datacolumn': 'data',
-		'regridms': regridms, 
+		'regridms': True, 
 		'mode': 'frequency',
 		'width': channel_width,
 		'outfame': ref_frame
