@@ -28,7 +28,7 @@ ext = args.extension
 
 def main():
 	## get list of input measurement sets
-	ms_list = glob.glob('%s/%s' % (path, ext))
+	ms_list = glob.glob('%s/*.%s' % (path, ext))
 	concat_params = {
 		'vis': ms_list,
 		'concatvis':output_vis,
