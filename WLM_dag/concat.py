@@ -22,13 +22,14 @@ parser.add_argument('-e', '--extension', help = '<required> file extension to us
 args, unknown = parser.parse_known_args()
 
 ## parse measurement set list & output
-output_vis = args.output
+output_name = args.output
 path = args.path
 ext = args.extension
 
 def main():
 	## get list of input measurement sets
 	ms_list = glob.glob('%s/*.%s' % (path, ext))
+	output_vis = '%s/%s' % (path, output_name)
 	concat_params = {
 		'vis': ms_list,
 		'concatvis':output_vis,
