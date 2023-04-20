@@ -3,6 +3,8 @@
 # statwt.sh
 # execution script reweight visibilities based on rms in emission-free channels
 
+tar -xvf analysis_scripts.tar
+
 ## change home directory so CASA will run
 HOME=$PWD
 
