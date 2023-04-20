@@ -32,10 +32,11 @@ def main():
 	output_vis = '%s/%s' % (path, output_name)
 	concat_params = {
 		'vis': ms_list,
-		'concatvis':output_vis,
-		'freqtol':'0.4kHz',
-		'dirtol': '0.1deg'}
-	concat(**concat_params)
+		'outputvis': output_vis,
+		'datacolumn': 'data',
+		'combinespws': True
+		}
+	mstransform(**concat_params)
 if __name__=='__main__':
 	main()
 	exit()
