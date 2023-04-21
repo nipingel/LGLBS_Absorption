@@ -20,7 +20,6 @@ parser.add_argument('-n', '--input_name', help = '<required> name of input measu
 args, unknown = parser.parse_known_args()
 
 ## parse measurement set list & output
-output_name = args.output
 path = args.path
 input_name = args.input_name
 
