@@ -98,7 +98,7 @@ PARENT G CHILD H
 ## - src_name: source name
 ## output:
 ## - tarball of measurement sets that have been transformed to the user provided reference frame and spectral channel width
-JOB H ms_transform.sub
+JOB H ms_transform_combine_spw.sub
 VARS H input_name="WLM_A+B+C.ms" src_name="WLM"
 PARENT H CHILD I
 
