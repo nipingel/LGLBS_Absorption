@@ -29,7 +29,7 @@ def main():
 	full_input_name = '%s/%s' % (path, input_name)
 	output_vis = '%s/%s' % (path, input_name.replace('.ms', '.comb_spw'))
 	mstransform_params = {
-		'vis': ms_list,
+		'vis': full_input_name,
 		'outputvis': output_vis,
 		'datacolumn': 'data',
 		'combinespws': True
