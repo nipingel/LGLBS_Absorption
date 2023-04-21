@@ -86,9 +86,9 @@
 ## - src_name: source name
 ## output:
 ## - tarball of concatenated measurement set (combines VLA configurations A+B)
-JOB G concat.sub
-VARS G src_name="WLM" extension="split_concat" outfile_name="WLM_A+B+C.ms"
-PARENT G CHILD H
+## JOB G concat.sub
+## VARS G src_name="WLM" extension="split_concat" outfile_name="WLM_A+B+C.ms"
+## PARENT G CHILD H
 
 ## combine spectral windows in concatenated measurement sets
 ## executable:

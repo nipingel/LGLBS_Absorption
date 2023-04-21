@@ -16,8 +16,6 @@ docker_image = nipingel/casa:latest
 #  and increasing for the relevant number of jobs.
 executable = ms_transform_combine_spw.sh
 
-input_name="WLM_A+B+C.ms" src_name="WLM"
-
 ## set inputs
 arguments = $(input_name) $(src_name)
 output = spw_combine-$(Process).out
