@@ -51,7 +51,7 @@ def main():
 		'gridder': 'standard',
 		'pbcor': True, 
 		'threshold': threshold_value, 
-		'cell': 0.75arcsec, 
+		'cell': '0.75arcsec', 
 		'specmode': 'cube', 
 		'start': start_vel, 
 		'nchan': n_chan, 
