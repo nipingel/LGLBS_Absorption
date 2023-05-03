@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# contcat_all.sh
-# execution script to concat measurement sets from all measurement sets in staging area
+# generate_split_file.sh
+# execution script to generate an input file for SPLIT CONCAT step
 
 tar -xvf analysis_scripts.tar 
 export PYTHONPATH=./analysis_scripts:$PYTHONPATH

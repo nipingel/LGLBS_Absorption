@@ -45,7 +45,6 @@ def main():
 		'width': channel_width,
 		'outframe': ref_frame
 	}
-
 	mstransform(**mstransform_params)
 if __name__=='__main__':
 	main()

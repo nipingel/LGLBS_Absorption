@@ -4,10 +4,6 @@
 # execution script to split out range of channels from a staged and calibrated LGLBS measurement set 
 
 ## set up working directory
-mv split_spw.py tmp
-mv analysis_scripts.tar tmp
-mv phangs_imaging_scripts.tar tmp
-cd tmp
 tar -xvf analysis_scripts.tar
 tar -xvf phangs_imaging_scripts.tar
 
@@ -40,5 +36,4 @@ tar -cvf ${untar_name}"_spw.tar" ${untar_name}"_spw"
 mv ${untar_name}"_spw.tar" /projects/vla-processing/measurement_sets/${src_name}/raw_measurement_sets
 
 ## clean up
-rm -rf ${ms_name}
 rm -rf ${untar_name}

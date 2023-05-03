@@ -55,7 +55,8 @@ def main():
 			'vis': vis_name,
 			'outputvis': output_vis_list[cnt],
 			'spw': '0:%d' % i,
-			'datacolumn': 'data'}
+			'datacolumn': 'data'
+			}
 
 			## set split parameters and run
 			vis_name = ms_path

@@ -1,5 +1,5 @@
 """
-10/3/2022
+05/03/2023
 Split out a user provided spectral window from a measurement set
 User inputs:
 -p --path - <required> path of ms file

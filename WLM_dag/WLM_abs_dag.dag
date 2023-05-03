@@ -48,8 +48,8 @@
 #VARS D src_name="WLM" 
 #PARENT D CHILD E
 
-## GENERATE INPUT  FOR SPLIT CONCAT STEP
-## call generate_split_file.py to generate input for SPLIT OF CONCAT step
+## GENERATE INPUT FOR SPLIT CONCAT STEP
+## call generate_split_file.py to generate input for SPLIT CONCAT step
 ## executable:
 ## - generate_split_file.sh (runs generate_split_file.py)
 ## arguments:
@@ -74,9 +74,9 @@
 ## output:
 ## - split out measurement sets with equal number of channels so concat step will combine into a single spw
 ## JOB F split_channels_concat.sub
-## VARS F src_name="WLM"
 ## PARENT F CHILD G
 
+## CONCAT
 ## concatenate (combine) measurement sets from all VLA configurations
 ## executable:
 ## - concat.sh (runs concat.py)
@@ -90,6 +90,7 @@
 ## VARS G src_name="WLM" extension="split_concat" outfile_name="WLM_A+B+C.ms"
 ## PARENT G CHILD H
 
+## COMBINE_SPW
 ## combine spectral windows in concatenated measurement sets
 ## executable:
 ## - ms_transform_combine_spw.sh (runs ms_transform_combine_spw.py)
@@ -102,6 +103,7 @@
 ## VARS H input_name="WLM_A+B+C.ms" src_name="WLM"
 ## PARENT H CHILD I
 
+## STATWT
 ## re-weight visibilities based on root mean square noise in emission-free regions. Use systemic velocity and velocity width to mask channels with expected emission. 
 ## executable:
 ## - statwt.sh (runs statwt.py)
