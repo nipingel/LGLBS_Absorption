@@ -81,7 +81,7 @@
 ## PARENT F CHILD G
 
 ## COMBINE_SPW
-## combine spectral windows in concatenated measurement sets
+## run mstransform again to combine all spectral windows in concatenated measurement set
 ## executable:
 ## - ms_transform_combine_spw.sh (runs ms_transform_combine_spw.py)
 ## inputs:
@@ -89,9 +89,9 @@
 ## - src_name: source name
 ## output:
 ## - tarball of measurement sets that have been transformed to the user provided reference frame and spectral channel width
-## JOB H ms_transform_combine_spw.sub
-## VARS H input_name="WLM_A+B+C.ms" src_name="WLM"
-## PARENT H CHILD I
+## JOB G ms_transform_combine_spw.sub
+## VARS G input_name="WLM_A+B+C.ms" src_name="WLM"
+## PARENT G CHILD H
 
 ## STATWT
 ## re-weight visibilities based on root mean square noise in emission-free regions. Use systemic velocity and velocity width to mask channels with expected emission. 
@@ -104,9 +104,9 @@
 ## - src_name: source name
 ## output:
 ## - re-weighted concatenated measurement sets with '.wt' appended to name
-## JOB I statwt.sub
-## VARS I ms_name="WLM_A+B+C.comb_spw" v_sys="-125" v_width="210" src_name="WLM"
-## PARENT I CHILD J
+## JOB H statwt.sub
+## VARS H ms_name="WLM_A+B+C.comb_spw" v_sys="-125" v_width="210" src_name="WLM"
+## PARENT H CHILD I
 
 ## run tclean to get cubelets centered on each background source
 ## executable:
@@ -121,5 +121,5 @@
 ## - src_name: source name
 ## - output:
 ## - tarball of 2D cubelets for each source
-JOB J abs_cubelet.sub
-VARS J  ms_name="WLM_A+B+C.comb_spw.wt" start_velocity="-200" chan_nums="750" src_name="WLM"
+JOB I abs_cubelet.sub
+VARS I  ms_name="WLM_A+B+C.comb_spw.wt" start_velocity="-200" chan_nums="750" src_name="WLM"
