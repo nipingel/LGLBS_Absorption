@@ -11,8 +11,7 @@ HOME=$PWD
 ## set PYTHONPATH environment variable so statwt.py can import analysis tools
 export PYTHONPATH=./analysis_scripts:$PYTHONPATH
 
-##  set measurement set name, copy and untar
-## untar measurement set
+##  set variables
 ms_name=$1
 v_sys=$2
 v_width=$3

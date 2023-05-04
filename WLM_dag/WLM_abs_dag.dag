@@ -6,6 +6,7 @@
 #VARS A src_name="WLM"
 #PARENT A CHILD B
 
+## SPLIT_SPW
 ## run split_spw.sub to split off the HI or OH spectral windows
 ## executable:
 ## - split_spw.sh (runs split_spw.py)
@@ -22,6 +23,7 @@
 ## VARS B src_name="WLM" v_sys="-125" v_width="210" rest_freq="1.420406"
 ## PARENT B CHILD C
 
+## MSTRANSFORM
 ## place all split-out measurement sets on same spectral axis & reference frame
 ## executable:
 ## - ms_transform.sh (runs ms_transform.py)
@@ -36,18 +38,6 @@
 #VARS C ref_frame="LSRK" chan_width="1953.71094083786" src_name="WLM"
 #PARENT C CHILD D
 
-## untar measurement sets from input textfile
-## executable: 
-## - untar_measurement_sets.sh
-### arguments:
-## - ms_name: file name in input text file
-## - src_name: source name
-## output:
-## - untarred measurement set
-#JOB D untar_measurement_sets.sub
-#VARS D src_name="WLM" 
-#PARENT D CHILD E
-
 ## GENERATE INPUT FOR SPLIT CONCAT STEP
 ## call generate_split_file.py to generate input for SPLIT CONCAT step
 ## executable:
@@ -58,9 +48,9 @@
 ## - output: output name for generated csv file
 ## output:
 ## - a csv file that has three columns: name of measurement set, starting channel to split, ending channel to split for concat
-## JOB E generate_split_file.sub
-## VARS E src_name="WLM" extension="transformed" output_name="split_concat_list"
-## PARENT E CHILD F 
+## JOB D generate_split_file.sub
+## VARS D src_name="WLM" extension="transformed" output_name="split_concat_list"
+## PARENT D CHILD E 
 
 ## SPLIT FOR CONCAT
 ## split out channels from measurement sets with more than minumum number of total channels
@@ -73,8 +63,8 @@
 ## - end_chan - ending channel to split (input text file)
 ## output:
 ## - split out measurement sets with equal number of channels so concat step will combine into a single spw
-## JOB F split_channels_concat.sub
-## PARENT F CHILD G
+## JOB E split_channels_concat.sub
+## PARENT E CHILD F
 
 ## CONCAT
 ## concatenate (combine) measurement sets from all VLA configurations
@@ -85,10 +75,10 @@
 ## - extension: file extension to use for concatenation
 ## - src_name: source name
 ## output:
-## - tarball of concatenated measurement set (combines VLA configurations A+B)
-## JOB G concat.sub
-## VARS G src_name="WLM" extension="split_concat" outfile_name="WLM_A+B+C.ms"
-## PARENT G CHILD H
+## - concatenated measurement set in staging area
+## JOB F concat.sub
+## VARS F src_name="WLM" extension="split_concat" outfile_name="WLM_A+B+C.ms"
+## PARENT F CHILD G
 
 ## COMBINE_SPW
 ## combine spectral windows in concatenated measurement sets

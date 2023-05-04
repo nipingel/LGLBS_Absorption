@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# statwt_indv.sh
-# execution script reweight visibilities based on rms in emission-free channels
+# contcat_all.sh
+# execution script to concat measurement sets from all measurement sets in staging area
 
 ## change home directory so CASA will run
 HOME=$PWD

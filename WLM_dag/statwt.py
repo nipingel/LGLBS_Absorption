@@ -1,5 +1,5 @@
 """
-11/14/2i022
+05/04/2023
 reweight measurement sets based on rms of emission-free channels
 User inputs:
 -v --vsys - systemic velocity of source (assumed LSRK)

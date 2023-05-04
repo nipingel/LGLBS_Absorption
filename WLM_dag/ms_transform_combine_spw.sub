@@ -8,7 +8,7 @@
 #  queue number assigned to this set of jobs at the time of submission.
 universe = docker
 docker_image = nipingel/casa:latest
-#
+
 # Specify your executable (single binary or a script that runs several
 #  commands), arguments, and a files for HTCondor to store standard
 #  output (or "screen output").
@@ -18,9 +18,9 @@ executable = ms_transform_combine_spw.sh
 
 ## set inputs
 arguments = $(input_name) $(src_name)
-output = spw_combine-$(Process).out
-error = spw_combine-$(Process).err
-log = spw_combine-$(Process).log
+output = spw_combine.out
+error = spw_combine.err
+log = spw_combine.log
 
 # Specify that HTCondor should transfer files to and from the
 #  computer where each job runs. The last of these lines *would* be

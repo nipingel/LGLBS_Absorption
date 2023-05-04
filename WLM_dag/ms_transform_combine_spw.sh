@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# ms_transform.sh
-# execution script to run ms_transform 
+# ms_transform_combine_spw.sh
+# execution script to run ms_transform to combine spectral windows in a concatenated measurement set
 
 ## change home directory so CASA will run
 HOME=$PWD
