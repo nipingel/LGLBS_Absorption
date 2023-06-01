@@ -122,4 +122,4 @@
 ## - output:
 ## - tarball of 2D cubelets for each source
 JOB I abs_cubelet.sub
-VARS I  ms_name="WLM_A+B+C.comb_spw.wt" start_velocity="-200" chan_nums="750" src_name="WLM"
+VARS I ms_name="WLM_A+B+C.comb_spw.wt" start_velocity="-200" chan_nums="750" src_name="WLM"

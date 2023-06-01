@@ -43,10 +43,10 @@ def main():
 	dogrowprune=False
 	verbose = True
 	## deconvolution parameters
-	deconvolver_mode = 'multiscale'
+	deconvolver_mode = 'hogbom'
 	ms_scales = [0, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
-	tot_niter = 0
-	min_threshold = '2.175mJy'
+	tot_niter = 100000
+	min_threshold = '2.0mJy'
 	restart_parameter = False
 	## tclean dictionary
 	tclean_params={
@@ -67,8 +67,6 @@ def main():
 		'pbcor':True, 
 		'niter':tot_niter, 
 		'deconvolver':deconvolver_mode, 
-		'scales':ms_scales, 
-		'smallscalebias':0.4, 
 		'cyclefactor':0.8, 
 		'minpsffraction':0.05, 
 		'maxpsffraction':0.8, 
