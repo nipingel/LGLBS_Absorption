@@ -9,7 +9,7 @@ HOME=$PWD
 ## assign inputs & script variables
 input_name=$1
 src_name=$2
-full_path=/projects/vla-processing/measurement_sets/${src_name}/raw_measurement_sets
+full_path=/projects/vla-processing/measurement_sets/${src_name}
 
 
 # make casa call to imaging script
