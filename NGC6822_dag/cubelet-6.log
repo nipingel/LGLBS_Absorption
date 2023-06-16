@@ -1,0 +1,35 @@
+000 (11082044.006.000) 2023-06-15 13:28:04 Job submitted from host: <128.104.101.92:9618?addrs=128.104.101.92-9618+[2607-f388-107c-501-a236-9fff-fe3c-caa8]-9618&alias=submit2.chtc.wisc.edu&noUDP&sock=schedd_1879732_618e>
+    DAG Node: I
+...
+040 (11082044.006.000) 2023-06-15 13:30:13 Started transferring input files
+	Transferring to host: <128.105.68.208:9618?addrs=128.105.68.208-9618&alias=e2295.chtc.wisc.edu&noUDP&sock=slot1_13_31949_b5ec_5513>
+...
+040 (11082044.006.000) 2023-06-15 13:30:13 Finished transferring input files
+...
+001 (11082044.006.000) 2023-06-15 13:30:15 Job executing on host: <128.105.68.208:9618?addrs=128.105.68.208-9618&alias=e2295.chtc.wisc.edu&noUDP&sock=startd_7272_90cc>
+	SlotName: slot1_13@e2295.chtc.wisc.edu
+	CondorScratchDir = "/var/lib/condor/execute/slot1/dir_15875"
+	Cpus = 1
+	Disk = 10841500
+	IoHeavy = 0
+	Memory = 20480
+...
+006 (11082044.006.000) 2023-06-15 13:37:06 Image size of job updated: 52
+	52  -  MemoryUsage of job (MB)
+	53576  -  ResidentSetSize of job (KB)
+...
+004 (11082044.006.000) 2023-06-15 13:37:06 Job was evicted.
+	(0) CPU times
+		Usr 0 00:00:01, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	2948  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :     0.05        1         1 
+	   Disk (KB)            :    93    10485760  10841500 
+	   IoHeavy              :                           0 
+	   Memory (MB)          :    52       20480     20480 
+...
+009 (11082044.006.000) 2023-06-15 13:37:06 Job was aborted.
+	removed because <OtherJobRemoveRequirements = DAGManJobId =?= 11082042> fired when job (11082042.0) was removed
+...

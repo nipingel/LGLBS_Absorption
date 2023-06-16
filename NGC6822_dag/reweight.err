@@ -1,0 +1,32 @@
+--> CrashReporter initialized.
+casalogger: cannot connect to X server 
+2023-06-15 20:32:51	SEVERE	open::/projects/vla-processing/measurement_sets/NGC6822	Exception Reported: Table /projects/vla-processing/measurement_sets/NGC6822 does not exist
+Telemetry initialized. Telemetry will send anonymized usage statistics to NRAO.
+You can disable telemetry by adding the following line to the config.py file in your rcdir (e.g. ~/.casa/config.py):
+telemetry_enabled = False
+Traceback (most recent call last):
+  File "/casa-6.5.0-15-py3.8/lib/py/lib/python3.8/site-packages/casashell/private/init_system.py", line 235, in __evprop__
+    run_path( args[0], init_globals=exec_globals, run_name='__main__' )
+  File "/casa-6.5.0-15-py3.8/lib/py/lib/python3.8/runpy.py", line 265, in run_path
+    return _run_module_code(code, init_globals, run_name,
+  File "/casa-6.5.0-15-py3.8/lib/py/lib/python3.8/runpy.py", line 97, in _run_module_code
+    _run_code(code, mod_globals, init_globals,
+  File "/casa-6.5.0-15-py3.8/lib/py/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "statwt.py", line 96, in <module>
+    main()
+  File "statwt.py", line 87, in main
+    chan_str = construct_spw_str(ms_name, vsys, vwidth)
+  File "statwt.py", line 50, in construct_spw_str
+    vm = au.ValueMapping(msName)
+  File "/var/lib/condor/execute/slot1/dir_39377/analysis_scripts/analysisUtils.py", line 1562, in __init__
+    self.setInputMs(self.inputMs)
+  File "/var/lib/condor/execute/slot1/dir_39377/analysis_scripts/analysisUtils.py", line 1582, in setInputMs
+    self.doScanTimeMapping()
+  File "/var/lib/condor/execute/slot1/dir_39377/analysis_scripts/analysisUtils.py", line 1867, in doScanTimeMapping
+    mytb.open(self.inputMs)
+  File "/casa-6.5.0-15-py3.8/lib/py/lib/python3.8/site-packages/casatools/table.py", line 312, in open
+    return self._swigobj.open(_str_ec(tablename), _dict_ec(lockoptions), nomodify)
+  File "/casa-6.5.0-15-py3.8/lib/py/lib/python3.8/site-packages/casatools/__casac__/table.py", line 446, in open
+    return _table.table_open(self, *args, **kwargs)
+RuntimeError: Table /projects/vla-processing/measurement_sets/NGC6822 does not exist
