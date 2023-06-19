@@ -1,6 +1,6 @@
 --> CrashReporter initialized.
 casalogger: cannot connect to X server 
-2023-06-15 20:21:42	WARN	MSTransformManager::setup	There is only one selected SPW, no need to combine 
+2023-06-19 17:41:56	WARN	MSTransformManager::setup	There is only one selected SPW, no need to combine 
 Telemetry initialized. Telemetry will send anonymized usage statistics to NRAO.
 You can disable telemetry by adding the following line to the config.py file in your rcdir (e.g. ~/.casa/config.py):
 telemetry_enabled = False
