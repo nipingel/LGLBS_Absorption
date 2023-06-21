@@ -1,9 +1,0 @@
---> CrashReporter initialized.
-casalogger: cannot connect to X server 
-2023-06-19 17:40:24	SEVERE	ms::concatenate	Exception Reported: Table /projects/vla-processing/measurement_sets/NGC6822/20A-346.sb40198636.eb40234482.59479.02002452547.speclines.ms.split_spw.transformed.split_concat cannot be opened for read/write
-2023-06-19 17:40:25	SEVERE	ms::concatenate	Exception Reported: Table /projects/vla-processing/measurement_sets/NGC6822/20A-346.sb40198636.eb40234482.59479.02002452547.speclines.ms.split_spw.transformed.split_concat cannot be opened for read/write
-2023-06-19 17:40:25	SEVERE	concat::::casa	Task concat raised an exception of class RuntimeError with the following message: Table /projects/vla-processing/measurement_sets/NGC6822/20A-346.sb40198636.eb40234482.59479.02002452547.speclines.ms.split_spw.transformed.split_concat cannot be opened for read/write
-2023-06-19 17:40:25	SEVERE	concat::::casa	Exception Reported: Error in concat: Table /projects/vla-processing/measurement_sets/NGC6822/20A-346.sb40198636.eb40234482.59479.02002452547.speclines.ms.split_spw.transformed.split_concat cannot be opened for read/write
-Telemetry initialized. Telemetry will send anonymized usage statistics to NRAO.
-You can disable telemetry by adding the following line to the config.py file in your rcdir (e.g. ~/.casa/config.py):
-telemetry_enabled = False

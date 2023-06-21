@@ -1,6 +1,0 @@
-
-optional configuration file config.py not found, continuing CASA startup without it
-
-Using matplotlib backend: <object object at 0x7fa0da0a9390>
-Creating a new telemetry file
-CASA 6.5.0.15 -- Common Astronomy Software Applications [6.5.0.15]

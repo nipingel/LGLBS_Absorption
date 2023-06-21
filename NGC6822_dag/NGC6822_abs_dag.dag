@@ -76,9 +76,9 @@
 ## - src_name: source name
 ## output:
 ## - concatenated measurement set in staging area
-JOB F concat.sub
-VARS F src_name="NGC6822" extension="transformed.split_concat" outfile_name="NGC6822_A+B.ms"
-PARENT F CHILD G
+## JOB F concat.sub
+## VARS F src_name="NGC6822" extension="transformed.split_concat" outfile_name="NGC6822_A+B.ms"
+## PARENT F CHILD G
 
 ## COMBINE_SPW
 ## run mstransform again to combine all spectral windows in concatenated measurement set
