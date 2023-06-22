@@ -1,16 +1,5 @@
 --> CrashReporter initialized.
 casalogger: cannot connect to X server 
-terminate called after throwing an instance of 'casa6core::AipsError'
-  what():  RegularFileIO: error in open or create of file /projects/vla-processing/measurement_sets/NGC6822/NGC6822_A+B.comb_spw/table.dat_tmp: Disk quota exceeded
-sh: lsb_release: command not found
-
---------------------------------------------------------------
-CASA has crashed...
--- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-A crash report is being generated and submitted. The report
-will contain information about CASA's environment when the
-crash occurred (e.g. CASA log, call stack, CPU information).
-This should not take too long...
---------------------------------------------------------------
-
-./ms_transform_combine_spw.sh: line 16:     8 Aborted                 (core dumped) /casa-6.5.0-15-py3.8/bin/casa --nologfile -c ms_transform_combine_spw.py -p ${full_path} -n ${input_name}
+Telemetry initialized. Telemetry will send anonymized usage statistics to NRAO.
+You can disable telemetry by adding the following line to the config.py file in your rcdir (e.g. ~/.casa/config.py):
+telemetry_enabled = False

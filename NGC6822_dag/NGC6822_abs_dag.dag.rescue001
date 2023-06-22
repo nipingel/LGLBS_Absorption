@@ -1,10 +1,11 @@
 # Rescue DAG file, created after running
 #   the NGC6822_abs_dag.dag DAG file
-# Created 6/21/2023 05:10:15 UTC
+# Created 6/22/2023 01:25:58 UTC
 # Rescue DAG version: 2.0.1 (partial)
 #
 # Total number of Nodes: 2
-# Nodes premarked DONE: 0
+# Nodes premarked DONE: 1
 # Nodes that failed: 1
-#   G,<ENDLIST>
+#   H,<ENDLIST>
 
+DONE G
