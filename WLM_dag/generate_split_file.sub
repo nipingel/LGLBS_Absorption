@@ -17,6 +17,9 @@ docker_image = nipingel/casa:latest
 #  and increasing for the relevant number of jobs.
 executable = generate_split_file.sh
 
+src_name=NGC6822
+extension=transformed
+output_name=split_concat_abs_list
 arguments = $(src_name) $(extension) $(output_name)
 output = file_split_split_generate.out
 error = file_split_split_generate.err

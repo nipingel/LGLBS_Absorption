@@ -63,8 +63,8 @@
 ## - end_chan - ending channel to split (input text file)
 ## output:
 ## - split out measurement sets with equal number of channels so concat step will combine into a single spw
-## JOB E split_channels_concat.sub
-## PARENT E CHILD F
+JOB E split_channels_concat.sub
+#PARENT E CHILD F
 
 ## CONCAT
 ## concatenate (combine) measurement sets from all VLA configurations
@@ -121,5 +121,5 @@
 ## - src_name: source name
 ## - output:
 ## - tarball of 2D cubelets for each source
-JOB I abs_cubelet.sub
-VARS I ms_name="WLM_A+B+C.comb_spw.wt" start_velocity="-200" chan_nums="750" src_name="WLM"
+#JOB I abs_cubelet.sub
+#VARS I ms_name="WLM_A+B+C.comb_spw.wt" start_velocity="-200" chan_nums="750" src_name="WLM"
