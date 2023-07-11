@@ -1,0 +1,32 @@
+analysis_scripts/
+analysis_scripts/plotbandpass3.py
+analysis_scripts/fileIOPython.py
+analysis_scripts/tsysNormalize.py
+analysis_scripts/mpfit.py
+analysis_scripts/analysisUtils.py
+analysis_scripts/XmlObjectifier_python3.py
+analysis_scripts/au_noASDMLibrary.py
+analysis_scripts/checksource.py
+analysis_scripts/almahelpers_localcopy.py
+analysis_scripts/AntPosResult.py
+analysis_scripts/WvrCorrection.py
+analysis_scripts/almaqa2csg.py
+analysis_scripts/readscans.py
+analysis_scripts/AOS_Pads_XYZ_ENU.txt
+analysis_scripts/almaqa2isg.py
+analysis_scripts/tmUtils.py
+analysis_scripts/compUtils.py
+analysis_scripts/XmlObjectifier.py
+analysis_scripts/README
+analysis_scripts/CompareAntPosResults.py
+analysis_scripts/calDatabaseQuery.py
+analysis_scripts/O2SounderPlayer.py
+
+optional configuration file config.py not found, continuing CASA startup without it
+
+Using matplotlib backend: <object object at 0x7f27fd8c0390>
+Creating a new telemetry file
+CASA 6.5.0.15 -- Common Astronomy Software Applications [6.5.0.15]
+casaVersion =  6.5.0.15
+pytz is not available in this python (used by au.mjdToLocalTime)
+imported casatasks and casatools individually

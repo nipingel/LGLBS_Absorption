@@ -89,9 +89,9 @@
 ## - src_name: source name
 ## output:
 ## - tarball of measurement sets that have been transformed to the user provided reference frame and spectral channel width
-JOB G ms_transform_combine_spw.sub
-VARS G input_name="NGC6822_A+B.ms" src_name="NGC6822"
-PARENT G CHILD H
+## JOB G ms_transform_combine_spw.sub
+## VARS G input_name="NGC6822_A+B.ms" src_name="NGC6822"
+## PARENT G CHILD H
 
 ## STATWT
 ## re-weight visibilities based on root mean square noise in emission-free regions. Use systemic velocity and velocity width to mask channels with expected emission. 
