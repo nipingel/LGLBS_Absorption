@@ -19,12 +19,12 @@ docker_image = nipingel/casa:latest
 executable = narrowband_cont_image.sh
 
 ## determine channel to image
-ms_name=WLM_A+B+C.comb_spw.wt
-src_name=WLM
+ms_name=NGC6822_A+B.comb_spw.wt
+src_name=NGC6822
 arguments = $(ms_name) $(src_name) 
-log = WLM_nb_image.log
-output = WLM_nb_image.out
-error = WLM_nb_image.err
+log = NGC6822_nb_image.log
+output = NGC6822_nb_image.out
+error = NGC6822_nb_image.err
 
 # Specify that HTCondor should transfer files to and from the
 #  computer where each job runs. The last of these lines *would* be

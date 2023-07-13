@@ -45,7 +45,7 @@ def main():
 	## deconvolution parameters
 	deconvolver_mode = 'hogbom'
 	ms_scales = [0, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
-	tot_niter = 100000
+	tot_niter = 200000
 	min_threshold = '2.0mJy'
 	restart_parameter = False
 	## tclean dictionary

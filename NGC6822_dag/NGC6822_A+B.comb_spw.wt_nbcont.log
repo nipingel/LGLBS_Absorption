@@ -1,0 +1,66 @@
+2023-07-11 19:54:17	INFO	::casa	
+2023-07-11 19:54:17	INFO	::casa	
+2023-07-11 19:54:17	INFO	::casa	
+2023-07-11 19:54:17	INFO	::casa	
+2023-07-11 19:54:18	INFO	::casa	Python version 3.8.10
+2023-07-11 19:54:18	INFO	::casa	CASA Version CASALITH 6.5.0.15
+2023-07-11 19:54:18	INFO	::casa	
+2023-07-11 19:54:18	INFO	::casa	Telemetry log file: /var/lib/condor/execute/slot1/dir_121316/.casa/casastats-6.5.0.15-242ac110e-20230711-195417.log
+2023-07-11 19:54:18	INFO	::casa	Checking telemetry submission interval
+2023-07-11 19:54:18	INFO	::casa	Creating a new telemetry time stamp file./var/lib/condor/execute/slot1/dir_121316/.casa/telemetry-242ac110e.stamp
+2023-07-11 19:54:18	INFO	::casa	Telemetry submit interval not reached. Not submitting data.
+2023-07-11 19:54:18	INFO	::casa	Next telemetry data submission in: 6 days, 23:59:59.999532
+2023-07-11 19:54:18	INFO	::casa	
+2023-07-11 19:54:18	INFO	::casa	optional configuration file config.py not found, continuing CASA startup without it
+2023-07-11 19:54:18	INFO	::casa	
+2023-07-11 19:54:18	INFO	::casa	Checking Measures tables in data repository sub-directory /casa-6.5.0-15-py3.8/lib/py/lib/python3.8/site-packages/casadata/__data__/geodetic
+2023-07-11 19:54:18	INFO	::casa	  IERSeop2000 (version date, last date in table (UTC)): 2022/05/19/15:00, 2022/04/19/00:00:00
+2023-07-11 19:54:18	INFO	::casa	  IERSeop97 (version date, last date in table (UTC)): 2022/05/19/15:00, 2022/04/19/00:00:00
+2023-07-11 19:54:18	INFO	::casa	  IERSpredict (version date, last date in table (UTC)): 2022/05/22/15:00, 2022/08/20/00:00:00
+2023-07-11 19:54:18	INFO	::casa	  TAI_UTC (version date, last date in table (UTC)): 2022/05/19/15:00, 2017/01/01/00:00:00
+2023-07-11 19:54:18	INFO	tclean::::casa	##########################################
+2023-07-11 19:54:18	INFO	tclean::::casa	##### Begin Task: tclean             #####
+2023-07-11 19:54:18	INFO	tclean::::casa	tclean( vis='/projects/vla-processing/measurement_sets/NGC6822/NGC6822_A+B.comb_spw.wt', selectdata=True, field='', spw='', timerange='', uvrange='', antenna='', scan='', observation='', intent='', datacolumn='data', imagename='NGC6822_A+B.comb_spw.wt_nbcont', imsize=5120, cell='0.75arcsec', phasecenter='J2000 19h44m56.6s -14d47m21s', stokes='I', projection='SIN', startmodel='', specmode='mfs', reffreq='', nchan=-1, start='', width='', outframe='LSRK', veltype='radio', restfreq='1.42040571183GHz', interpolation='linear', perchanweightdensity=True, gridder='wproject', facets=1, psfphasecenter='', wprojplanes=1, vptable='', mosweight=True, aterm=True, psterm=False, wbawp=True, conjbeams=False, cfcache='', usepointing=False, computepastep=360.0, rotatepastep=360.0, pointingoffsetsigdev=[], pblimit=0.1, normtype='flatnoise', deconvolver='hogbom', scales=[], nterms=2, smallscalebias=0.0, fusedthreshold=0.0, largestscale=-1, restoration=True, restoringbeam='common', pbcor=True, outlierfile='', weighting='briggs', robust=0.5, noise='1.0Jy', npixels=0, uvtaper=[], niter=200000, gain=0.1, threshold='2.0mJy', nsigma=0.0, cycleniter=-1, cyclefactor=0.8, minpsffraction=0.05, maxpsffraction=0.8, interactive=False, usemask='pb', mask='', pbmask=0.5, sidelobethreshold=2.5, noisethreshold=3.5, lownoisethreshold=1.5, negativethreshold=0.0, smoothfactor=1.0, minbeamfrac=0.3, cutthreshold=0.01, growiterations=75, dogrowprune=False, minpercentchange=-1.0, verbose=True, fastnoise=True, restart=False, savemodel='none', calcres=True, calcpsf=True, psfcutoff=0.35, parallel=False )
+2023-07-11 19:54:18	INFO	tclean::::casa	Verifying Input Parameters
+2023-07-11 19:54:21	INFO	SynthesisImagerVi2::selectData 	MS : /projects/vla-processing/measurement_sets/NGC6822/NGC6822_A+B.comb_spw.wt | [Opened in readonly mode]
+2023-07-11 19:54:25	INFO	SynthesisImagerVi2::selectData 	  NRows selected : 10824657
+2023-07-11 19:54:40	INFO	SynthesisImagerVi2::defineImage 	Define image coordinates for [NGC6822_A+B.comb_spw.wt_nbcont] : 
+2023-07-11 19:54:42	INFO	SynthesisImagerVi2::defineImage 	Impars : start 
+2023-07-11 19:54:42	INFO	SynthesisImagerVi2::defineImage 	Shape : [5120, 5120, 1, 1]Spectral : [1.42069e+09] at [0] with increment [3.99925e+06]
+2023-07-11 19:54:42	INFO	SynthesisImagerVi2::defineImage 	Set Gridding options for [NGC6822_A+B.comb_spw.wt_nbcont] with ftmachine : gridft
+2023-07-11 19:54:42	INFO	SynthesisImagerVi2::nSubCubeFitInMemory	Required memory: 1.266 GB. Available mem.: 7.636 GB (rc, mem. fraction: 80%, memory: -) => Subcubes: 1. Processes on node: 1.
+2023-07-11 19:54:42	INFO	SynthesisImagerVi2::weight() 	Set imaging weights : Briggs weighting: sidelobes will be suppressed over full image
+2023-07-11 20:47:16	INFO	VisSetUtil::VisImagingWeight() 	Normal robustness, robust = 0.5
+2023-07-11 20:47:16	INFO	task_tclean::SynthesisDeconvolver::setupDeconvolution 	Set Deconvolution Options for [NGC6822_A+B.comb_spw.wt_nbcont] : hogbom
+2023-07-11 20:47:16	INFO	task_tclean::SynthesisImager::makePSF 	----------------------------------------------------------- Make PSF ---------------------------------------------
+2023-07-12 04:43:54	INFO	task_tclean::SIImageStore::calcSensitivity 	[NGC6822_A+B.comb_spw.wt_nbcont] Theoretical sensitivity (Jy/bm):1.42266e-05 
+2023-07-12 04:43:54	INFO	task_tclean::SIImageStore::getPSFGaussian 	Time to fit Gaussian to PSF 0.69
+2023-07-12 04:43:54	INFO	task_tclean::SIImageStore::printBeamSet 	Beam : 3.26097 arcsec, 2.35635 arcsec, -5.56023 deg
+2023-07-12 04:43:54	INFO	task_tclean::SynthesisImagerVi2::makePrimaryBeam 	vi2 : Evaluating Primary Beam model onto image grid(s)
+2023-07-12 04:45:41	WARN	tclean::::casa	Warning! Non-zero values at the edge of the .pb image can cause unexpected aliasing effects! (found value 0.21466296911239624 at index [1, 1678, 0, 0])
+2023-07-12 04:45:41	INFO	SynthesisImager::executeMajorCycle 	----------------------------------------------------------- Run (Last) Major Cycle 1 -------------------------------------
+2023-07-12 12:06:33	INFO	task_tclean::SynthesisDeconvolver::initMinorCycle 	 Absolute Peak residual within mask : 0.0262615, over full image : 0.0262615
+2023-07-12 12:06:33	INFO	SynthesisDeconvolver::setupMask 	[NGC6822_A+B.comb_spw.wt_nbcont] Setting up a PB based mask
+2023-07-12 12:06:33	INFO	SDMaskHandler::makePBMask 	MAKE PB mask
+2023-07-12 12:06:34	INFO	SynthesisDeconvolver::setupMask 	----------------------------------------------------------------------------------------------------------------------------------------
+2023-07-12 12:06:34	INFO	SynthesisDeconvolver::setupMask 	[NGC6822_A+B.comb_spw.wt_nbcont] Number of pixels in the clean mask : 7.89768e+06 out of a total of 2.62144e+07 pixels. [ 30.1273 % ]
+2023-07-12 12:06:36	INFO	SynthesisDeconvolver::initMinorCycle 	 Absolute Peak residual within mask : 0.0262615, over full image : 0.0262615
+2023-07-12 12:06:36	INFO	task_tclean::SDAlgorithmBase::deconvolve 	[NGC6822_A+B.comb_spw.wt_nbcont] Run Hogbom minor-cycle | CycleThreshold=0.00366533, CycleNiter=200000, Gain=0.1
+2023-07-12 12:06:48	INFO	task_tclean::SDAlgorithmBase::deconvolve 	[NGC6822_A+B.comb_spw.wt_nbcont] iters=0->136 [136], model=0->0.105859, peakres=0.0262615->0.0036343, Reached cyclethreshold.
+2023-07-12 12:06:48	INFO	task_tclean::grpcInteractiveCleanManager::mergeCycleExecutionRecord 	Completed 136 iterations.
+2023-07-12 12:06:48	INFO	task_tclean::SynthesisImager::executeMajorCycle 	----------------------------------------------------------- Run Major Cycle 2 -------------------------------------
+2023-07-12 22:46:09	INFO	task_tclean::SynthesisDeconvolver::initMinorCycle 	 Absolute Peak residual within mask : 0.00363429, over full image : 0.00367075
+2023-07-12 22:46:09	INFO	SDAlgorithmBase::deconvolve 	[NGC6822_A+B.comb_spw.wt_nbcont] Run Hogbom minor-cycle | CycleThreshold=0.002, CycleNiter=199864, Gain=0.1
+2023-07-12 22:46:23	INFO	SDAlgorithmBase::deconvolve 	[NGC6822_A+B.comb_spw.wt_nbcont] iters=0->97 [97], model=0.105859->0.132115, peakres=0.00363429->0.00199826, Reached cyclethreshold.
+2023-07-12 22:46:24	INFO	grpcInteractiveCleanManager::mergeCycleExecutionRecord 	Completed 233 iterations.
+2023-07-12 22:46:24	INFO	task_tclean::SynthesisImager::executeMajorCycle 	----------------------------------------------------------- Run (Last) Major Cycle 3 -------------------------------------
+2023-07-13 10:07:02	INFO	task_tclean::SynthesisDeconvolver::initMinorCycle 	 Absolute Peak residual within mask : 0.00199826, over full image : 0.00366012
+2023-07-13 10:07:02	INFO	tclean::::casa	Reached global stopping criterion : threshold
+2023-07-13 10:07:02	INFO	SDAlgorithmBase::restore 	[NGC6822_A+B.comb_spw.wt_nbcont] : Restoring model image.
+2023-07-13 10:07:02	INFO	SIImageStore::restore 	Getting common beam
+2023-07-13 10:07:02	INFO	SIImageStore::restore 	Common Beam : 3.26097 arcsec, 2.35635 arcsec, -5.56023 deg
+2023-07-13 10:07:08	INFO	task_tclean::SDAlgorithmBase::pbcor 	[NGC6822_A+B.comb_spw.wt_nbcont] : Applying PB correction
+2023-07-13 10:07:10	INFO	tclean::::casa	Searching for images with prefix 'NGC6822_A+B.comb_spw.wt_nbcont'... Found these, writing history into them: ['NGC6822_A+B.comb_spw.wt_nbcont.model', 'NGC6822_A+B.comb_spw.wt_nbcont.psf', 'NGC6822_A+B.comb_spw.wt_nbcont.mask', 'NGC6822_A+B.comb_spw.wt_nbcont.sumwt', 'NGC6822_A+B.comb_spw.wt_nbcont.image.pbcor', 'NGC6822_A+B.comb_spw.wt_nbcont.pb', 'NGC6822_A+B.comb_spw.wt_nbcont.residual', 'NGC6822_A+B.comb_spw.wt_nbcont.image']
+2023-07-13 10:07:10	INFO	tclean::::casa	Task tclean complete. Start time: 2023-07-11 19:54:18.216119 End time: 2023-07-13 10:07:09.822028
+2023-07-13 10:07:10	INFO	tclean::::casa	##### End Task: tclean               #####
+2023-07-13 10:07:10	INFO	tclean::::casa	##########################################
