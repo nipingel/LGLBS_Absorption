@@ -104,9 +104,27 @@
 ## - src_name: source name
 ## output:
 ## - re-weighted concatenated measurement sets with '.wt' appended to name
-JOB H statwt.sub
-VARS H ms_name="NGC6822_A+B.comb_spw" v_sys="-44" v_width="210" src_name="NGC6822"
+## JOB H statwt.sub
+## VARS H ms_name="NGC6822_A+B.comb_spw" v_sys="-44" v_width="210" src_name="NGC6822"
 ## PARENT H CHILD I
+
+## NARROWBAND IMAGING
+## create a narrow-band continuum image of NGC6822 to identify background sources with which to measure HI absorption against
+## executable:
+## - narrowband_cont_image.sh (calls narrowband_cont_image.py)
+## arguments:
+## - ms_name: file name of concatenated measurement set
+## - src_name: source name
+## - ra_str: Right Acension string for phase center (e.g., "19h44m56.6s") 
+## - dec_str: Declination string for phase center (e.g., "-14d47m21s")
+## - threshold: global rms threshold to stop cleaning in mJy (e.g., "2.0")
+## output:
+## - narrowband continuum image
+## JOB I narrowband_cont_image.sub
+## VARS I ms_name="NGC6822_A+B.comb_spw" src_name="NGC6822" ra_str="19h44m56.6s" dec_str="-14d47m21s" threshold="2.0"
+## PARENT I CHILD J
+
+## SOURCE FINDING
 
 ## run tclean to get cubelets centered on each background source
 ## executable:

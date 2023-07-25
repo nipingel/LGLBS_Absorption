@@ -1,4 +1,4 @@
-# image_channel.sub
+# narrowband_cont_image.sub
 # script to base submission of LGLBS imaging jobs
 #
 # Specify the HTCondor Universe (vanilla is the default and is used
@@ -19,9 +19,7 @@ docker_image = nipingel/casa:latest
 executable = narrowband_cont_image.sh
 
 ## determine channel to image
-ms_name=NGC6822_A+B.comb_spw.wt
-src_name=NGC6822
-arguments = $(ms_name) $(src_name) 
+arguments = $(ms_name) $(src_name) $(ra_str) $(dec_str) $(threshold)
 log = NGC6822_nb_image.log
 output = NGC6822_nb_image.out
 error = NGC6822_nb_image.err
@@ -34,7 +32,7 @@ Requirements=(Target.HasCHTCStaging == true)
 
 # Tell HTCondor what amount of compute resources
 #  each job will need on the computer where it runs.
-transfer_input_files = narrowband_cont_image.sh, narrowband_cont_image.py 
+transfer_input_files = narrowband_cont_image.sh, narrowband_cont_image.py
 request_cpus = 1
 request_memory = 10GB
 request_disk = 5GB

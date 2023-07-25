@@ -1,5 +1,0 @@
---> CrashReporter initialized.
-casalogger: cannot connect to X server 
-Telemetry initialized. Telemetry will send anonymized usage statistics to NRAO.
-You can disable telemetry by adding the following line to the config.py file in your rcdir (e.g. ~/.casa/config.py):
-telemetry_enabled = False

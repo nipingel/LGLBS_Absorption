@@ -6,6 +6,7 @@ User inputs:
 -r --ra - <required> ra phase center in form e.g.: 00h40m13.8 
 -d --dec - <required> dec phase center in form e.g.: +40d50m04.73
 -o --output_name - <required> name of output file
+-t --threshold - <required> global rms threshold to stop cleaning
 __author__="Nickolas Pingel"
 __version__="1.0"
 __email__="nmpingel@wisc.edu"
@@ -20,17 +21,19 @@ parser.add_argument('-v', '--vis_path', help = '<required> name of measurement s
 parser.add_argument('-r', '--ra', help = '<required> ra phase center in form e.g.: 00h40m13.8', required = True)
 parser.add_argument('-d', '--dec', help = '<required> ra phase center in form e.g.: +40d50m04.73', required = True)
 parser.add_argument('-o', '--output_name', help = '<required> name of output file', required = True)
+parser.add_argument('-t', '--threshold', help = '<required> global rms threshold to stop cleaning', required = True)
 args, unknown = parser.parse_known_args()
 
 vis_path = args.vis_path
 ra_phase_center = args.ra
 dec_phase_center = args.dec
 output_name = args.output_name
+major_threshold = args.threshold
 def main():
 	## define tclean variables below
 	## image output properties
 	im_size = 5120
-	cell_size = '0.75arcsec'
+	cell_size = '0.6arcsec'
 	restore_beam = 'common'
 	## automasking parameters ##
 	use_mask = 'pb'
@@ -44,9 +47,8 @@ def main():
 	verbose = True
 	## deconvolution parameters
 	deconvolver_mode = 'hogbom'
-	ms_scales = [0, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
 	tot_niter = 200000
-	min_threshold = '2.0mJy'
+	min_threshold = '%smJy' % major_threshold
 	restart_parameter = False
 	## tclean dictionary
 	tclean_params={
