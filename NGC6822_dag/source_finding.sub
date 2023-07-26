@@ -1,6 +1,7 @@
-# narrowband_cont_image.sub
-# script to image continuum in LGLBS A+B config measurement set
-#
+# source_finding.sub
+# script to run source finding on narrowband continuum image to identify strong
+# background sources with which to measure absorption against
+
 # Specify the HTCondor Universe (vanilla is the default and is used
 #  for almost all jobs) and your desired name of the HTCondor log file,
 #  which is where HTCondor will describe what steps it takes to run 
@@ -16,13 +17,11 @@ docker_image = nipingel/casa:latest
 #  and increasing for the relevant number of jobs.
 
 ## imaging executable
-executable = narrowband_cont_image.sh
-
-## determine channel to image
-arguments = $(ms_name) $(src_name) $(ra_str) $(dec_str) $(threshold)
-log = NGC6822_nb_image.log
-output = NGC6822_nb_image.out
-error = NGC6822_nb_image.err
+executable = source_finding.sh
+arguments = $(image_name) $(src_name) $(int_threshold)
+log = find_sources.log
+output = find_sources.out
+error = find_sources.err
 
 # Specify that HTCondor should transfer files to and from the
 #  computer where each job runs. The last of these lines *would* be
@@ -32,10 +31,10 @@ Requirements=(Target.HasCHTCStaging == true)
 
 # Tell HTCondor what amount of compute resources
 #  each job will need on the computer where it runs.
-transfer_input_files = narrowband_cont_image.sh, narrowband_cont_image.py
+transfer_input_files = source_finding.sh, exportfits.py, parse_log.py
 request_cpus = 1
 request_memory = 10GB
-request_disk = 5GB
+request_disk = 30GB
 #
-# Tell HTCondor to run 475 instances of our job:
+# Tell HTCondor to run 1 instance of our job:
 queue 1

@@ -24,6 +24,7 @@ parser.add_argument('-o', '--output_name', help = '<required> name of output fil
 parser.add_argument('-t', '--threshold', help = '<required> global rms threshold to stop cleaning', required = True)
 args, unknown = parser.parse_known_args()
 
+## unpack user arguments
 vis_path = args.vis_path
 ra_phase_center = args.ra
 dec_phase_center = args.dec
