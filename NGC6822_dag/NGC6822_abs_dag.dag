@@ -136,9 +136,9 @@
 ## - int_threshold: continuum intensity threshold to determine sources with sigma_cont < 0.33 (in Jy/beam from narrowband contiuum image)
 ## output:
 ## - a csv file produced by aegean and phase-center-list.txt (input for cubelet generation)
-JOB J source_finding.sub
-VARS J image_name="NGC6822_A+B.comb_spw.wt_nbcont" src_name="NGC6822" int_threshold="0.00065"
-PARENT I CHILD K
+## JOB J source_finding.sub
+## VARS J image_name="NGC6822_A+B.comb_spw.wt_nbcont" src_name="NGC6822" int_threshold="0.00065"
+## PARENT I CHILD K
 
 ## run tclean to get cubelets centered on each background source
 ## executable:

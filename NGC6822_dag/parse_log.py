@@ -12,6 +12,8 @@ __status__="Production"
 # imports
 import argparse
 from astropy.coordinates import SkyCoord
+import astropy.units as u
+import numpy as np
 
 ## parse user inputs
 parser = argparse.ArgumentParser()
@@ -22,11 +24,11 @@ args, unknown = parser.parse_known_args()
 ## unpack user arguments
 file_name = args.name
 threshold = float(args.threshold)
-output_name = args.output_name
+
 
 def main():
 	## read in file
-	data_array = np.loadtxt('%s' % file_name, dtype = 'str')
+	data_array = np.loadtxt('%s' % file_name, dtype = 'str', skiprows=2)
 
 	## select the peak intensity column
 	peak_column = np.array(data_array[:, 9], dtype = 'float')
@@ -40,7 +42,7 @@ def main():
 
 	## otherwise, continue to write file by selecting ra/dec columns from input table
 	ra_column = data_array[:, 3]
-	dec_olumn = data_array[:, 4]
+	dec_column = data_array[:, 4]
 
 	## construct SkyCoord object
 	c = SkyCoord(ra_column[good_rows], dec_column[good_rows], frame = 'fk5', unit = (u.hourangle, u.deg))
@@ -51,8 +53,8 @@ def main():
 	for i in range(0, len(ra_column[good_rows])):
 		ra_str = '%sh%sm%.2fs' % (int(c[i].ra.hms[0]), int(c[i].ra.hms[1]), c[i].ra.hms[2])
 		dec_str = '%sd%sm%.2fs ' % (int(c[i].dec.dms[0]), int(np.abs(c[i].dec.dms[1])), np.abs(c[i].dec.dms[2]))
-    	f.write('%s, %s\n'  % (ra_str, dec_str))
-    f.close()
+		f.write('%s, %s\n'  % (ra_str, dec_str))
+	f.close()
 if __name__=='__main__':
 	main()
 	exit()

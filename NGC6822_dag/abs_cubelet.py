@@ -46,7 +46,7 @@ def main():
 		'restfreq': rest_freq,
 		'phasecenter': phasecenter,
 		'uvrange': uvdist, 
-		'imsize': 50, 
+		'imsize': int(50/0.75), 
 		'weighting': 'natural',
 		'gridder': 'standard',
 		'pbcor': True, 
@@ -59,6 +59,16 @@ def main():
 		'niter': tot_iter
 		}
 	tclean(**tclean_params)
+
+	exportfits_params = {
+		'imagename': '%s.image' % output_name,
+		'fitsimage': '%s.image.fits' % output_name,
+		'velocity': True, 
+		'dropdeg': True,
+		'nostokes': True,
+		'history': False
+		}
+	exportfits(**exportfits_params)
 if __name__=='__main__':
 	main()
 	exit()
