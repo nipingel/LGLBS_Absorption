@@ -65,7 +65,7 @@ def main():
 		'fitsimage': '%s.image.fits' % output_name,
 		'velocity': True, 
 		'dropdeg': True,
-		'nostokes': True,
+		'dropstokes': True,
 		'history': False
 		}
 	exportfits(**exportfits_params)
