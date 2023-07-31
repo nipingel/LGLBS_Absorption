@@ -61,8 +61,8 @@ def main():
 	tclean(**tclean_params)
 
 	exportfits_params = {
-		'imagename': '%s.image' % output_name,
-		'fitsimage': '%s.image.fits' % output_name,
+		'imagename': '%s.image.pbcor' % output_name,
+		'fitsimage': '%s.image.pbcor.fits' % output_name,
 		'velocity': True, 
 		'dropdeg': True,
 		'dropstokes': True,
