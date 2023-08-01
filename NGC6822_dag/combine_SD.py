@@ -24,7 +24,7 @@ args, unknown = parser.parse_known_args()
 
 ## unpack user arguments
 int_path = args.int_path
-sd_path = args.sd_name
+sd_name = args.sd_name
 ra_phase_center = args.ra_phase_center
 dec_phase_center = args.dec_phase_center
 
