@@ -27,19 +27,15 @@ pip install spectral_cube
 pip install AegeanTools
 
 ## copy the data products to working area
-cp /projects/vla-processing/images/${src_name}/${src_name}/Absorption/${ra_phase_center}_{$dec_phase_center}.image.pbcor.fits .
-cp /projects/vla-processing/images/${src_name}/${src_name}/${sd_cube_name} .
+cp /projects/vla-processing/images/${src_name}/${src_name}/Absorption/${ra_phase_center}_${dec_phase_center}.image.pbcor.fits .
+cp /projects/vla-processing/images/${src_name}/${sd_cube_name} .
 
 ## run script to pull out a 30' subregion around source & feather in single dish
 /casa-6.5.0-15-py3.8/bin/casa --nologfile --log2term --nogui -c combine_SD.py -p ${vla_cube_path} -s {sd_cube_name} -r ${ra_phase_center} -d${dec_phase_center}
 
-
-cubelet_name = args.cubelet_name
-combined_name = args.combined_name
-output = args.output
 # run analysis script that extracts spectra
 python3 spectral_extraction -n ${ra_phase_center}_{$dec_phase_center}.image.pbcor.fits -c VLA_ABCD_GBT_${ra_phase_center}_${dec_phase_center}_30arcmin.fits -r ${ra_phase_center} -d${dec_phase_center}
 
 ## tar output
-tar ${} *.csv *.pickle *.pdf
+tar -cvf ${ra_phase_center}_${dec_phase_center}_analysis_products.tar *.csv *.pickle *.pdf
 mv *.tar /projects/vla-processing/images/${src_name}/Absorption

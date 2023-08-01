@@ -174,5 +174,5 @@
 ## - sd_name: name of single dish cube
 ## - output:
 ## - tarball containing analysis products for each source
-JOB L extract_spectra.sh
+JOB L extract_spectra.sub
 VARS L src_name="NGC6822" vla_name="NGC6822_ABCD.combImage" sd_name="N6822_GBT_Jy.eq.nostokes.fits"
