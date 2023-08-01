@@ -138,8 +138,10 @@
 ## - a csv file produced by aegean and phase-center-list.txt (input for cubelet generation)
 ## JOB J source_finding.sub
 ## VARS J image_name="NGC6822_A+B.comb_spw.wt_nbcont" src_name="NGC6822" int_threshold="0.00065"
-## PARENT I CHILD K
+## PARENT J CHILD K
 
+
+## CUBELETS
 ## run tclean to get cubelets centered on each background source
 ## executable:
 ## - abs_cubelet.sh (runs abs_cubelet.py)
@@ -153,5 +155,24 @@
 ## - src_name: source name
 ## - output:
 ## - tarball of 2D cubelets for each source
-JOB I abs_cubelet.sub
-VARS I ms_name="NGC6822_A+B.comb_spw.wt" start_velocity="-200" chan_nums="750" src_name="NGC6822"
+## JOB K abs_cubelet.sub
+## VARS K ms_name="NGC6822_A+B.comb_spw.wt" start_velocity="-200" chan_nums="750" src_name="NGC6822"
+## PARENT K CHILD L
+
+## EXTRACT SPECTRA
+## runs extract_spectra.py to: 
+## - source find on cubelet
+## - extract region surrounding each source
+## - feather in the single-dish 
+## - extract absorption/emission spectrum
+## - compute spin temperature for all identified features
+## inputs:
+## - RA: Right Acension string from textfile (e.g., 00h40m13.8)
+## - Dec: Declination string form textfile (e.g., +40d50m04.73)
+## - src_name: source name
+## - vla_name: name of vla cube
+## - sd_name: name of single dish cube
+## - output:
+## - tarball containing analysis products for each source
+JOB L extract_spectra.sh
+VARS L src_name="NGC6822" vla_name="NGC6822_ABCD.combImage" sd_name="N6822_GBT_Jy.eq.nostokes.fits"
