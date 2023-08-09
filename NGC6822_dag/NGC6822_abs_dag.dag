@@ -140,7 +140,6 @@
 ## VARS J image_name="NGC6822_A+B.comb_spw.wt_nbcont" src_name="NGC6822" int_threshold="0.00065"
 ## PARENT J CHILD K
 
-
 ## CUBELETS
 ## run tclean to get cubelets centered on each background source
 ## executable:
@@ -155,9 +154,9 @@
 ## - src_name: source name
 ## - output:
 ## - tarball of 2D cubelets for each source
-## JOB K abs_cubelet.sub
-## VARS K ms_name="NGC6822_A+B.comb_spw.wt" start_velocity="-200" chan_nums="750" src_name="NGC6822"
-## PARENT K CHILD L
+JOB K abs_cubelet.sub
+VARS K ms_name="NGC6822_A+B.comb_spw.wt" start_velocity="-200" chan_nums="750" src_name="NGC6822"
+PARENT K CHILD L
 
 ## COMBINE CUBELETS
 ## runs combine_SD.py to extract 30' region around each source
@@ -172,7 +171,7 @@
 ## fits file of 30' region around each source feathered with GBT data
 JOB L combine_SD.sub
 VARS L src_name="NGC6822" vla_name="NGC6822_ABCD.combImage" sd_name="N6822_GBT_Jy.eq.nostokes.fits"
-## PARENT L CHILD M
+PARENT L CHILD M
 
 
 ## EXTRACT SPECTRA
@@ -188,5 +187,5 @@ VARS L src_name="NGC6822" vla_name="NGC6822_ABCD.combImage" sd_name="N6822_GBT_J
 ## - src_name: source name
 ## - output:
 ## - tarball containing analysis products for each source
-## JOB M extract_spectra.sub
-## VARS M src_name="NGC6822"
+JOB M extract_spectra.sub
+VARS M src_name="NGC6822"

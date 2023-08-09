@@ -62,30 +62,35 @@ def main():
 		'hdkey': 'bmaj',
 		'hdvalue': '7arcsec'
 	}
-	imhead(**imhead_params)
+	#imhead(**imhead_params)
 	imhead_params = {
 		'imagename': 'VLA_ABCD_%s_%s_30arcmin.imsub' % (ra_phase_center, dec_phase_center),
 		'mode': 'put',
 		'hdkey': 'bmin',
 		'hdvalue': '5.2arcsec'
 	}
-	imhead(**imhead_params)
+	#imhead(**imhead_params)
 	imhead_params = {
 		'imagename': 'VLA_ABCD_%s_%s_30arcmin.imsub' % (ra_phase_center, dec_phase_center),
 		'mode': 'put',
 		'hdkey': 'bpa',
 		'hdvalue': '-2.96deg'
 	}
-	imhead(**imhead_params)
-
+	#imhead(**imhead_params)
+	imsmooth_params = {
+		'imagename': 'VLA_ABCD_%s_%s_30arcmin.imsub' % (ra_phase_center, dec_phase_center),
+		'outfile': 'VLA_ABCD_%s_%s_30arcmin.imsub.imsmooth' % (ra_phase_center, dec_phase_center),
+		'kernel': 'commonbeam'
+	}
+	imsmooth(**imsmooth_params)
 	## combine sd and vla cube
 	feather_params = {
-		'imagename': 'VLA_ABCD_GBT_%s_%s_30arcmin.imsub' % (ra_phase_center, dec_phase_center), 
-		'highres': 'VLA_ABCD_%s_%s_30arcmin.imsub' % (ra_phase_center, dec_phase_center), 
+		'imagename':'VLA_ABCD_GBT_%s_%s_30arcmin.imsub' % (ra_phase_center, dec_phase_center),
+		'highres': 'VLA_ABCD_%s_%s_30arcmin.imsub.imsmooth' % (ra_phase_center, dec_phase_center), 
 		'lowres': 'GBT_%s_%s_30arcmin.regrid' % (ra_phase_center, dec_phase_center),
 		'sdfactor': 1.0
 	}
-	feather_params(**feather_params)
+	feather(**feather_params)
 
 	## export the combined subcube
 	exportfits_params = {
