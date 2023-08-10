@@ -60,6 +60,15 @@ def main():
 		}
 	tclean(**tclean_params)
 
+	## smooth to common beam size
+	imsmooth_params = {
+		'kernel':'commonbeam',
+		'imagename':'%s.image.pbcor' % output_name,
+		'outfile':'%s.image.pbcor' % output_name,
+		'overwrite': True
+	}
+	imsmooth(**imsmooth_params)	
+
 	exportfits_params = {
 		'imagename': '%s.image.pbcor' % output_name,
 		'fitsimage': '%s.image.pbcor.fits' % output_name,
@@ -72,4 +81,3 @@ def main():
 if __name__=='__main__':
 	main()
 	exit()
-	
