@@ -1,5 +1,3 @@
 ## ignore docker logs
 docker_stderror
 split_concat_list.csv
-phase-center-list-cubelet-analysis.txt
-phase-center-list-cubelet-generate.txt

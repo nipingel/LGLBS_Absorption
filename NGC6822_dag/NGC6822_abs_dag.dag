@@ -156,7 +156,7 @@
 ## - tarball of 2D cubelets for each source
 JOB K abs_cubelet.sub
 VARS K ms_name="NGC6822_A+B.comb_spw.wt" start_velocity="-200" chan_nums="750" src_name="NGC6822"
-PARENT K CHILD L
+PARENT K CHILD M
 
 ## COMBINE CUBELETS
 ## runs combine_SD.py to extract 30' region around each source
@@ -169,9 +169,9 @@ PARENT K CHILD L
 ## - sd_name: name of single dish cube
 ## output
 ## fits file of 30' region around each source feathered with GBT data
-JOB L combine_SD.sub
-VARS L src_name="NGC6822" vla_name="NGC6822_ABCD.combImage" sd_name="N6822_GBT_Jy.eq.nostokes.fits"
-PARENT L CHILD M
+##JOB L combine_SD.sub
+##VARS L src_name="NGC6822" vla_name="NGC6822_ABCD.combImage" sd_name="N6822_GBT_Jy.eq.nostokes.fits"
+##PARENT L CHILD M
 
 
 ## EXTRACT SPECTRA

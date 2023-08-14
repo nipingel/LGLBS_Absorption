@@ -36,7 +36,7 @@ def main():
 	phasecenter='J2000 %s %s' % (ra_phase_center, dec_phase_center)
 	ref_freq='1.42040571183GHz'
 	rest_freq='1.42040571183GHz'
-	uvdist='>1.5Klambda'
+	uvdist='>4740Klambda'
 	tot_iter = 750000
 	threshold_value = '2mJy'
 	tclean_params ={
@@ -64,13 +64,12 @@ def main():
 	imsmooth_params = {
 		'kernel':'commonbeam',
 		'imagename':'%s.image.pbcor' % output_name,
-		'outfile':'%s.image.pbcor' % output_name,
-		'overwrite': True
+		'outfile':'%s.image.pbcor.commonbeam' % output_name,
 	}
 	imsmooth(**imsmooth_params)	
 
 	exportfits_params = {
-		'imagename': '%s.image.pbcor' % output_name,
+		'imagename': '%s.image.pbcor.commonbeam' % output_name,
 		'fitsimage': '%s.image.pbcor.fits' % output_name,
 		'velocity': True, 
 		'dropdeg': True,
