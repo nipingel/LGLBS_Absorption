@@ -36,7 +36,7 @@ def main():
 	phasecenter='J2000 %s %s' % (ra_phase_center, dec_phase_center)
 	ref_freq='1.42040571183GHz'
 	rest_freq='1.42040571183GHz'
-	uvdist='>4740Klambda'
+	uvdist='>4.74Klambda'
 	tot_iter = 750000
 	threshold_value = '2mJy'
 	tclean_params ={
