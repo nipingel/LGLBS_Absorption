@@ -74,9 +74,9 @@ def return_spectral_axis(cube_name):
 ## function to return beam info
 def get_beam_info(cube_name):
 	hdu = fits.open(cube_name)
-	bmaj = np.mean(hdu[1].data['BMAJ'])/3600
-	bmin = np.mean(hdu[1].data['BMIN'])/3600
-	bpa = np.mean(hdu[1].data['BPA'])
+	bmaj = hdu[0].header['BMAJ']
+	bmin = hdu[0].header['BMIN']
+	bpa = hdu[0].header['BPA']
 	hdu.close()
 	return bmaj, bmin, bpa
 
