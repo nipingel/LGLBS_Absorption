@@ -1,0 +1,38 @@
+# abs_cubelet.sub
+# script to submit imaging for a cutout around absorption source
+#
+# Specify the HTCondor Universe (vanilla is the default and is used
+#  for almost all jobs) and your desired name of the HTCondor log file,
+#  which is where HTCondor will describe what steps it takes to run 
+#  your job. Wherever you see $(Cluster), HTCondor will insert the 
+#  queue number assigned to this set of jobs at the time of submission.
+universe = docker
+docker_image = nipingel/casa:latest
+
+#
+# Specify your executable (single binary or a script that runs several
+#  commands), arguments, and a files for HTCondor to store standard
+#  output (or "screen output").
+#  $(Process) will be a integer number for each job, starting with "0"
+#  and increasing for the relevant number of jobs.
+executable = abs_cubelet.sh
+
+output = cubelet-$(Process).out
+error = cubelet-$(Process).err
+log = cubelet-$(Process).log
+arguments = $(ms_name) $(phase_ra) $(phase_dec) $(start_velocity) $(chan_nums) $(src_name)
+
+# Specify that HTCondor should transfer files to and from the
+#  computer where each job runs. The last of these lines *would* be
+#  used if there were any other files needed for the executable to use.
+Requirements=(Target.HasCHTCStaging == true) && (OpSysMajorVer =?= 8)
++HasCHTCStaging=true
+# Tell HTCondor what amount of compute resources
+#  each job will need on the computer where it runs.
+transfer_input_files = abs_cubelet.py, abs_cubelet.sh
+request_cpus = 1
+request_memory = 20GB
+request_disk = 10GB
+#
+# Tell HTCondor to run  instances of our job:
+queue phase_ra,phase_dec from phase-center-list_reprocess.txt 
