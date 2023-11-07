@@ -137,7 +137,7 @@
 ## output:
 ## - a csv file produced by aegean and phase-center-list.txt (input for cubelet generation)
 ## JOB J source_finding.sub
-## VARS J image_name="NGC6822_A+B.comb_spw.wt_nbcont" src_name="NGC6822" int_threshold="0.00065"
+## VARS J image_name="IC10_A+B.comb_spw.wt_nbcont" src_name="IC10" int_threshold="0.00065"
 ## PARENT J CHILD K
 
 ## CUBELETS
@@ -145,8 +145,8 @@
 ## executable:
 ## - abs_cubelet.sh (runs abs_cubelet.py)
 ## inputs:
-## - RA: Right Acension string from textfile (e.g., 00h40m13.8)
-## - Dec: Declination string form textfile (e.g., +40d50m04.73)
+## - RA: Right Acension string from textfile (e.g., 00h20m17.34s)
+## - Dec: Declination string form textfile (e.g., 59d18m13.6s)
 ## - ms_name: concatenated measurement set
 ## - start_velocity: starting LSRK velocity (km/s)
 ## - chan_nums: number of output channels
@@ -155,22 +155,22 @@
 ## - output:
 ## - tarball of 2D cubelets for each source
 ## JOB K abs_cubelet.sub
-## VARS K ms_name="NGC6822_A+B.comb_spw.wt" start_velocity="-200" chan_nums="750" src_name="NGC6822"
+## VARS K ms_name="IC10_A+B.comb_spw.wt" start_velocity="-200" chan_nums="750" src_name="IC10"
 ## PARENT K CHILD M
 
 ## COMBINE CUBELETS
 ## runs combine_SD.py to extract 30' region around each source
 ## and combine with GBT data
 ## inputs:
-## - RA: Right Acension string from textfile (e.g., 00h40m13.8)
-## - Dec: Declination string form textfile (e.g., +40d50m04.73)
+## - RA: Right Acension string from textfile (e.g., 00h20m17.34s)
+## - Dec: Declination string form textfile (e.g., 59d18m13.6s)
 ## - src_name: source name
 ## - vla_name: name of vla cube
 ## - sd_name: name of single dish cube
 ## output
 ## fits file of 30' region around each source feathered with GBT data
 ##JOB L combine_SD.sub
-##VARS L src_name="NGC6822" vla_name="NGC6822_ABCD.combImage" sd_name="N6822_GBT_Jy.eq.nostokes.fits"
+##VARS L src_name="IC10" vla_name="IC10_ABCD.combImage" sd_name="N6822_GBT_Jy.eq.nostokes.fits"
 ##PARENT L CHILD M
 
 
@@ -182,10 +182,10 @@
 ## - extract absorption/emission spectrum
 ## - compute spin temperature for all identified features
 ## inputs:
-## - RA: Right Acension string from textfile (e.g., 00h40m13.8)
-## - Dec: Declination string form textfile (e.g., +40d50m04.73)
+## - RA: Right Acension string from textfile (e.g., 00h20m17.34s)
+## - Dec: Declination string form textfile (e.g., 59d18m13.6s)
 ## - src_name: source name
 ## - output:
 ## - tarball containing analysis products for each source
 JOB M extract_spectra.sub
-VARS M src_name="NGC6822"
+VARS M src_name="IC10"

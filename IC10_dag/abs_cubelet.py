@@ -16,8 +16,8 @@ import argparse
 ## parse user inputs
 parser = argparse.ArgumentParser()
 parser.add_argument('-v', '--vis_path', help = '<required> name of measurement set', required = True)
-parser.add_argument('-r', '--ra_phase_center', help = '<required> RA phase center in form e.g.: 00h40m13.8s', required = True)
-parser.add_argument('-d', '--dec_phase_center', help = '<required> Dec phase center in form e.g.: +40d50m04.73', required = True)
+parser.add_argument('-r', '--ra_phase_center', help = '<required> RA phase center in form e.g.: 00h20m17.34s', required = True)
+parser.add_argument('-d', '--dec_phase_center', help = '<required> Dec phase center in form e.g.: 59d18m13.6s', required = True)
 parser.add_argument('-s', '--start_velocity', help = '<required> starting TOPO velocity (e.g., -500', required = True)
 parser.add_argument('-n', '--n_chan', help = '<required> number of output channels', type = int, required = True)
 parser.add_argument('-o', '--output_name', help = '<required> name of output file', required = True)
