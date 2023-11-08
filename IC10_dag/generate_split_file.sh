@@ -9,7 +9,7 @@ export PYTHONPATH=./analysis_scripts:$PYTHONPATH
 src_name=$1
 extension=$2
 outfile_name=$3
-path=/projects/vla-processing/measurement_sets/${src_name}/raw_measurement_sets
+path=/projects/vla-processing/measurement_sets/${src_name}/
 
 ## change home directory so CASA will run
 HOME=$PWD

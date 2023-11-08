@@ -1,0 +1,1055 @@
+11/07/23 18:25:48.475 (D_ALWAYS) ******************************************************
+11/07/23 18:25:48.475 (D_ALWAYS) ** condor_scheduniv_exec.16178980.0 (CONDOR_DAGMAN) STARTING UP
+11/07/23 18:25:48.475 (D_ALWAYS) ** /usr/bin/condor_dagman
+11/07/23 18:25:48.475 (D_ALWAYS) ** SubsystemInfo: name=DAGMAN type=DAGMAN(9) class=CLIENT(2)
+11/07/23 18:25:48.475 (D_ALWAYS) ** Configuration: subsystem:DAGMAN local:<NONE> class:CLIENT
+11/07/23 18:25:48.475 (D_ALWAYS) ** $CondorVersion: 23.0.1 2023-10-12 BuildID: 682178 PackageID: 23.0.1-0.682178 RC $
+11/07/23 18:25:48.475 (D_ALWAYS) ** $CondorPlatform: x86_64_CentOS7 $
+11/07/23 18:25:48.475 (D_ALWAYS) ** PID = 4081397
+11/07/23 18:25:48.475 (D_ALWAYS) ** Log last touched time unavailable (No such file or directory)
+11/07/23 18:25:48.475 (D_ALWAYS) ******************************************************
+11/07/23 18:25:48.475 (D_ALWAYS) Using config source: /etc/condor/condor_config
+11/07/23 18:25:48.475 (D_ALWAYS) Using local config sources: 
+11/07/23 18:25:48.476 (D_ALWAYS)    /var/run/condor/pids.conf
+11/07/23 18:25:48.476 (D_ALWAYS)    /var/run/condor/master_pid_8307.conf
+11/07/23 18:25:48.476 (D_ALWAYS)    /usr/share/condor/config.d/50-gratia-gwms.conf
+11/07/23 18:25:48.476 (D_ALWAYS)    /etc/condor/condor_config.principals
+11/07/23 18:25:48.476 (D_ALWAYS)    /etc/condor/condor_config.hosts
+11/07/23 18:25:48.476 (D_ALWAYS)    /etc/condor/condor_config.global
+11/07/23 18:25:48.476 (D_ALWAYS)    /etc/condor/condor_config.x86_64_CentOS7
+11/07/23 18:25:48.476 (D_ALWAYS)    /etc/condor/condor_config.security
+11/07/23 18:25:48.476 (D_ALWAYS)    /etc/condor/condor_config.puppet
+11/07/23 18:25:48.476 (D_ALWAYS)    /etc/condor/hosts/submit2.chtc.wisc.edu.local
+11/07/23 18:25:48.476 (D_ALWAYS)    /etc/condor/include/schedd.conf
+11/07/23 18:25:48.476 (D_ALWAYS)    /etc/condor/include/facility_wid.conf
+11/07/23 18:25:48.476 (D_ALWAYS)    /etc/condor/include/oauth_credmon.conf
+11/07/23 18:25:48.476 (D_ALWAYS)    /etc/condor/include/owned_by_chtc.conf
+11/07/23 18:25:48.476 (D_ALWAYS)    /etc/condor/include/ospool_container_universe_transforms.conf
+11/07/23 18:25:48.476 (D_ALWAYS)    /var/run/condor/condor_config.startd_offline_gpus
+11/07/23 18:25:48.476 (D_ALWAYS)    /etc/condor/condor_config.flightworthy_testing
+11/07/23 18:25:48.476 (D_ALWAYS) config Macros = 377, Sorted = 377, StringBytes = 95101, TablesBytes = 13740
+11/07/23 18:25:48.476 (D_ALWAYS) CLASSAD_CACHING is ENABLED
+11/07/23 18:25:48.476 (D_ALWAYS) Daemon Log is logging: D_ALWAYS D_ERROR D_STATUS
+11/07/23 18:25:48.476 (D_ALWAYS) DaemonCore: No command port requested.
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_USE_STRICT setting: 1
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_VERBOSITY setting: 3
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_DEBUG_CACHE_SIZE setting: 5242880
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_DEBUG_CACHE_ENABLE setting: False
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_SUBMIT_DELAY setting: 0
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_MAX_SUBMIT_ATTEMPTS setting: 6
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_STARTUP_CYCLE_DETECT setting: False
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_MAX_SUBMITS_PER_INTERVAL setting: 100
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_AGGRESSIVE_SUBMIT setting: False
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_USER_LOG_SCAN_INTERVAL setting: 5
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_QUEUE_UPDATE_INTERVAL setting: 300
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_DEFAULT_PRIORITY setting: 0
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_SUPPRESS_NOTIFICATION setting: True
+11/07/23 18:25:48.480 (D_ALWAYS) allow_events (DAGMAN_ALLOW_EVENTS) setting: 114
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_RETRY_SUBMIT_FIRST setting: True
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_RETRY_NODE_FIRST setting: False
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_MAX_JOBS_IDLE setting: 1000
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_MAX_JOBS_SUBMITTED setting: 0
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_MAX_PRE_SCRIPTS setting: 20
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_MAX_POST_SCRIPTS setting: 20
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_MAX_HOLD_SCRIPTS setting: 20
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_MUNGE_NODE_NAMES setting: True
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_PROHIBIT_MULTI_JOBS setting: False
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_SUBMIT_DEPTH_FIRST setting: False
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_ALWAYS_RUN_POST setting: False
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_CONDOR_SUBMIT_EXE setting: /usr/bin/condor_submit
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_USE_DIRECT_SUBMIT setting: True
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_DEFAULT_APPEND_VARS setting: False
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_ABORT_DUPLICATES setting: True
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_ABORT_ON_SCARY_SUBMIT setting: True
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_PENDING_REPORT_INTERVAL setting: 600
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_AUTO_RESCUE setting: True
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_MAX_RESCUE_NUM setting: 100
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_WRITE_PARTIAL_RESCUE setting: True
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_DEFAULT_NODE_LOG setting: @(DAG_DIR)/@(DAG_FILE).nodes.log
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_GENERATE_SUBDAG_SUBMITS setting: True
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_MAX_JOB_HOLDS setting: 100
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_HOLD_CLAIM_TIME setting: 20
+11/07/23 18:25:48.480 (D_ALWAYS) ALL_DEBUG setting: D_CAT D_SUB_SECOND
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_DEBUG setting: 
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_SUPPRESS_JOB_LOGS setting: False
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN_REMOVE_NODE_JOBS setting: True
+11/07/23 18:25:48.480 (D_ALWAYS) DAGMAN will adjust edges after parsing
+11/07/23 18:25:48.482 (D_ALWAYS) argv[0] == "condor_scheduniv_exec.16178980.0"
+11/07/23 18:25:48.482 (D_ALWAYS) argv[1] == "-Lockfile"
+11/07/23 18:25:48.482 (D_ALWAYS) argv[2] == "IC10_abs_dag.dag.lock"
+11/07/23 18:25:48.482 (D_ALWAYS) argv[3] == "-AutoRescue"
+11/07/23 18:25:48.482 (D_ALWAYS) argv[4] == "1"
+11/07/23 18:25:48.482 (D_ALWAYS) argv[5] == "-DoRescueFrom"
+11/07/23 18:25:48.482 (D_ALWAYS) argv[6] == "0"
+11/07/23 18:25:48.482 (D_ALWAYS) argv[7] == "-Dag"
+11/07/23 18:25:48.482 (D_ALWAYS) argv[8] == "IC10_abs_dag.dag"
+11/07/23 18:25:48.482 (D_ALWAYS) argv[9] == "-Suppress_notification"
+11/07/23 18:25:48.482 (D_ALWAYS) argv[10] == "-CsdVersion"
+11/07/23 18:25:48.482 (D_ALWAYS) argv[11] == "$CondorVersion: 23.0.1 2023-10-12 BuildID: 682178 PackageID: 23.0.1-0.682178 RC $"
+11/07/23 18:25:48.482 (D_ALWAYS) argv[12] == "-Force"
+11/07/23 18:25:48.482 (D_ALWAYS) argv[13] == "-Dagman"
+11/07/23 18:25:48.482 (D_ALWAYS) argv[14] == "/usr/bin/condor_dagman"
+11/07/23 18:25:48.482 (D_ALWAYS) Can't open directory "/etc/condor/passwords.d" as PRIV_ROOT, errno: 13 (Permission denied)
+11/07/23 18:25:48.483 (D_ALWAYS) Can't open directory "/etc/condor/passwords.d" as PRIV_ROOT, errno: 13 (Permission denied)
+11/07/23 18:25:49.961 (D_ALWAYS) Workflow batch-id: <16178980.0>
+11/07/23 18:25:50.035 (D_ALWAYS) Workflow batch-name: <IC10_abs_dag.dag+16178980>
+11/07/23 18:25:50.102 (D_ALWAYS) Workflow accounting_group: <>
+11/07/23 18:25:50.102 (D_ALWAYS) Workflow accounting_group_user: <>
+11/07/23 18:25:50.131 (D_ALWAYS) Warning: failed to get attribute DAGNodeName
+11/07/23 18:25:50.131 (D_ALWAYS) DAGMAN_LOG_ON_NFS_IS_ERROR setting: False
+11/07/23 18:25:50.131 (D_ALWAYS) Default node log file is: </home/stelea/firstyear/LGLBS_Absorption/IC10_dag/./IC10_abs_dag.dag.nodes.log>
+11/07/23 18:25:50.131 (D_ALWAYS) DAG Lockfile will be written to IC10_abs_dag.dag.lock
+11/07/23 18:25:50.131 (D_ALWAYS) DAG Input file is IC10_abs_dag.dag
+11/07/23 18:25:50.132 (D_ALWAYS) Parsing 1 dagfiles
+11/07/23 18:25:50.132 (D_ALWAYS) Parsing IC10_abs_dag.dag ...
+11/07/23 18:25:50.132 (D_ALWAYS) ERROR: IC10_abs_dag.dag (line 38): Illegal character (") in or after macroname src_name
+11/07/23 18:25:50.132 (D_ALWAYS) Removing any/all submitted HTCondor jobs...
+11/07/23 18:25:50.132 (D_ALWAYS) Running: /usr/bin/condor_rm -const DAGManJobId==16178980 -reason Startup' 'Error:' 'DAGMan' 'failed' 'to' 'parse' 'DAG' 'file' '(IC10_abs_dag.dag).' 'Was' 'likely' 'in' 'recovery' 'mode.
+11/07/23 18:25:50.787 (D_ALWAYS) Disabling log line cache.
+11/07/23 18:25:50.787 (D_ERROR) Failed to parse IC10_abs_dag.dag
+11/07/23 18:25:50.787 (D_ALWAYS) **** condor_scheduniv_exec.16178980.0 (condor_DAGMAN) pid 4081397 EXITING WITH STATUS 1
+11/07/23 18:27:28.085 (D_ALWAYS) ******************************************************
+11/07/23 18:27:28.085 (D_ALWAYS) ** condor_scheduniv_exec.16178981.0 (CONDOR_DAGMAN) STARTING UP
+11/07/23 18:27:28.085 (D_ALWAYS) ** /usr/bin/condor_dagman
+11/07/23 18:27:28.085 (D_ALWAYS) ** SubsystemInfo: name=DAGMAN type=DAGMAN(9) class=CLIENT(2)
+11/07/23 18:27:28.085 (D_ALWAYS) ** Configuration: subsystem:DAGMAN local:<NONE> class:CLIENT
+11/07/23 18:27:28.085 (D_ALWAYS) ** $CondorVersion: 23.0.1 2023-10-12 BuildID: 682178 PackageID: 23.0.1-0.682178 RC $
+11/07/23 18:27:28.085 (D_ALWAYS) ** $CondorPlatform: x86_64_CentOS7 $
+11/07/23 18:27:28.085 (D_ALWAYS) ** PID = 4083694
+11/07/23 18:27:28.085 (D_ALWAYS) ** Log last touched 11/7 18:25:50
+11/07/23 18:27:28.085 (D_ALWAYS) ******************************************************
+11/07/23 18:27:28.085 (D_ALWAYS) Using config source: /etc/condor/condor_config
+11/07/23 18:27:28.085 (D_ALWAYS) Using local config sources: 
+11/07/23 18:27:28.085 (D_ALWAYS)    /var/run/condor/pids.conf
+11/07/23 18:27:28.085 (D_ALWAYS)    /var/run/condor/master_pid_8307.conf
+11/07/23 18:27:28.085 (D_ALWAYS)    /usr/share/condor/config.d/50-gratia-gwms.conf
+11/07/23 18:27:28.085 (D_ALWAYS)    /etc/condor/condor_config.principals
+11/07/23 18:27:28.085 (D_ALWAYS)    /etc/condor/condor_config.hosts
+11/07/23 18:27:28.085 (D_ALWAYS)    /etc/condor/condor_config.global
+11/07/23 18:27:28.085 (D_ALWAYS)    /etc/condor/condor_config.x86_64_CentOS7
+11/07/23 18:27:28.085 (D_ALWAYS)    /etc/condor/condor_config.security
+11/07/23 18:27:28.085 (D_ALWAYS)    /etc/condor/condor_config.puppet
+11/07/23 18:27:28.085 (D_ALWAYS)    /etc/condor/hosts/submit2.chtc.wisc.edu.local
+11/07/23 18:27:28.085 (D_ALWAYS)    /etc/condor/include/schedd.conf
+11/07/23 18:27:28.085 (D_ALWAYS)    /etc/condor/include/facility_wid.conf
+11/07/23 18:27:28.085 (D_ALWAYS)    /etc/condor/include/oauth_credmon.conf
+11/07/23 18:27:28.086 (D_ALWAYS)    /etc/condor/include/owned_by_chtc.conf
+11/07/23 18:27:28.086 (D_ALWAYS)    /etc/condor/include/ospool_container_universe_transforms.conf
+11/07/23 18:27:28.086 (D_ALWAYS)    /var/run/condor/condor_config.startd_offline_gpus
+11/07/23 18:27:28.086 (D_ALWAYS)    /etc/condor/condor_config.flightworthy_testing
+11/07/23 18:27:28.086 (D_ALWAYS) config Macros = 377, Sorted = 377, StringBytes = 95101, TablesBytes = 13740
+11/07/23 18:27:28.086 (D_ALWAYS) CLASSAD_CACHING is ENABLED
+11/07/23 18:27:28.086 (D_ALWAYS) Daemon Log is logging: D_ALWAYS D_ERROR D_STATUS
+11/07/23 18:27:28.086 (D_ALWAYS) DaemonCore: No command port requested.
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_USE_STRICT setting: 1
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_VERBOSITY setting: 3
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_DEBUG_CACHE_SIZE setting: 5242880
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_DEBUG_CACHE_ENABLE setting: False
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_SUBMIT_DELAY setting: 0
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_MAX_SUBMIT_ATTEMPTS setting: 6
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_STARTUP_CYCLE_DETECT setting: False
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_MAX_SUBMITS_PER_INTERVAL setting: 100
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_AGGRESSIVE_SUBMIT setting: False
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_USER_LOG_SCAN_INTERVAL setting: 5
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_QUEUE_UPDATE_INTERVAL setting: 300
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_DEFAULT_PRIORITY setting: 0
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_SUPPRESS_NOTIFICATION setting: True
+11/07/23 18:27:28.090 (D_ALWAYS) allow_events (DAGMAN_ALLOW_EVENTS) setting: 114
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_RETRY_SUBMIT_FIRST setting: True
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_RETRY_NODE_FIRST setting: False
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_MAX_JOBS_IDLE setting: 1000
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_MAX_JOBS_SUBMITTED setting: 0
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_MAX_PRE_SCRIPTS setting: 20
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_MAX_POST_SCRIPTS setting: 20
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_MAX_HOLD_SCRIPTS setting: 20
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_MUNGE_NODE_NAMES setting: True
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_PROHIBIT_MULTI_JOBS setting: False
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_SUBMIT_DEPTH_FIRST setting: False
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_ALWAYS_RUN_POST setting: False
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_CONDOR_SUBMIT_EXE setting: /usr/bin/condor_submit
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_USE_DIRECT_SUBMIT setting: True
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_DEFAULT_APPEND_VARS setting: False
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_ABORT_DUPLICATES setting: True
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_ABORT_ON_SCARY_SUBMIT setting: True
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_PENDING_REPORT_INTERVAL setting: 600
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_AUTO_RESCUE setting: True
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_MAX_RESCUE_NUM setting: 100
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_WRITE_PARTIAL_RESCUE setting: True
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_DEFAULT_NODE_LOG setting: @(DAG_DIR)/@(DAG_FILE).nodes.log
+11/07/23 18:27:28.090 (D_ALWAYS) DAGMAN_GENERATE_SUBDAG_SUBMITS setting: True
+11/07/23 18:27:28.091 (D_ALWAYS) DAGMAN_MAX_JOB_HOLDS setting: 100
+11/07/23 18:27:28.091 (D_ALWAYS) DAGMAN_HOLD_CLAIM_TIME setting: 20
+11/07/23 18:27:28.091 (D_ALWAYS) ALL_DEBUG setting: D_CAT D_SUB_SECOND
+11/07/23 18:27:28.091 (D_ALWAYS) DAGMAN_DEBUG setting: 
+11/07/23 18:27:28.091 (D_ALWAYS) DAGMAN_SUPPRESS_JOB_LOGS setting: False
+11/07/23 18:27:28.091 (D_ALWAYS) DAGMAN_REMOVE_NODE_JOBS setting: True
+11/07/23 18:27:28.091 (D_ALWAYS) DAGMAN will adjust edges after parsing
+11/07/23 18:27:28.092 (D_ALWAYS) argv[0] == "condor_scheduniv_exec.16178981.0"
+11/07/23 18:27:28.092 (D_ALWAYS) argv[1] == "-Lockfile"
+11/07/23 18:27:28.092 (D_ALWAYS) argv[2] == "IC10_abs_dag.dag.lock"
+11/07/23 18:27:28.092 (D_ALWAYS) argv[3] == "-AutoRescue"
+11/07/23 18:27:28.092 (D_ALWAYS) argv[4] == "1"
+11/07/23 18:27:28.092 (D_ALWAYS) argv[5] == "-DoRescueFrom"
+11/07/23 18:27:28.092 (D_ALWAYS) argv[6] == "0"
+11/07/23 18:27:28.092 (D_ALWAYS) argv[7] == "-Dag"
+11/07/23 18:27:28.092 (D_ALWAYS) argv[8] == "IC10_abs_dag.dag"
+11/07/23 18:27:28.092 (D_ALWAYS) argv[9] == "-Suppress_notification"
+11/07/23 18:27:28.092 (D_ALWAYS) argv[10] == "-CsdVersion"
+11/07/23 18:27:28.092 (D_ALWAYS) argv[11] == "$CondorVersion: 23.0.1 2023-10-12 BuildID: 682178 PackageID: 23.0.1-0.682178 RC $"
+11/07/23 18:27:28.092 (D_ALWAYS) argv[12] == "-Force"
+11/07/23 18:27:28.092 (D_ALWAYS) argv[13] == "-Dagman"
+11/07/23 18:27:28.092 (D_ALWAYS) argv[14] == "/usr/bin/condor_dagman"
+11/07/23 18:27:28.093 (D_ALWAYS) Can't open directory "/etc/condor/passwords.d" as PRIV_ROOT, errno: 13 (Permission denied)
+11/07/23 18:27:28.093 (D_ALWAYS) Can't open directory "/etc/condor/passwords.d" as PRIV_ROOT, errno: 13 (Permission denied)
+11/07/23 18:27:29.578 (D_ALWAYS) Workflow batch-id: <16178981.0>
+11/07/23 18:27:29.654 (D_ALWAYS) Workflow batch-name: <IC10_abs_dag.dag+16178981>
+11/07/23 18:27:29.703 (D_ALWAYS) Workflow accounting_group: <>
+11/07/23 18:27:29.703 (D_ALWAYS) Workflow accounting_group_user: <>
+11/07/23 18:27:29.787 (D_ALWAYS) Warning: failed to get attribute DAGNodeName
+11/07/23 18:27:29.788 (D_ALWAYS) DAGMAN_LOG_ON_NFS_IS_ERROR setting: False
+11/07/23 18:27:29.788 (D_ALWAYS) Default node log file is: </home/stelea/firstyear/LGLBS_Absorption/IC10_dag/./IC10_abs_dag.dag.nodes.log>
+11/07/23 18:27:29.788 (D_ALWAYS) DAG Lockfile will be written to IC10_abs_dag.dag.lock
+11/07/23 18:27:29.788 (D_ALWAYS) DAG Input file is IC10_abs_dag.dag
+11/07/23 18:27:29.788 (D_ALWAYS) Parsing 1 dagfiles
+11/07/23 18:27:29.788 (D_ALWAYS) Parsing IC10_abs_dag.dag ...
+11/07/23 18:27:29.788 (D_ALWAYS) ERROR: IC10_abs_dag.dag (line 23): src_name's value must be quoted
+11/07/23 18:27:29.788 (D_ALWAYS) Removing any/all submitted HTCondor jobs...
+11/07/23 18:27:29.788 (D_ALWAYS) Running: /usr/bin/condor_rm -const DAGManJobId==16178981 -reason Startup' 'Error:' 'DAGMan' 'failed' 'to' 'parse' 'DAG' 'file' '(IC10_abs_dag.dag).' 'Was' 'likely' 'in' 'recovery' 'mode.
+11/07/23 18:27:30.482 (D_ALWAYS) Disabling log line cache.
+11/07/23 18:27:30.482 (D_ERROR) Failed to parse IC10_abs_dag.dag
+11/07/23 18:27:30.482 (D_ALWAYS) **** condor_scheduniv_exec.16178981.0 (condor_DAGMAN) pid 4083694 EXITING WITH STATUS 1
+11/07/23 18:28:05.309 (D_ALWAYS) ******************************************************
+11/07/23 18:28:05.309 (D_ALWAYS) ** condor_scheduniv_exec.16178982.0 (CONDOR_DAGMAN) STARTING UP
+11/07/23 18:28:05.309 (D_ALWAYS) ** /usr/bin/condor_dagman
+11/07/23 18:28:05.309 (D_ALWAYS) ** SubsystemInfo: name=DAGMAN type=DAGMAN(9) class=CLIENT(2)
+11/07/23 18:28:05.309 (D_ALWAYS) ** Configuration: subsystem:DAGMAN local:<NONE> class:CLIENT
+11/07/23 18:28:05.309 (D_ALWAYS) ** $CondorVersion: 23.0.1 2023-10-12 BuildID: 682178 PackageID: 23.0.1-0.682178 RC $
+11/07/23 18:28:05.309 (D_ALWAYS) ** $CondorPlatform: x86_64_CentOS7 $
+11/07/23 18:28:05.309 (D_ALWAYS) ** PID = 4084488
+11/07/23 18:28:05.309 (D_ALWAYS) ** Log last touched 11/7 18:27:30
+11/07/23 18:28:05.309 (D_ALWAYS) ******************************************************
+11/07/23 18:28:05.309 (D_ALWAYS) Using config source: /etc/condor/condor_config
+11/07/23 18:28:05.309 (D_ALWAYS) Using local config sources: 
+11/07/23 18:28:05.309 (D_ALWAYS)    /var/run/condor/pids.conf
+11/07/23 18:28:05.309 (D_ALWAYS)    /var/run/condor/master_pid_8307.conf
+11/07/23 18:28:05.309 (D_ALWAYS)    /usr/share/condor/config.d/50-gratia-gwms.conf
+11/07/23 18:28:05.309 (D_ALWAYS)    /etc/condor/condor_config.principals
+11/07/23 18:28:05.309 (D_ALWAYS)    /etc/condor/condor_config.hosts
+11/07/23 18:28:05.309 (D_ALWAYS)    /etc/condor/condor_config.global
+11/07/23 18:28:05.309 (D_ALWAYS)    /etc/condor/condor_config.x86_64_CentOS7
+11/07/23 18:28:05.309 (D_ALWAYS)    /etc/condor/condor_config.security
+11/07/23 18:28:05.309 (D_ALWAYS)    /etc/condor/condor_config.puppet
+11/07/23 18:28:05.309 (D_ALWAYS)    /etc/condor/hosts/submit2.chtc.wisc.edu.local
+11/07/23 18:28:05.309 (D_ALWAYS)    /etc/condor/include/schedd.conf
+11/07/23 18:28:05.309 (D_ALWAYS)    /etc/condor/include/facility_wid.conf
+11/07/23 18:28:05.309 (D_ALWAYS)    /etc/condor/include/oauth_credmon.conf
+11/07/23 18:28:05.309 (D_ALWAYS)    /etc/condor/include/owned_by_chtc.conf
+11/07/23 18:28:05.309 (D_ALWAYS)    /etc/condor/include/ospool_container_universe_transforms.conf
+11/07/23 18:28:05.309 (D_ALWAYS)    /var/run/condor/condor_config.startd_offline_gpus
+11/07/23 18:28:05.309 (D_ALWAYS)    /etc/condor/condor_config.flightworthy_testing
+11/07/23 18:28:05.309 (D_ALWAYS) config Macros = 377, Sorted = 377, StringBytes = 95101, TablesBytes = 13740
+11/07/23 18:28:05.309 (D_ALWAYS) CLASSAD_CACHING is ENABLED
+11/07/23 18:28:05.309 (D_ALWAYS) Daemon Log is logging: D_ALWAYS D_ERROR D_STATUS
+11/07/23 18:28:05.309 (D_ALWAYS) DaemonCore: No command port requested.
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_USE_STRICT setting: 1
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_VERBOSITY setting: 3
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_DEBUG_CACHE_SIZE setting: 5242880
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_DEBUG_CACHE_ENABLE setting: False
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_SUBMIT_DELAY setting: 0
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_MAX_SUBMIT_ATTEMPTS setting: 6
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_STARTUP_CYCLE_DETECT setting: False
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_MAX_SUBMITS_PER_INTERVAL setting: 100
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_AGGRESSIVE_SUBMIT setting: False
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_USER_LOG_SCAN_INTERVAL setting: 5
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_QUEUE_UPDATE_INTERVAL setting: 300
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_DEFAULT_PRIORITY setting: 0
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_SUPPRESS_NOTIFICATION setting: True
+11/07/23 18:28:05.313 (D_ALWAYS) allow_events (DAGMAN_ALLOW_EVENTS) setting: 114
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_RETRY_SUBMIT_FIRST setting: True
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_RETRY_NODE_FIRST setting: False
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_MAX_JOBS_IDLE setting: 1000
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_MAX_JOBS_SUBMITTED setting: 0
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_MAX_PRE_SCRIPTS setting: 20
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_MAX_POST_SCRIPTS setting: 20
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_MAX_HOLD_SCRIPTS setting: 20
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_MUNGE_NODE_NAMES setting: True
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_PROHIBIT_MULTI_JOBS setting: False
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_SUBMIT_DEPTH_FIRST setting: False
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_ALWAYS_RUN_POST setting: False
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_CONDOR_SUBMIT_EXE setting: /usr/bin/condor_submit
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_USE_DIRECT_SUBMIT setting: True
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_DEFAULT_APPEND_VARS setting: False
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_ABORT_DUPLICATES setting: True
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_ABORT_ON_SCARY_SUBMIT setting: True
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_PENDING_REPORT_INTERVAL setting: 600
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_AUTO_RESCUE setting: True
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_MAX_RESCUE_NUM setting: 100
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_WRITE_PARTIAL_RESCUE setting: True
+11/07/23 18:28:05.313 (D_ALWAYS) DAGMAN_DEFAULT_NODE_LOG setting: @(DAG_DIR)/@(DAG_FILE).nodes.log
+11/07/23 18:28:05.314 (D_ALWAYS) DAGMAN_GENERATE_SUBDAG_SUBMITS setting: True
+11/07/23 18:28:05.314 (D_ALWAYS) DAGMAN_MAX_JOB_HOLDS setting: 100
+11/07/23 18:28:05.314 (D_ALWAYS) DAGMAN_HOLD_CLAIM_TIME setting: 20
+11/07/23 18:28:05.314 (D_ALWAYS) ALL_DEBUG setting: D_CAT D_SUB_SECOND
+11/07/23 18:28:05.314 (D_ALWAYS) DAGMAN_DEBUG setting: 
+11/07/23 18:28:05.314 (D_ALWAYS) DAGMAN_SUPPRESS_JOB_LOGS setting: False
+11/07/23 18:28:05.314 (D_ALWAYS) DAGMAN_REMOVE_NODE_JOBS setting: True
+11/07/23 18:28:05.314 (D_ALWAYS) DAGMAN will adjust edges after parsing
+11/07/23 18:28:05.315 (D_ALWAYS) argv[0] == "condor_scheduniv_exec.16178982.0"
+11/07/23 18:28:05.315 (D_ALWAYS) argv[1] == "-Lockfile"
+11/07/23 18:28:05.315 (D_ALWAYS) argv[2] == "IC10_abs_dag.dag.lock"
+11/07/23 18:28:05.315 (D_ALWAYS) argv[3] == "-AutoRescue"
+11/07/23 18:28:05.315 (D_ALWAYS) argv[4] == "1"
+11/07/23 18:28:05.315 (D_ALWAYS) argv[5] == "-DoRescueFrom"
+11/07/23 18:28:05.315 (D_ALWAYS) argv[6] == "0"
+11/07/23 18:28:05.315 (D_ALWAYS) argv[7] == "-Dag"
+11/07/23 18:28:05.315 (D_ALWAYS) argv[8] == "IC10_abs_dag.dag"
+11/07/23 18:28:05.315 (D_ALWAYS) argv[9] == "-Suppress_notification"
+11/07/23 18:28:05.315 (D_ALWAYS) argv[10] == "-CsdVersion"
+11/07/23 18:28:05.315 (D_ALWAYS) argv[11] == "$CondorVersion: 23.0.1 2023-10-12 BuildID: 682178 PackageID: 23.0.1-0.682178 RC $"
+11/07/23 18:28:05.315 (D_ALWAYS) argv[12] == "-Force"
+11/07/23 18:28:05.315 (D_ALWAYS) argv[13] == "-Dagman"
+11/07/23 18:28:05.315 (D_ALWAYS) argv[14] == "/usr/bin/condor_dagman"
+11/07/23 18:28:05.316 (D_ALWAYS) Can't open directory "/etc/condor/passwords.d" as PRIV_ROOT, errno: 13 (Permission denied)
+11/07/23 18:28:05.316 (D_ALWAYS) Can't open directory "/etc/condor/passwords.d" as PRIV_ROOT, errno: 13 (Permission denied)
+11/07/23 18:28:06.256 (D_ALWAYS) Workflow batch-id: <16178982.0>
+11/07/23 18:28:06.271 (D_ALWAYS) Workflow batch-name: <IC10_abs_dag.dag+16178982>
+11/07/23 18:28:06.286 (D_ALWAYS) Workflow accounting_group: <>
+11/07/23 18:28:06.286 (D_ALWAYS) Workflow accounting_group_user: <>
+11/07/23 18:28:06.298 (D_ALWAYS) Warning: failed to get attribute DAGNodeName
+11/07/23 18:28:06.298 (D_ALWAYS) DAGMAN_LOG_ON_NFS_IS_ERROR setting: False
+11/07/23 18:28:06.298 (D_ALWAYS) Default node log file is: </home/stelea/firstyear/LGLBS_Absorption/IC10_dag/./IC10_abs_dag.dag.nodes.log>
+11/07/23 18:28:06.298 (D_ALWAYS) DAG Lockfile will be written to IC10_abs_dag.dag.lock
+11/07/23 18:28:06.298 (D_ALWAYS) DAG Input file is IC10_abs_dag.dag
+11/07/23 18:28:06.299 (D_ALWAYS) Parsing 1 dagfiles
+11/07/23 18:28:06.299 (D_ALWAYS) Parsing IC10_abs_dag.dag ...
+11/07/23 18:28:06.299 (D_ALWAYS) ERROR: IC10_abs_dag.dag (line 38): Illegal character (") in or after macroname src_name
+11/07/23 18:28:06.299 (D_ALWAYS) Removing any/all submitted HTCondor jobs...
+11/07/23 18:28:06.299 (D_ALWAYS) Running: /usr/bin/condor_rm -const DAGManJobId==16178982 -reason Startup' 'Error:' 'DAGMan' 'failed' 'to' 'parse' 'DAG' 'file' '(IC10_abs_dag.dag).' 'Was' 'likely' 'in' 'recovery' 'mode.
+11/07/23 18:28:07.104 (D_ALWAYS) Disabling log line cache.
+11/07/23 18:28:07.104 (D_ERROR) Failed to parse IC10_abs_dag.dag
+11/07/23 18:28:07.104 (D_ALWAYS) **** condor_scheduniv_exec.16178982.0 (condor_DAGMAN) pid 4084488 EXITING WITH STATUS 1
+11/07/23 18:28:35.165 (D_ALWAYS) ******************************************************
+11/07/23 18:28:35.165 (D_ALWAYS) ** condor_scheduniv_exec.16178983.0 (CONDOR_DAGMAN) STARTING UP
+11/07/23 18:28:35.165 (D_ALWAYS) ** /usr/bin/condor_dagman
+11/07/23 18:28:35.165 (D_ALWAYS) ** SubsystemInfo: name=DAGMAN type=DAGMAN(9) class=CLIENT(2)
+11/07/23 18:28:35.165 (D_ALWAYS) ** Configuration: subsystem:DAGMAN local:<NONE> class:CLIENT
+11/07/23 18:28:35.165 (D_ALWAYS) ** $CondorVersion: 23.0.1 2023-10-12 BuildID: 682178 PackageID: 23.0.1-0.682178 RC $
+11/07/23 18:28:35.165 (D_ALWAYS) ** $CondorPlatform: x86_64_CentOS7 $
+11/07/23 18:28:35.165 (D_ALWAYS) ** PID = 4084956
+11/07/23 18:28:35.165 (D_ALWAYS) ** Log last touched 11/7 18:28:07
+11/07/23 18:28:35.165 (D_ALWAYS) ******************************************************
+11/07/23 18:28:35.165 (D_ALWAYS) Using config source: /etc/condor/condor_config
+11/07/23 18:28:35.165 (D_ALWAYS) Using local config sources: 
+11/07/23 18:28:35.165 (D_ALWAYS)    /var/run/condor/pids.conf
+11/07/23 18:28:35.165 (D_ALWAYS)    /var/run/condor/master_pid_8307.conf
+11/07/23 18:28:35.165 (D_ALWAYS)    /usr/share/condor/config.d/50-gratia-gwms.conf
+11/07/23 18:28:35.165 (D_ALWAYS)    /etc/condor/condor_config.principals
+11/07/23 18:28:35.165 (D_ALWAYS)    /etc/condor/condor_config.hosts
+11/07/23 18:28:35.165 (D_ALWAYS)    /etc/condor/condor_config.global
+11/07/23 18:28:35.165 (D_ALWAYS)    /etc/condor/condor_config.x86_64_CentOS7
+11/07/23 18:28:35.165 (D_ALWAYS)    /etc/condor/condor_config.security
+11/07/23 18:28:35.165 (D_ALWAYS)    /etc/condor/condor_config.puppet
+11/07/23 18:28:35.165 (D_ALWAYS)    /etc/condor/hosts/submit2.chtc.wisc.edu.local
+11/07/23 18:28:35.165 (D_ALWAYS)    /etc/condor/include/schedd.conf
+11/07/23 18:28:35.165 (D_ALWAYS)    /etc/condor/include/facility_wid.conf
+11/07/23 18:28:35.165 (D_ALWAYS)    /etc/condor/include/oauth_credmon.conf
+11/07/23 18:28:35.165 (D_ALWAYS)    /etc/condor/include/owned_by_chtc.conf
+11/07/23 18:28:35.165 (D_ALWAYS)    /etc/condor/include/ospool_container_universe_transforms.conf
+11/07/23 18:28:35.165 (D_ALWAYS)    /var/run/condor/condor_config.startd_offline_gpus
+11/07/23 18:28:35.165 (D_ALWAYS)    /etc/condor/condor_config.flightworthy_testing
+11/07/23 18:28:35.165 (D_ALWAYS) config Macros = 377, Sorted = 377, StringBytes = 95101, TablesBytes = 13740
+11/07/23 18:28:35.165 (D_ALWAYS) CLASSAD_CACHING is ENABLED
+11/07/23 18:28:35.165 (D_ALWAYS) Daemon Log is logging: D_ALWAYS D_ERROR D_STATUS
+11/07/23 18:28:35.166 (D_ALWAYS) DaemonCore: No command port requested.
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_USE_STRICT setting: 1
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_VERBOSITY setting: 3
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_DEBUG_CACHE_SIZE setting: 5242880
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_DEBUG_CACHE_ENABLE setting: False
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_SUBMIT_DELAY setting: 0
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_MAX_SUBMIT_ATTEMPTS setting: 6
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_STARTUP_CYCLE_DETECT setting: False
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_MAX_SUBMITS_PER_INTERVAL setting: 100
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_AGGRESSIVE_SUBMIT setting: False
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_USER_LOG_SCAN_INTERVAL setting: 5
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_QUEUE_UPDATE_INTERVAL setting: 300
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_DEFAULT_PRIORITY setting: 0
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_SUPPRESS_NOTIFICATION setting: True
+11/07/23 18:28:35.170 (D_ALWAYS) allow_events (DAGMAN_ALLOW_EVENTS) setting: 114
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_RETRY_SUBMIT_FIRST setting: True
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_RETRY_NODE_FIRST setting: False
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_MAX_JOBS_IDLE setting: 1000
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_MAX_JOBS_SUBMITTED setting: 0
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_MAX_PRE_SCRIPTS setting: 20
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_MAX_POST_SCRIPTS setting: 20
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_MAX_HOLD_SCRIPTS setting: 20
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_MUNGE_NODE_NAMES setting: True
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_PROHIBIT_MULTI_JOBS setting: False
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_SUBMIT_DEPTH_FIRST setting: False
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_ALWAYS_RUN_POST setting: False
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_CONDOR_SUBMIT_EXE setting: /usr/bin/condor_submit
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_USE_DIRECT_SUBMIT setting: True
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_DEFAULT_APPEND_VARS setting: False
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_ABORT_DUPLICATES setting: True
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_ABORT_ON_SCARY_SUBMIT setting: True
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_PENDING_REPORT_INTERVAL setting: 600
+11/07/23 18:28:35.170 (D_ALWAYS) DAGMAN_AUTO_RESCUE setting: True
+11/07/23 18:28:35.171 (D_ALWAYS) DAGMAN_MAX_RESCUE_NUM setting: 100
+11/07/23 18:28:35.171 (D_ALWAYS) DAGMAN_WRITE_PARTIAL_RESCUE setting: True
+11/07/23 18:28:35.171 (D_ALWAYS) DAGMAN_DEFAULT_NODE_LOG setting: @(DAG_DIR)/@(DAG_FILE).nodes.log
+11/07/23 18:28:35.171 (D_ALWAYS) DAGMAN_GENERATE_SUBDAG_SUBMITS setting: True
+11/07/23 18:28:35.171 (D_ALWAYS) DAGMAN_MAX_JOB_HOLDS setting: 100
+11/07/23 18:28:35.171 (D_ALWAYS) DAGMAN_HOLD_CLAIM_TIME setting: 20
+11/07/23 18:28:35.171 (D_ALWAYS) ALL_DEBUG setting: D_CAT D_SUB_SECOND
+11/07/23 18:28:35.171 (D_ALWAYS) DAGMAN_DEBUG setting: 
+11/07/23 18:28:35.171 (D_ALWAYS) DAGMAN_SUPPRESS_JOB_LOGS setting: False
+11/07/23 18:28:35.171 (D_ALWAYS) DAGMAN_REMOVE_NODE_JOBS setting: True
+11/07/23 18:28:35.171 (D_ALWAYS) DAGMAN will adjust edges after parsing
+11/07/23 18:28:35.172 (D_ALWAYS) argv[0] == "condor_scheduniv_exec.16178983.0"
+11/07/23 18:28:35.173 (D_ALWAYS) argv[1] == "-Lockfile"
+11/07/23 18:28:35.173 (D_ALWAYS) argv[2] == "IC10_abs_dag.dag.lock"
+11/07/23 18:28:35.173 (D_ALWAYS) argv[3] == "-AutoRescue"
+11/07/23 18:28:35.173 (D_ALWAYS) argv[4] == "1"
+11/07/23 18:28:35.173 (D_ALWAYS) argv[5] == "-DoRescueFrom"
+11/07/23 18:28:35.173 (D_ALWAYS) argv[6] == "0"
+11/07/23 18:28:35.173 (D_ALWAYS) argv[7] == "-Dag"
+11/07/23 18:28:35.173 (D_ALWAYS) argv[8] == "IC10_abs_dag.dag"
+11/07/23 18:28:35.173 (D_ALWAYS) argv[9] == "-Suppress_notification"
+11/07/23 18:28:35.173 (D_ALWAYS) argv[10] == "-CsdVersion"
+11/07/23 18:28:35.173 (D_ALWAYS) argv[11] == "$CondorVersion: 23.0.1 2023-10-12 BuildID: 682178 PackageID: 23.0.1-0.682178 RC $"
+11/07/23 18:28:35.173 (D_ALWAYS) argv[12] == "-Force"
+11/07/23 18:28:35.173 (D_ALWAYS) argv[13] == "-Dagman"
+11/07/23 18:28:35.173 (D_ALWAYS) argv[14] == "/usr/bin/condor_dagman"
+11/07/23 18:28:35.173 (D_ALWAYS) Can't open directory "/etc/condor/passwords.d" as PRIV_ROOT, errno: 13 (Permission denied)
+11/07/23 18:28:35.174 (D_ALWAYS) Can't open directory "/etc/condor/passwords.d" as PRIV_ROOT, errno: 13 (Permission denied)
+11/07/23 18:28:35.585 (D_ALWAYS) Workflow batch-id: <16178983.0>
+11/07/23 18:28:35.600 (D_ALWAYS) Workflow batch-name: <IC10_abs_dag.dag+16178983>
+11/07/23 18:28:35.604 (D_ALWAYS) Workflow accounting_group: <>
+11/07/23 18:28:35.604 (D_ALWAYS) Workflow accounting_group_user: <>
+11/07/23 18:28:35.609 (D_ALWAYS) Warning: failed to get attribute DAGNodeName
+11/07/23 18:28:35.609 (D_ALWAYS) DAGMAN_LOG_ON_NFS_IS_ERROR setting: False
+11/07/23 18:28:35.609 (D_ALWAYS) Default node log file is: </home/stelea/firstyear/LGLBS_Absorption/IC10_dag/./IC10_abs_dag.dag.nodes.log>
+11/07/23 18:28:35.610 (D_ALWAYS) DAG Lockfile will be written to IC10_abs_dag.dag.lock
+11/07/23 18:28:35.610 (D_ALWAYS) DAG Input file is IC10_abs_dag.dag
+11/07/23 18:28:35.610 (D_ALWAYS) Parsing 1 dagfiles
+11/07/23 18:28:35.610 (D_ALWAYS) Parsing IC10_abs_dag.dag ...
+11/07/23 18:28:35.610 (D_ALWAYS) ERROR: job D not found!
+11/07/23 18:28:35.610 (D_ALWAYS) ERROR: IC10_abs_dag.dag (line 39): Unknown Job D
+11/07/23 18:28:35.610 (D_ALWAYS) Removing any/all submitted HTCondor jobs...
+11/07/23 18:28:35.610 (D_ALWAYS) Running: /usr/bin/condor_rm -const DAGManJobId==16178983 -reason Startup' 'Error:' 'DAGMan' 'failed' 'to' 'parse' 'DAG' 'file' '(IC10_abs_dag.dag).' 'Was' 'likely' 'in' 'recovery' 'mode.
+11/07/23 18:28:36.262 (D_ALWAYS) Disabling log line cache.
+11/07/23 18:28:36.262 (D_ERROR) Failed to parse IC10_abs_dag.dag
+11/07/23 18:28:36.262 (D_ALWAYS) **** condor_scheduniv_exec.16178983.0 (condor_DAGMAN) pid 4084956 EXITING WITH STATUS 1
+11/07/23 18:29:03.314 (D_ALWAYS) ******************************************************
+11/07/23 18:29:03.314 (D_ALWAYS) ** condor_scheduniv_exec.16178984.0 (CONDOR_DAGMAN) STARTING UP
+11/07/23 18:29:03.315 (D_ALWAYS) ** /usr/bin/condor_dagman
+11/07/23 18:29:03.315 (D_ALWAYS) ** SubsystemInfo: name=DAGMAN type=DAGMAN(9) class=CLIENT(2)
+11/07/23 18:29:03.315 (D_ALWAYS) ** Configuration: subsystem:DAGMAN local:<NONE> class:CLIENT
+11/07/23 18:29:03.315 (D_ALWAYS) ** $CondorVersion: 23.0.1 2023-10-12 BuildID: 682178 PackageID: 23.0.1-0.682178 RC $
+11/07/23 18:29:03.315 (D_ALWAYS) ** $CondorPlatform: x86_64_CentOS7 $
+11/07/23 18:29:03.315 (D_ALWAYS) ** PID = 4085414
+11/07/23 18:29:03.315 (D_ALWAYS) ** Log last touched 11/7 18:28:36
+11/07/23 18:29:03.315 (D_ALWAYS) ******************************************************
+11/07/23 18:29:03.315 (D_ALWAYS) Using config source: /etc/condor/condor_config
+11/07/23 18:29:03.315 (D_ALWAYS) Using local config sources: 
+11/07/23 18:29:03.315 (D_ALWAYS)    /var/run/condor/pids.conf
+11/07/23 18:29:03.315 (D_ALWAYS)    /var/run/condor/master_pid_8307.conf
+11/07/23 18:29:03.315 (D_ALWAYS)    /usr/share/condor/config.d/50-gratia-gwms.conf
+11/07/23 18:29:03.315 (D_ALWAYS)    /etc/condor/condor_config.principals
+11/07/23 18:29:03.315 (D_ALWAYS)    /etc/condor/condor_config.hosts
+11/07/23 18:29:03.315 (D_ALWAYS)    /etc/condor/condor_config.global
+11/07/23 18:29:03.315 (D_ALWAYS)    /etc/condor/condor_config.x86_64_CentOS7
+11/07/23 18:29:03.315 (D_ALWAYS)    /etc/condor/condor_config.security
+11/07/23 18:29:03.315 (D_ALWAYS)    /etc/condor/condor_config.puppet
+11/07/23 18:29:03.315 (D_ALWAYS)    /etc/condor/hosts/submit2.chtc.wisc.edu.local
+11/07/23 18:29:03.315 (D_ALWAYS)    /etc/condor/include/schedd.conf
+11/07/23 18:29:03.315 (D_ALWAYS)    /etc/condor/include/facility_wid.conf
+11/07/23 18:29:03.315 (D_ALWAYS)    /etc/condor/include/oauth_credmon.conf
+11/07/23 18:29:03.315 (D_ALWAYS)    /etc/condor/include/owned_by_chtc.conf
+11/07/23 18:29:03.315 (D_ALWAYS)    /etc/condor/include/ospool_container_universe_transforms.conf
+11/07/23 18:29:03.315 (D_ALWAYS)    /var/run/condor/condor_config.startd_offline_gpus
+11/07/23 18:29:03.315 (D_ALWAYS)    /etc/condor/condor_config.flightworthy_testing
+11/07/23 18:29:03.315 (D_ALWAYS) config Macros = 377, Sorted = 377, StringBytes = 95101, TablesBytes = 13740
+11/07/23 18:29:03.315 (D_ALWAYS) CLASSAD_CACHING is ENABLED
+11/07/23 18:29:03.315 (D_ALWAYS) Daemon Log is logging: D_ALWAYS D_ERROR D_STATUS
+11/07/23 18:29:03.315 (D_ALWAYS) DaemonCore: No command port requested.
+11/07/23 18:29:03.320 (D_ALWAYS) DAGMAN_USE_STRICT setting: 1
+11/07/23 18:29:03.320 (D_ALWAYS) DAGMAN_VERBOSITY setting: 3
+11/07/23 18:29:03.320 (D_ALWAYS) DAGMAN_DEBUG_CACHE_SIZE setting: 5242880
+11/07/23 18:29:03.320 (D_ALWAYS) DAGMAN_DEBUG_CACHE_ENABLE setting: False
+11/07/23 18:29:03.320 (D_ALWAYS) DAGMAN_SUBMIT_DELAY setting: 0
+11/07/23 18:29:03.320 (D_ALWAYS) DAGMAN_MAX_SUBMIT_ATTEMPTS setting: 6
+11/07/23 18:29:03.320 (D_ALWAYS) DAGMAN_STARTUP_CYCLE_DETECT setting: False
+11/07/23 18:29:03.320 (D_ALWAYS) DAGMAN_MAX_SUBMITS_PER_INTERVAL setting: 100
+11/07/23 18:29:03.320 (D_ALWAYS) DAGMAN_AGGRESSIVE_SUBMIT setting: False
+11/07/23 18:29:03.320 (D_ALWAYS) DAGMAN_USER_LOG_SCAN_INTERVAL setting: 5
+11/07/23 18:29:03.320 (D_ALWAYS) DAGMAN_QUEUE_UPDATE_INTERVAL setting: 300
+11/07/23 18:29:03.320 (D_ALWAYS) DAGMAN_DEFAULT_PRIORITY setting: 0
+11/07/23 18:29:03.320 (D_ALWAYS) DAGMAN_SUPPRESS_NOTIFICATION setting: True
+11/07/23 18:29:03.320 (D_ALWAYS) allow_events (DAGMAN_ALLOW_EVENTS) setting: 114
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_RETRY_SUBMIT_FIRST setting: True
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_RETRY_NODE_FIRST setting: False
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_MAX_JOBS_IDLE setting: 1000
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_MAX_JOBS_SUBMITTED setting: 0
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_MAX_PRE_SCRIPTS setting: 20
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_MAX_POST_SCRIPTS setting: 20
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_MAX_HOLD_SCRIPTS setting: 20
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_MUNGE_NODE_NAMES setting: True
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_PROHIBIT_MULTI_JOBS setting: False
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_SUBMIT_DEPTH_FIRST setting: False
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_ALWAYS_RUN_POST setting: False
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_CONDOR_SUBMIT_EXE setting: /usr/bin/condor_submit
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_USE_DIRECT_SUBMIT setting: True
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_DEFAULT_APPEND_VARS setting: False
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_ABORT_DUPLICATES setting: True
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_ABORT_ON_SCARY_SUBMIT setting: True
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_PENDING_REPORT_INTERVAL setting: 600
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_AUTO_RESCUE setting: True
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_MAX_RESCUE_NUM setting: 100
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_WRITE_PARTIAL_RESCUE setting: True
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_DEFAULT_NODE_LOG setting: @(DAG_DIR)/@(DAG_FILE).nodes.log
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_GENERATE_SUBDAG_SUBMITS setting: True
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_MAX_JOB_HOLDS setting: 100
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_HOLD_CLAIM_TIME setting: 20
+11/07/23 18:29:03.321 (D_ALWAYS) ALL_DEBUG setting: D_CAT D_SUB_SECOND
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_DEBUG setting: 
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_SUPPRESS_JOB_LOGS setting: False
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN_REMOVE_NODE_JOBS setting: True
+11/07/23 18:29:03.321 (D_ALWAYS) DAGMAN will adjust edges after parsing
+11/07/23 18:29:03.323 (D_ALWAYS) argv[0] == "condor_scheduniv_exec.16178984.0"
+11/07/23 18:29:03.323 (D_ALWAYS) argv[1] == "-Lockfile"
+11/07/23 18:29:03.323 (D_ALWAYS) argv[2] == "IC10_abs_dag.dag.lock"
+11/07/23 18:29:03.323 (D_ALWAYS) argv[3] == "-AutoRescue"
+11/07/23 18:29:03.323 (D_ALWAYS) argv[4] == "1"
+11/07/23 18:29:03.323 (D_ALWAYS) argv[5] == "-DoRescueFrom"
+11/07/23 18:29:03.323 (D_ALWAYS) argv[6] == "0"
+11/07/23 18:29:03.323 (D_ALWAYS) argv[7] == "-Dag"
+11/07/23 18:29:03.323 (D_ALWAYS) argv[8] == "IC10_abs_dag.dag"
+11/07/23 18:29:03.323 (D_ALWAYS) argv[9] == "-Suppress_notification"
+11/07/23 18:29:03.323 (D_ALWAYS) argv[10] == "-CsdVersion"
+11/07/23 18:29:03.323 (D_ALWAYS) argv[11] == "$CondorVersion: 23.0.1 2023-10-12 BuildID: 682178 PackageID: 23.0.1-0.682178 RC $"
+11/07/23 18:29:03.323 (D_ALWAYS) argv[12] == "-Force"
+11/07/23 18:29:03.323 (D_ALWAYS) argv[13] == "-Dagman"
+11/07/23 18:29:03.323 (D_ALWAYS) argv[14] == "/usr/bin/condor_dagman"
+11/07/23 18:29:03.324 (D_ALWAYS) Can't open directory "/etc/condor/passwords.d" as PRIV_ROOT, errno: 13 (Permission denied)
+11/07/23 18:29:03.324 (D_ALWAYS) Can't open directory "/etc/condor/passwords.d" as PRIV_ROOT, errno: 13 (Permission denied)
+11/07/23 18:29:04.470 (D_ALWAYS) Workflow batch-id: <16178984.0>
+11/07/23 18:29:04.482 (D_ALWAYS) Workflow batch-name: <IC10_abs_dag.dag+16178984>
+11/07/23 18:29:04.496 (D_ALWAYS) Workflow accounting_group: <>
+11/07/23 18:29:04.496 (D_ALWAYS) Workflow accounting_group_user: <>
+11/07/23 18:29:04.510 (D_ALWAYS) Warning: failed to get attribute DAGNodeName
+11/07/23 18:29:04.510 (D_ALWAYS) DAGMAN_LOG_ON_NFS_IS_ERROR setting: False
+11/07/23 18:29:04.510 (D_ALWAYS) Default node log file is: </home/stelea/firstyear/LGLBS_Absorption/IC10_dag/./IC10_abs_dag.dag.nodes.log>
+11/07/23 18:29:04.510 (D_ALWAYS) DAG Lockfile will be written to IC10_abs_dag.dag.lock
+11/07/23 18:29:04.510 (D_ALWAYS) DAG Input file is IC10_abs_dag.dag
+11/07/23 18:29:04.510 (D_ALWAYS) Parsing 1 dagfiles
+11/07/23 18:29:04.510 (D_ALWAYS) Parsing IC10_abs_dag.dag ...
+11/07/23 18:29:04.511 (D_ALWAYS) Adjusting edges
+11/07/23 18:29:04.511 (D_ALWAYS) Dag contains 2 total jobs
+11/07/23 18:29:04.511 (D_ALWAYS) Bootstrapping...
+11/07/23 18:29:04.511 (D_ALWAYS) Number of pre-completed nodes: 0
+11/07/23 18:29:04.511 (D_ALWAYS) MultiLogFiles: truncating log file /home/stelea/firstyear/LGLBS_Absorption/IC10_dag/./IC10_abs_dag.dag.nodes.log
+11/07/23 18:29:04.511 (D_ALWAYS) DAG status: 0 (DAG_STATUS_OK)
+11/07/23 18:29:04.511 (D_ALWAYS) Of 2 nodes total:
+11/07/23 18:29:04.511 (D_ALWAYS)  Done     Pre   Queued    Post   Ready   Un-Ready   Failed   Futile
+11/07/23 18:29:04.511 (D_ALWAYS)   ===     ===      ===     ===     ===        ===      ===      ===
+11/07/23 18:29:04.511 (D_ALWAYS)     0       0        0       0       1          1        0        0
+11/07/23 18:29:04.511 (D_ALWAYS) 0 job proc(s) currently held
+11/07/23 18:29:04.511 (D_ALWAYS) DAGMan Runtime Statistics: [ EventCycleTimeCount = 0.0; EventCycleTimeSum = 0.0; LogProcessCycleTimeCount = 0.0; LogProcessCycleTimeSum = 0.0; SleepCycleTimeCount = 0.0; SleepCycleTimeSum = 0.0; SubmitCycleTimeCount = 0.0; SubmitCycleTimeSum = 0.0; ]
+11/07/23 18:29:04.523 (D_ALWAYS) Registering condor_event_timer...
+11/07/23 18:29:05.524 (D_ALWAYS) Submitting HTCondor Node B job(s)...
+11/07/23 18:29:05.524 (D_ALWAYS) Submitting node B from file split_spw.sub using direct job submission
+11/07/23 18:29:05.689 (D_ALWAYS) 	assigned HTCondor ID (16178985.0.0)
+11/07/23 18:29:05.754 (D_ALWAYS) Just submitted 1 job this cycle...
+11/07/23 18:29:05.754 (D_ALWAYS) DAG status: 0 (DAG_STATUS_OK)
+11/07/23 18:29:05.754 (D_ALWAYS) Of 2 nodes total:
+11/07/23 18:29:05.754 (D_ALWAYS)  Done     Pre   Queued    Post   Ready   Un-Ready   Failed   Futile
+11/07/23 18:29:05.754 (D_ALWAYS)   ===     ===      ===     ===     ===        ===      ===      ===
+11/07/23 18:29:05.754 (D_ALWAYS)     0       0        1       0       0          1        0        0
+11/07/23 18:29:05.754 (D_ALWAYS) 0 job proc(s) currently held
+11/07/23 18:29:05.754 (D_ALWAYS) DAGMan Runtime Statistics: [ EventCycleTimeCount = 0.0; EventCycleTimeSum = 0.0; LogProcessCycleTimeCount = 0.0; LogProcessCycleTimeSum = 0.0; SleepCycleTimeCount = 0.0; SleepCycleTimeSum = 0.0; SubmitCycleTimeAvg = 0.2293128967285156; SubmitCycleTimeCount = 1.0; SubmitCycleTimeMax = 0.2293128967285156; SubmitCycleTimeMin = 0.2293128967285156; SubmitCycleTimeStd = 0.2293128967285156; SubmitCycleTimeSum = 0.2293128967285156; ]
+11/07/23 18:29:10.759 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 18:29:10.759 (D_ALWAYS) Reassigning the id of job B from (16178985.0.0) to (16178985.0.0)
+11/07/23 18:29:10.759 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.0.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.759 (D_ALWAYS) Number of idle job procs: 1
+11/07/23 18:29:10.760 (D_ALWAYS) Reassigning the id of job B from (16178985.0.0) to (16178985.1.0)
+11/07/23 18:29:10.760 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.1.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.760 (D_ALWAYS) Number of idle job procs: 2
+11/07/23 18:29:10.760 (D_ALWAYS) Reassigning the id of job B from (16178985.1.0) to (16178985.2.0)
+11/07/23 18:29:10.760 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.2.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.760 (D_ALWAYS) Number of idle job procs: 3
+11/07/23 18:29:10.760 (D_ALWAYS) Reassigning the id of job B from (16178985.2.0) to (16178985.3.0)
+11/07/23 18:29:10.760 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.3.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.760 (D_ALWAYS) Number of idle job procs: 4
+11/07/23 18:29:10.760 (D_ALWAYS) Reassigning the id of job B from (16178985.3.0) to (16178985.4.0)
+11/07/23 18:29:10.760 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.4.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.760 (D_ALWAYS) Number of idle job procs: 5
+11/07/23 18:29:10.760 (D_ALWAYS) Reassigning the id of job B from (16178985.4.0) to (16178985.5.0)
+11/07/23 18:29:10.760 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.5.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.760 (D_ALWAYS) Number of idle job procs: 6
+11/07/23 18:29:10.760 (D_ALWAYS) Reassigning the id of job B from (16178985.5.0) to (16178985.6.0)
+11/07/23 18:29:10.760 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.6.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.761 (D_ALWAYS) Number of idle job procs: 7
+11/07/23 18:29:10.761 (D_ALWAYS) Reassigning the id of job B from (16178985.6.0) to (16178985.7.0)
+11/07/23 18:29:10.761 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.7.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.761 (D_ALWAYS) Number of idle job procs: 8
+11/07/23 18:29:10.761 (D_ALWAYS) Reassigning the id of job B from (16178985.7.0) to (16178985.8.0)
+11/07/23 18:29:10.761 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.8.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.761 (D_ALWAYS) Number of idle job procs: 9
+11/07/23 18:29:10.761 (D_ALWAYS) Reassigning the id of job B from (16178985.8.0) to (16178985.9.0)
+11/07/23 18:29:10.761 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.9.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.761 (D_ALWAYS) Number of idle job procs: 10
+11/07/23 18:29:10.761 (D_ALWAYS) Reassigning the id of job B from (16178985.9.0) to (16178985.10.0)
+11/07/23 18:29:10.761 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.10.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.761 (D_ALWAYS) Number of idle job procs: 11
+11/07/23 18:29:10.761 (D_ALWAYS) Reassigning the id of job B from (16178985.10.0) to (16178985.11.0)
+11/07/23 18:29:10.761 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.11.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.761 (D_ALWAYS) Number of idle job procs: 12
+11/07/23 18:29:10.761 (D_ALWAYS) Reassigning the id of job B from (16178985.11.0) to (16178985.12.0)
+11/07/23 18:29:10.762 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.12.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.762 (D_ALWAYS) Number of idle job procs: 13
+11/07/23 18:29:10.762 (D_ALWAYS) Reassigning the id of job B from (16178985.12.0) to (16178985.13.0)
+11/07/23 18:29:10.762 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.13.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.762 (D_ALWAYS) Number of idle job procs: 14
+11/07/23 18:29:10.762 (D_ALWAYS) Reassigning the id of job B from (16178985.13.0) to (16178985.14.0)
+11/07/23 18:29:10.762 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.14.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.762 (D_ALWAYS) Number of idle job procs: 15
+11/07/23 18:29:10.762 (D_ALWAYS) Reassigning the id of job B from (16178985.14.0) to (16178985.15.0)
+11/07/23 18:29:10.762 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.15.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.762 (D_ALWAYS) Number of idle job procs: 16
+11/07/23 18:29:10.762 (D_ALWAYS) Reassigning the id of job B from (16178985.15.0) to (16178985.16.0)
+11/07/23 18:29:10.762 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.16.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.762 (D_ALWAYS) Number of idle job procs: 17
+11/07/23 18:29:10.762 (D_ALWAYS) Reassigning the id of job B from (16178985.16.0) to (16178985.17.0)
+11/07/23 18:29:10.762 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.17.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.762 (D_ALWAYS) Number of idle job procs: 18
+11/07/23 18:29:10.762 (D_ALWAYS) Reassigning the id of job B from (16178985.17.0) to (16178985.18.0)
+11/07/23 18:29:10.762 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.18.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.763 (D_ALWAYS) Number of idle job procs: 19
+11/07/23 18:29:10.763 (D_ALWAYS) Reassigning the id of job B from (16178985.18.0) to (16178985.19.0)
+11/07/23 18:29:10.763 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.19.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.763 (D_ALWAYS) Number of idle job procs: 20
+11/07/23 18:29:10.763 (D_ALWAYS) Reassigning the id of job B from (16178985.19.0) to (16178985.20.0)
+11/07/23 18:29:10.763 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.20.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.763 (D_ALWAYS) Number of idle job procs: 21
+11/07/23 18:29:10.763 (D_ALWAYS) Reassigning the id of job B from (16178985.20.0) to (16178985.21.0)
+11/07/23 18:29:10.763 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.21.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.763 (D_ALWAYS) Number of idle job procs: 22
+11/07/23 18:29:10.763 (D_ALWAYS) Reassigning the id of job B from (16178985.21.0) to (16178985.22.0)
+11/07/23 18:29:10.763 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.22.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.763 (D_ALWAYS) Number of idle job procs: 23
+11/07/23 18:29:10.763 (D_ALWAYS) Reassigning the id of job B from (16178985.22.0) to (16178985.23.0)
+11/07/23 18:29:10.763 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.23.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.763 (D_ALWAYS) Number of idle job procs: 24
+11/07/23 18:29:10.763 (D_ALWAYS) Reassigning the id of job B from (16178985.23.0) to (16178985.24.0)
+11/07/23 18:29:10.763 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.24.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.764 (D_ALWAYS) Number of idle job procs: 25
+11/07/23 18:29:10.764 (D_ALWAYS) Reassigning the id of job B from (16178985.24.0) to (16178985.25.0)
+11/07/23 18:29:10.764 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.25.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.764 (D_ALWAYS) Number of idle job procs: 26
+11/07/23 18:29:10.764 (D_ALWAYS) Reassigning the id of job B from (16178985.25.0) to (16178985.26.0)
+11/07/23 18:29:10.764 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.26.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.764 (D_ALWAYS) Number of idle job procs: 27
+11/07/23 18:29:10.764 (D_ALWAYS) Reassigning the id of job B from (16178985.26.0) to (16178985.27.0)
+11/07/23 18:29:10.764 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.27.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.764 (D_ALWAYS) Number of idle job procs: 28
+11/07/23 18:29:10.764 (D_ALWAYS) Reassigning the id of job B from (16178985.27.0) to (16178985.28.0)
+11/07/23 18:29:10.764 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.28.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.764 (D_ALWAYS) Number of idle job procs: 29
+11/07/23 18:29:10.764 (D_ALWAYS) Reassigning the id of job B from (16178985.28.0) to (16178985.29.0)
+11/07/23 18:29:10.764 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node B (16178985.29.0) {11/07/23 18:29:05}
+11/07/23 18:29:10.764 (D_ALWAYS) Number of idle job procs: 30
+11/07/23 18:39:11.391 (D_ALWAYS) 601 seconds since last log event
+11/07/23 18:39:11.391 (D_ALWAYS) Pending DAG nodes:
+11/07/23 18:39:11.392 (D_ALWAYS)   Node B, HTCondor ID 16178985, status STATUS_SUBMITTED
+11/07/23 18:48:26.992 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 18:48:26.992 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.1.0) {11/07/23 18:48:26}
+11/07/23 18:48:26.992 (D_ALWAYS) Number of idle job procs: 29
+11/07/23 18:48:26.992 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.0.0) {11/07/23 18:48:26}
+11/07/23 18:48:26.992 (D_ALWAYS) Number of idle job procs: 28
+11/07/23 18:51:22.156 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 18:51:22.156 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.3.0) {11/07/23 18:51:19}
+11/07/23 18:51:22.156 (D_ALWAYS) Number of idle job procs: 27
+11/07/23 18:51:37.167 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 18:51:37.167 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.0.0) {11/07/23 18:51:34}
+11/07/23 18:51:37.168 (D_ALWAYS) Number of idle job procs: 27
+11/07/23 18:51:37.168 (D_ALWAYS) Node B job proc (16178985.0.0) completed successfully.
+11/07/23 18:51:37.168 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.1.0) {11/07/23 18:51:35}
+11/07/23 18:51:37.168 (D_ALWAYS) Number of idle job procs: 27
+11/07/23 18:51:37.168 (D_ALWAYS) Node B job proc (16178985.1.0) completed successfully.
+11/07/23 18:51:37.168 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.2.0) {11/07/23 18:51:36}
+11/07/23 18:51:37.168 (D_ALWAYS) Number of idle job procs: 26
+11/07/23 18:51:37.168 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.4.0) {11/07/23 18:51:36}
+11/07/23 18:51:37.168 (D_ALWAYS) Number of idle job procs: 25
+11/07/23 18:51:42.173 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 18:51:42.173 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.2.0) {11/07/23 18:51:41}
+11/07/23 18:51:42.173 (D_ALWAYS) Number of idle job procs: 25
+11/07/23 18:51:42.173 (D_ALWAYS) Node B job proc (16178985.2.0) completed successfully.
+11/07/23 18:51:42.173 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.4.0) {11/07/23 18:51:41}
+11/07/23 18:51:42.173 (D_ALWAYS) Number of idle job procs: 25
+11/07/23 18:51:42.173 (D_ALWAYS) Node B job proc (16178985.4.0) completed successfully.
+11/07/23 18:51:47.179 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 18:51:47.179 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.5.0) {11/07/23 18:51:42}
+11/07/23 18:51:47.179 (D_ALWAYS) Number of idle job procs: 24
+11/07/23 18:51:47.179 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.6.0) {11/07/23 18:51:42}
+11/07/23 18:51:47.179 (D_ALWAYS) Number of idle job procs: 23
+11/07/23 18:51:47.179 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.5.0) {11/07/23 18:51:47}
+11/07/23 18:51:47.179 (D_ALWAYS) Number of idle job procs: 23
+11/07/23 18:51:47.179 (D_ALWAYS) Node B job proc (16178985.5.0) completed successfully.
+11/07/23 18:51:47.179 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.6.0) {11/07/23 18:51:47}
+11/07/23 18:51:47.179 (D_ALWAYS) Number of idle job procs: 23
+11/07/23 18:51:47.179 (D_ALWAYS) Node B job proc (16178985.6.0) completed successfully.
+11/07/23 18:51:52.184 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 18:51:52.184 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.7.0) {11/07/23 18:51:48}
+11/07/23 18:51:52.184 (D_ALWAYS) Number of idle job procs: 22
+11/07/23 18:51:52.185 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.8.0) {11/07/23 18:51:48}
+11/07/23 18:51:52.185 (D_ALWAYS) Number of idle job procs: 21
+11/07/23 18:51:57.187 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 18:51:57.187 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.7.0) {11/07/23 18:51:52}
+11/07/23 18:51:57.187 (D_ALWAYS) Number of idle job procs: 21
+11/07/23 18:51:57.187 (D_ALWAYS) Node B job proc (16178985.7.0) completed successfully.
+11/07/23 18:51:57.188 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.8.0) {11/07/23 18:51:52}
+11/07/23 18:51:57.188 (D_ALWAYS) Number of idle job procs: 21
+11/07/23 18:51:57.188 (D_ALWAYS) Node B job proc (16178985.8.0) completed successfully.
+11/07/23 18:51:57.188 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.9.0) {11/07/23 18:51:53}
+11/07/23 18:51:57.188 (D_ALWAYS) Number of idle job procs: 20
+11/07/23 18:51:57.188 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.10.0) {11/07/23 18:51:53}
+11/07/23 18:51:57.188 (D_ALWAYS) Number of idle job procs: 19
+11/07/23 18:52:02.192 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 18:52:02.192 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.9.0) {11/07/23 18:51:58}
+11/07/23 18:52:02.192 (D_ALWAYS) Number of idle job procs: 19
+11/07/23 18:52:02.192 (D_ALWAYS) Node B job proc (16178985.9.0) completed successfully.
+11/07/23 18:52:02.193 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.10.0) {11/07/23 18:51:58}
+11/07/23 18:52:02.193 (D_ALWAYS) Number of idle job procs: 19
+11/07/23 18:52:02.193 (D_ALWAYS) Node B job proc (16178985.10.0) completed successfully.
+11/07/23 18:52:02.193 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.11.0) {11/07/23 18:51:59}
+11/07/23 18:52:02.193 (D_ALWAYS) Number of idle job procs: 18
+11/07/23 18:52:02.193 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.12.0) {11/07/23 18:51:59}
+11/07/23 18:52:02.193 (D_ALWAYS) Number of idle job procs: 17
+11/07/23 18:52:07.197 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 18:52:07.197 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.12.0) {11/07/23 18:52:03}
+11/07/23 18:52:07.197 (D_ALWAYS) Number of idle job procs: 17
+11/07/23 18:52:07.197 (D_ALWAYS) Node B job proc (16178985.12.0) completed successfully.
+11/07/23 18:52:07.198 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.11.0) {11/07/23 18:52:04}
+11/07/23 18:52:07.198 (D_ALWAYS) Number of idle job procs: 17
+11/07/23 18:52:07.198 (D_ALWAYS) Node B job proc (16178985.11.0) completed successfully.
+11/07/23 18:52:07.198 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.13.0) {11/07/23 18:52:05}
+11/07/23 18:52:07.198 (D_ALWAYS) Number of idle job procs: 16
+11/07/23 18:52:07.198 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.14.0) {11/07/23 18:52:05}
+11/07/23 18:52:07.198 (D_ALWAYS) Number of idle job procs: 15
+11/07/23 18:52:12.199 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 18:52:12.199 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.13.0) {11/07/23 18:52:09}
+11/07/23 18:52:12.199 (D_ALWAYS) Number of idle job procs: 15
+11/07/23 18:52:12.199 (D_ALWAYS) Node B job proc (16178985.13.0) completed successfully.
+11/07/23 18:52:12.200 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.14.0) {11/07/23 18:52:10}
+11/07/23 18:52:12.200 (D_ALWAYS) Number of idle job procs: 15
+11/07/23 18:52:12.200 (D_ALWAYS) Node B job proc (16178985.14.0) completed successfully.
+11/07/23 18:52:12.200 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.16.0) {11/07/23 18:52:11}
+11/07/23 18:52:12.200 (D_ALWAYS) Number of idle job procs: 14
+11/07/23 18:52:12.200 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.15.0) {11/07/23 18:52:11}
+11/07/23 18:52:12.200 (D_ALWAYS) Number of idle job procs: 13
+11/07/23 18:52:17.204 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 18:52:17.204 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.15.0) {11/07/23 18:52:16}
+11/07/23 18:52:17.204 (D_ALWAYS) Number of idle job procs: 13
+11/07/23 18:52:17.204 (D_ALWAYS) Node B job proc (16178985.15.0) completed successfully.
+11/07/23 18:52:17.205 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.16.0) {11/07/23 18:52:16}
+11/07/23 18:52:17.205 (D_ALWAYS) Number of idle job procs: 13
+11/07/23 18:52:17.205 (D_ALWAYS) Node B job proc (16178985.16.0) completed successfully.
+11/07/23 18:52:22.210 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 18:52:22.210 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.17.0) {11/07/23 18:52:17}
+11/07/23 18:52:22.210 (D_ALWAYS) Number of idle job procs: 12
+11/07/23 18:52:22.210 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.18.0) {11/07/23 18:52:18}
+11/07/23 18:52:22.210 (D_ALWAYS) Number of idle job procs: 11
+11/07/23 18:52:22.210 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.17.0) {11/07/23 18:52:22}
+11/07/23 18:52:22.210 (D_ALWAYS) Number of idle job procs: 11
+11/07/23 18:52:22.210 (D_ALWAYS) Node B job proc (16178985.17.0) completed successfully.
+11/07/23 18:52:27.214 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 18:52:27.214 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.18.0) {11/07/23 18:52:22}
+11/07/23 18:52:27.215 (D_ALWAYS) Number of idle job procs: 11
+11/07/23 18:52:27.215 (D_ALWAYS) Node B job proc (16178985.18.0) completed successfully.
+11/07/23 18:52:27.215 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.19.0) {11/07/23 18:52:23}
+11/07/23 18:52:27.215 (D_ALWAYS) Number of idle job procs: 10
+11/07/23 18:52:27.215 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.20.0) {11/07/23 18:52:23}
+11/07/23 18:52:27.215 (D_ALWAYS) Number of idle job procs: 9
+11/07/23 18:52:27.215 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.3.0) {11/07/23 18:52:24}
+11/07/23 18:52:27.215 (D_ALWAYS) Number of idle job procs: 9
+11/07/23 18:52:27.215 (D_ALWAYS) Node B job proc (16178985.3.0) completed successfully.
+11/07/23 18:52:27.215 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.21.0) {11/07/23 18:52:27}
+11/07/23 18:52:27.215 (D_ALWAYS) Number of idle job procs: 8
+11/07/23 18:52:32.219 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 18:52:32.219 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.19.0) {11/07/23 18:52:27}
+11/07/23 18:52:32.219 (D_ALWAYS) Number of idle job procs: 8
+11/07/23 18:52:32.219 (D_ALWAYS) Node B job proc (16178985.19.0) completed successfully.
+11/07/23 18:52:32.220 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.20.0) {11/07/23 18:52:28}
+11/07/23 18:52:32.220 (D_ALWAYS) Number of idle job procs: 8
+11/07/23 18:52:32.220 (D_ALWAYS) Node B job proc (16178985.20.0) completed successfully.
+11/07/23 18:52:32.220 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.22.0) {11/07/23 18:52:28}
+11/07/23 18:52:32.220 (D_ALWAYS) Number of idle job procs: 7
+11/07/23 18:52:32.220 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.23.0) {11/07/23 18:52:29}
+11/07/23 18:52:32.220 (D_ALWAYS) Number of idle job procs: 6
+11/07/23 18:52:37.224 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 18:52:37.224 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.21.0) {11/07/23 18:52:32}
+11/07/23 18:52:37.225 (D_ALWAYS) Number of idle job procs: 6
+11/07/23 18:52:37.225 (D_ALWAYS) Node B job proc (16178985.21.0) completed successfully.
+11/07/23 18:52:37.225 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.23.0) {11/07/23 18:52:33}
+11/07/23 18:52:37.225 (D_ALWAYS) Number of idle job procs: 6
+11/07/23 18:52:37.225 (D_ALWAYS) Node B job proc (16178985.23.0) completed successfully.
+11/07/23 18:52:37.225 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.24.0) {11/07/23 18:52:33}
+11/07/23 18:52:37.225 (D_ALWAYS) Number of idle job procs: 5
+11/07/23 18:52:37.225 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.22.0) {11/07/23 18:52:33}
+11/07/23 18:52:37.225 (D_ALWAYS) Number of idle job procs: 5
+11/07/23 18:52:37.225 (D_ALWAYS) Node B job proc (16178985.22.0) completed successfully.
+11/07/23 18:52:37.225 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.25.0) {11/07/23 18:52:34}
+11/07/23 18:52:37.225 (D_ALWAYS) Number of idle job procs: 4
+11/07/23 18:52:37.225 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.26.0) {11/07/23 18:52:34}
+11/07/23 18:52:37.225 (D_ALWAYS) Number of idle job procs: 3
+11/07/23 18:52:42.230 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 18:52:42.230 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.25.0) {11/07/23 18:52:38}
+11/07/23 18:52:42.231 (D_ALWAYS) Number of idle job procs: 3
+11/07/23 18:52:42.231 (D_ALWAYS) Node B job proc (16178985.25.0) completed successfully.
+11/07/23 18:52:42.231 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.26.0) {11/07/23 18:52:39}
+11/07/23 18:52:42.231 (D_ALWAYS) Number of idle job procs: 3
+11/07/23 18:52:42.231 (D_ALWAYS) Node B job proc (16178985.26.0) completed successfully.
+11/07/23 18:52:42.231 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.27.0) {11/07/23 18:52:39}
+11/07/23 18:52:42.231 (D_ALWAYS) Number of idle job procs: 2
+11/07/23 18:52:42.231 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.24.0) {11/07/23 18:52:40}
+11/07/23 18:52:42.231 (D_ALWAYS) Number of idle job procs: 2
+11/07/23 18:52:42.231 (D_ALWAYS) Node B job proc (16178985.24.0) completed successfully.
+11/07/23 18:52:42.231 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.28.0) {11/07/23 18:52:40}
+11/07/23 18:52:42.231 (D_ALWAYS) Number of idle job procs: 1
+11/07/23 18:52:47.235 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 18:52:47.235 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node B (16178985.29.0) {11/07/23 18:52:42}
+11/07/23 18:52:47.235 (D_ALWAYS) Number of idle job procs: 0
+11/07/23 18:52:47.235 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.27.0) {11/07/23 18:52:43}
+11/07/23 18:52:47.235 (D_ALWAYS) Number of idle job procs: 0
+11/07/23 18:52:47.236 (D_ALWAYS) Node B job proc (16178985.27.0) completed successfully.
+11/07/23 18:52:47.236 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.28.0) {11/07/23 18:52:44}
+11/07/23 18:52:47.236 (D_ALWAYS) Number of idle job procs: 0
+11/07/23 18:52:47.236 (D_ALWAYS) Node B job proc (16178985.28.0) completed successfully.
+11/07/23 18:52:47.236 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node B (16178985.29.0) {11/07/23 18:52:47}
+11/07/23 18:52:47.236 (D_ALWAYS) Number of idle job procs: 0
+11/07/23 18:52:47.236 (D_ALWAYS) Node B job proc (16178985.29.0) completed successfully.
+11/07/23 18:52:47.236 (D_ALWAYS) Node B job completed
+11/07/23 18:52:47.236 (D_ALWAYS) DAG status: 0 (DAG_STATUS_OK)
+11/07/23 18:52:47.236 (D_ALWAYS) Of 2 nodes total:
+11/07/23 18:52:47.236 (D_ALWAYS)  Done     Pre   Queued    Post   Ready   Un-Ready   Failed   Futile
+11/07/23 18:52:47.236 (D_ALWAYS)   ===     ===      ===     ===     ===        ===      ===      ===
+11/07/23 18:52:47.236 (D_ALWAYS)     1       0        0       0       1          0        0        0
+11/07/23 18:52:47.236 (D_ALWAYS) 0 job proc(s) currently held
+11/07/23 18:52:47.236 (D_ALWAYS) DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.001212377783278344; EventCycleTimeCount = 284.0; EventCycleTimeMax = 0.2295498847961426; EventCycleTimeMin = 1.502037048339844E-05; EventCycleTimeStd = 0.01398756703761701; EventCycleTimeSum = 0.3443152904510498; LogProcessCycleTimeAvg = 0.0007954438527425131; LogProcessCycleTimeCount = 18.0; LogProcessCycleTimeMax = 0.005473852157592773; LogProcessCycleTimeMin = 0.0002460479736328125; LogProcessCycleTimeStd = 0.001182621328283294; LogProcessCycleTimeSum = 0.01431798934936523; SleepCycleTimeAvg = 5.004812206181002; SleepCycleTimeCount = 284.0; SleepCycleTimeMax = 5.005378007888794; SleepCycleTimeMin = 5.000409126281738; SleepCycleTimeStd = 0.0008393352830712367; SleepCycleTimeSum = 1421.366666555405; SubmitCycleTimeAvg = 0.0008122611464115611; SubmitCycleTimeCount = 285.0; SubmitCycleTimeMax = 0.2293128967285156; SubmitCycleTimeMin = 4.053115844726562E-06; SubmitCycleTimeStd = 0.01358286894843587; SubmitCycleTimeSum = 0.2314944267272949; ]
+11/07/23 18:52:52.236 (D_ALWAYS) Submitting HTCondor Node C job(s)...
+11/07/23 18:52:52.236 (D_ALWAYS) Submitting node C from file ms_transform.sub using direct job submission
+11/07/23 18:52:52.482 (D_ALWAYS) 	assigned HTCondor ID (16178989.0.0)
+11/07/23 18:52:52.489 (D_ALWAYS) Just submitted 1 job this cycle...
+11/07/23 18:52:52.489 (D_ALWAYS) DAG status: 0 (DAG_STATUS_OK)
+11/07/23 18:52:52.489 (D_ALWAYS) Of 2 nodes total:
+11/07/23 18:52:52.489 (D_ALWAYS)  Done     Pre   Queued    Post   Ready   Un-Ready   Failed   Futile
+11/07/23 18:52:52.489 (D_ALWAYS)   ===     ===      ===     ===     ===        ===      ===      ===
+11/07/23 18:52:52.489 (D_ALWAYS)     1       0        1       0       0          0        0        0
+11/07/23 18:52:52.489 (D_ALWAYS) 0 job proc(s) currently held
+11/07/23 18:52:52.489 (D_ALWAYS) DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.001210808335689076; EventCycleTimeCount = 285.0; EventCycleTimeMax = 0.2295498847961426; EventCycleTimeMin = 1.502037048339844E-05; EventCycleTimeStd = 0.01396294446131356; EventCycleTimeSum = 0.3450803756713867; LogProcessCycleTimeAvg = 0.0007954438527425131; LogProcessCycleTimeCount = 18.0; LogProcessCycleTimeMax = 0.005473852157592773; LogProcessCycleTimeMin = 0.0002460479736328125; LogProcessCycleTimeStd = 0.001182621328283294; LogProcessCycleTimeSum = 0.01431798934936523; SleepCycleTimeAvg = 5.004796258190222; SleepCycleTimeCount = 285.0; SleepCycleTimeMax = 5.005378007888794; SleepCycleTimeMin = 5.000267028808594; SleepCycleTimeStd = 0.000880050900149854; SleepCycleTimeSum = 1426.366933584213; SubmitCycleTimeAvg = 0.001692508484100128; SubmitCycleTimeCount = 286.0; SubmitCycleTimeMax = 0.2525629997253418; SubmitCycleTimeMin = 4.053115844726562E-06; SubmitCycleTimeStd = 0.02013578649428089; SubmitCycleTimeSum = 0.4840574264526367; ]
+11/07/23 18:52:57.494 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 18:52:57.494 (D_ALWAYS) Reassigning the id of job C from (16178989.0.0) to (16178989.0.0)
+11/07/23 18:52:57.495 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.0.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.495 (D_ALWAYS) Number of idle job procs: 1
+11/07/23 18:52:57.495 (D_ALWAYS) Reassigning the id of job C from (16178989.0.0) to (16178989.1.0)
+11/07/23 18:52:57.495 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.1.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.495 (D_ALWAYS) Number of idle job procs: 2
+11/07/23 18:52:57.495 (D_ALWAYS) Reassigning the id of job C from (16178989.1.0) to (16178989.2.0)
+11/07/23 18:52:57.495 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.2.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.495 (D_ALWAYS) Number of idle job procs: 3
+11/07/23 18:52:57.495 (D_ALWAYS) Reassigning the id of job C from (16178989.2.0) to (16178989.3.0)
+11/07/23 18:52:57.495 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.3.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.495 (D_ALWAYS) Number of idle job procs: 4
+11/07/23 18:52:57.495 (D_ALWAYS) Reassigning the id of job C from (16178989.3.0) to (16178989.4.0)
+11/07/23 18:52:57.495 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.4.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.495 (D_ALWAYS) Number of idle job procs: 5
+11/07/23 18:52:57.495 (D_ALWAYS) Reassigning the id of job C from (16178989.4.0) to (16178989.5.0)
+11/07/23 18:52:57.495 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.5.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.495 (D_ALWAYS) Number of idle job procs: 6
+11/07/23 18:52:57.495 (D_ALWAYS) Reassigning the id of job C from (16178989.5.0) to (16178989.6.0)
+11/07/23 18:52:57.495 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.6.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.495 (D_ALWAYS) Number of idle job procs: 7
+11/07/23 18:52:57.495 (D_ALWAYS) Reassigning the id of job C from (16178989.6.0) to (16178989.7.0)
+11/07/23 18:52:57.495 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.7.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.495 (D_ALWAYS) Number of idle job procs: 8
+11/07/23 18:52:57.495 (D_ALWAYS) Reassigning the id of job C from (16178989.7.0) to (16178989.8.0)
+11/07/23 18:52:57.495 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.8.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.495 (D_ALWAYS) Number of idle job procs: 9
+11/07/23 18:52:57.495 (D_ALWAYS) Reassigning the id of job C from (16178989.8.0) to (16178989.9.0)
+11/07/23 18:52:57.495 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.9.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.495 (D_ALWAYS) Number of idle job procs: 10
+11/07/23 18:52:57.495 (D_ALWAYS) Reassigning the id of job C from (16178989.9.0) to (16178989.10.0)
+11/07/23 18:52:57.495 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.10.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.495 (D_ALWAYS) Number of idle job procs: 11
+11/07/23 18:52:57.495 (D_ALWAYS) Reassigning the id of job C from (16178989.10.0) to (16178989.11.0)
+11/07/23 18:52:57.495 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.11.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.495 (D_ALWAYS) Number of idle job procs: 12
+11/07/23 18:52:57.495 (D_ALWAYS) Reassigning the id of job C from (16178989.11.0) to (16178989.12.0)
+11/07/23 18:52:57.495 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.12.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.495 (D_ALWAYS) Number of idle job procs: 13
+11/07/23 18:52:57.495 (D_ALWAYS) Reassigning the id of job C from (16178989.12.0) to (16178989.13.0)
+11/07/23 18:52:57.495 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.13.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.496 (D_ALWAYS) Number of idle job procs: 14
+11/07/23 18:52:57.496 (D_ALWAYS) Reassigning the id of job C from (16178989.13.0) to (16178989.14.0)
+11/07/23 18:52:57.496 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.14.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.496 (D_ALWAYS) Number of idle job procs: 15
+11/07/23 18:52:57.496 (D_ALWAYS) Reassigning the id of job C from (16178989.14.0) to (16178989.15.0)
+11/07/23 18:52:57.496 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.15.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.496 (D_ALWAYS) Number of idle job procs: 16
+11/07/23 18:52:57.496 (D_ALWAYS) Reassigning the id of job C from (16178989.15.0) to (16178989.16.0)
+11/07/23 18:52:57.496 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.16.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.496 (D_ALWAYS) Number of idle job procs: 17
+11/07/23 18:52:57.496 (D_ALWAYS) Reassigning the id of job C from (16178989.16.0) to (16178989.17.0)
+11/07/23 18:52:57.496 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.17.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.496 (D_ALWAYS) Number of idle job procs: 18
+11/07/23 18:52:57.496 (D_ALWAYS) Reassigning the id of job C from (16178989.17.0) to (16178989.18.0)
+11/07/23 18:52:57.496 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.18.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.496 (D_ALWAYS) Number of idle job procs: 19
+11/07/23 18:52:57.496 (D_ALWAYS) Reassigning the id of job C from (16178989.18.0) to (16178989.19.0)
+11/07/23 18:52:57.496 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.19.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.496 (D_ALWAYS) Number of idle job procs: 20
+11/07/23 18:52:57.496 (D_ALWAYS) Reassigning the id of job C from (16178989.19.0) to (16178989.20.0)
+11/07/23 18:52:57.496 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.20.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.496 (D_ALWAYS) Number of idle job procs: 21
+11/07/23 18:52:57.496 (D_ALWAYS) Reassigning the id of job C from (16178989.20.0) to (16178989.21.0)
+11/07/23 18:52:57.496 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.21.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.496 (D_ALWAYS) Number of idle job procs: 22
+11/07/23 18:52:57.496 (D_ALWAYS) Reassigning the id of job C from (16178989.21.0) to (16178989.22.0)
+11/07/23 18:52:57.496 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.22.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.496 (D_ALWAYS) Number of idle job procs: 23
+11/07/23 18:52:57.496 (D_ALWAYS) Reassigning the id of job C from (16178989.22.0) to (16178989.23.0)
+11/07/23 18:52:57.496 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.23.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.496 (D_ALWAYS) Number of idle job procs: 24
+11/07/23 18:52:57.496 (D_ALWAYS) Reassigning the id of job C from (16178989.23.0) to (16178989.24.0)
+11/07/23 18:52:57.496 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.24.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.496 (D_ALWAYS) Number of idle job procs: 25
+11/07/23 18:52:57.496 (D_ALWAYS) Reassigning the id of job C from (16178989.24.0) to (16178989.25.0)
+11/07/23 18:52:57.496 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.25.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.496 (D_ALWAYS) Number of idle job procs: 26
+11/07/23 18:52:57.496 (D_ALWAYS) Reassigning the id of job C from (16178989.25.0) to (16178989.26.0)
+11/07/23 18:52:57.496 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.26.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.496 (D_ALWAYS) Number of idle job procs: 27
+11/07/23 18:52:57.496 (D_ALWAYS) Reassigning the id of job C from (16178989.26.0) to (16178989.27.0)
+11/07/23 18:52:57.496 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.27.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.496 (D_ALWAYS) Number of idle job procs: 28
+11/07/23 18:52:57.496 (D_ALWAYS) Reassigning the id of job C from (16178989.27.0) to (16178989.28.0)
+11/07/23 18:52:57.496 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.28.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.496 (D_ALWAYS) Number of idle job procs: 29
+11/07/23 18:52:57.497 (D_ALWAYS) Reassigning the id of job C from (16178989.28.0) to (16178989.29.0)
+11/07/23 18:52:57.497 (D_ALWAYS) Event: ULOG_SUBMIT for HTCondor Node C (16178989.29.0) {11/07/23 18:52:52}
+11/07/23 18:52:57.497 (D_ALWAYS) Number of idle job procs: 30
+11/07/23 19:02:58.085 (D_ALWAYS) 601 seconds since last log event
+11/07/23 19:02:58.085 (D_ALWAYS) Pending DAG nodes:
+11/07/23 19:02:58.085 (D_ALWAYS)   Node C, HTCondor ID 16178989, status STATUS_SUBMITTED
+11/07/23 19:05:03.219 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 19:05:03.220 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node C (16178989.0.0) {11/07/23 19:05:01}
+11/07/23 19:05:03.220 (D_ALWAYS) Number of idle job procs: 29
+11/07/23 19:07:03.321 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 19:07:03.321 (D_ALWAYS) Event: ULOG_JOB_TERMINATED for HTCondor Node C (16178989.0.0) {11/07/23 19:06:59}
+11/07/23 19:07:03.321 (D_ALWAYS) Number of idle job procs: 29
+11/07/23 19:07:03.321 (D_ALWAYS) Node C job proc (16178989.0.0) failed with status 1.
+11/07/23 19:07:03.321 (D_ALWAYS) Executing: /usr/bin/condor_rm 16178989 -const DAGManJobId==16178984 -reason Node' 'Error:' 'DAG' 'node' 'C' '(16178989.0.0)' 'failed' 'with' 'signal' '-1.
+11/07/23 19:07:03.321 (D_ALWAYS) Running: /usr/bin/condor_rm 16178989 -const DAGManJobId==16178984 -reason Node' 'Error:' 'DAG' 'node' 'C' '(16178989.0.0)' 'failed' 'with' 'signal' '-1.
+11/07/23 19:07:03.569 (D_ALWAYS) Event: ULOG_EXECUTE for HTCondor Node C (16178989.1.0) {11/07/23 19:07:00}
+11/07/23 19:07:03.569 (D_ALWAYS) Number of idle job procs: 28
+11/07/23 19:07:08.571 (D_ALWAYS) Currently monitoring 1 HTCondor log file(s)
+11/07/23 19:07:08.571 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.2.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.571 (D_ALWAYS) Number of idle job procs: 27
+11/07/23 19:07:08.571 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.3.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.571 (D_ALWAYS) Number of idle job procs: 26
+11/07/23 19:07:08.571 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.4.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.571 (D_ALWAYS) Number of idle job procs: 25
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.5.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 24
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.6.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 23
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.7.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 22
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.8.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 21
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.9.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 20
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.10.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 19
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.11.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 18
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.12.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 17
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.13.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 16
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.14.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 15
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.15.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 14
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.16.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 13
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.17.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 12
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.18.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 11
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.19.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 10
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.20.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 9
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.21.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 8
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.22.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 7
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.23.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 6
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.24.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 5
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.25.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 4
+11/07/23 19:07:08.572 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.26.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.572 (D_ALWAYS) Number of idle job procs: 3
+11/07/23 19:07:08.573 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.27.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.573 (D_ALWAYS) Number of idle job procs: 2
+11/07/23 19:07:08.573 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.28.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.573 (D_ALWAYS) Number of idle job procs: 1
+11/07/23 19:07:08.573 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.29.0) {11/07/23 19:07:03}
+11/07/23 19:07:08.573 (D_ALWAYS) Number of idle job procs: 0
+11/07/23 19:07:08.573 (D_ALWAYS) Event: ULOG_JOB_EVICTED for HTCondor Node C (16178989.1.0) {11/07/23 19:07:07}
+11/07/23 19:07:08.573 (D_ALWAYS) Number of idle job procs: 0
+11/07/23 19:07:08.573 (D_ALWAYS) Event: ULOG_JOB_ABORTED for HTCondor Node C (16178989.1.0) {11/07/23 19:07:07}
+11/07/23 19:07:08.573 (D_ALWAYS) Number of idle job procs: 0
+11/07/23 19:07:08.573 (D_ALWAYS) DAG status: 2 (DAG_STATUS_NODE_FAILED)
+11/07/23 19:07:08.573 (D_ALWAYS) Of 2 nodes total:
+11/07/23 19:07:08.573 (D_ALWAYS)  Done     Pre   Queued    Post   Ready   Un-Ready   Failed   Futile
+11/07/23 19:07:08.573 (D_ALWAYS)   ===     ===      ===     ===     ===        ===      ===      ===
+11/07/23 19:07:08.573 (D_ALWAYS)     1       0        0       0       0          0        1        0
+11/07/23 19:07:08.573 (D_ALWAYS) 0 job proc(s) currently held
+11/07/23 19:07:08.573 (D_ALWAYS) DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.001927854722006279; EventCycleTimeCount = 456.0; EventCycleTimeMax = 0.25295090675354; EventCycleTimeMin = 1.287460327148438E-05; EventCycleTimeStd = 0.01988523454113034; EventCycleTimeSum = 0.8791017532348633; LogProcessCycleTimeAvg = 0.01211036335338246; LogProcessCycleTimeCount = 22.0; LogProcessCycleTimeMax = 0.2481138706207275; LogProcessCycleTimeMin = 0.0002300739288330078; LogProcessCycleTimeStd = 0.05272416133690798; LogProcessCycleTimeSum = 0.2664279937744141; SleepCycleTimeAvg = 5.004754129731865; SleepCycleTimeCount = 456.0; SleepCycleTimeMax = 5.005378007888794; SleepCycleTimeMin = 5.000267028808594; SleepCycleTimeStd = 0.0008848965072942529; SleepCycleTimeSum = 2282.16788315773; SubmitCycleTimeAvg = 0.001061277264317485; SubmitCycleTimeCount = 457.0; SubmitCycleTimeMax = 0.2525629997253418; SubmitCycleTimeMin = 3.814697265625E-06; SubmitCycleTimeStd = 0.01593970098077717; SubmitCycleTimeSum = 0.4850037097930908; ]
+11/07/23 19:07:08.573 (D_ALWAYS) ERROR: the following job(s) failed:
+11/07/23 19:07:08.573 (D_ALWAYS) ---------------------- Job ----------------------
+11/07/23 19:07:08.573 (D_ALWAYS)       Node Name: C
+11/07/23 19:07:08.573 (D_ALWAYS)            Noop: false
+11/07/23 19:07:08.573 (D_ALWAYS)          NodeID: 1
+11/07/23 19:07:08.573 (D_ALWAYS)     Node Status: STATUS_ERROR    
+11/07/23 19:07:08.573 (D_ALWAYS) Node return val: 1
+11/07/23 19:07:08.573 (D_ALWAYS)           Error: Job proc (16178989.0.0) failed with status 1
+11/07/23 19:07:08.573 (D_ALWAYS) Job Submit File: ms_transform.sub
+11/07/23 19:07:08.573 (D_ALWAYS)  HTCondor Job ID: (16178989.29.0)
+11/07/23 19:07:08.573 (D_ALWAYS) PARENTS: B WAITING: 0 CHILDREN: 
+11/07/23 19:07:08.573 (D_ALWAYS) ---------------------------------------	<END>
+11/07/23 19:07:08.573 (D_ALWAYS) Aborting DAG...
+11/07/23 19:07:08.573 (D_ALWAYS) Writing Rescue DAG to IC10_abs_dag.dag.rescue001...
+11/07/23 19:07:08.573 (D_ALWAYS) Removing submitted jobs...
+11/07/23 19:07:08.573 (D_ALWAYS) Removing any/all submitted HTCondor jobs...
+11/07/23 19:07:08.573 (D_ALWAYS) Running: /usr/bin/condor_rm -const DAGManJobId==16178984 -reason DAG' 'Abort:' 'DAG' 'is' 'exiting' 'and' 'writing' 'rescue' 'file.
+11/07/23 19:07:09.213 (D_ALWAYS) Note: 0 total job deferrals because of -MaxJobs limit (0)
+11/07/23 19:07:09.213 (D_ALWAYS) Note: 0 total job deferrals because of -MaxIdle limit (1000)
+11/07/23 19:07:09.213 (D_ALWAYS) Note: 0 total job deferrals because of node category throttles
+11/07/23 19:07:09.213 (D_ALWAYS) Note: 0 total PRE script deferrals because of -MaxPre limit (20) or DEFER
+11/07/23 19:07:09.213 (D_ALWAYS) Note: 0 total POST script deferrals because of -MaxPost limit (20) or DEFER
+11/07/23 19:07:09.213 (D_ALWAYS) Note: 0 total HOLD script deferrals because of -MaxHold limit (20) or DEFER
+11/07/23 19:07:09.213 (D_ALWAYS) DAG status: 2 (DAG_STATUS_NODE_FAILED)
+11/07/23 19:07:09.213 (D_ALWAYS) Of 2 nodes total:
+11/07/23 19:07:09.213 (D_ALWAYS)  Done     Pre   Queued    Post   Ready   Un-Ready   Failed   Futile
+11/07/23 19:07:09.213 (D_ALWAYS)   ===     ===      ===     ===     ===        ===      ===      ===
+11/07/23 19:07:09.213 (D_ALWAYS)     1       0        0       0       0          0        1        0
+11/07/23 19:07:09.213 (D_ALWAYS) 0 job proc(s) currently held
+11/07/23 19:07:09.213 (D_ALWAYS) DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.001927854722006279; EventCycleTimeCount = 456.0; EventCycleTimeMax = 0.25295090675354; EventCycleTimeMin = 1.287460327148438E-05; EventCycleTimeStd = 0.01988523454113034; EventCycleTimeSum = 0.8791017532348633; LogProcessCycleTimeAvg = 0.01211036335338246; LogProcessCycleTimeCount = 22.0; LogProcessCycleTimeMax = 0.2481138706207275; LogProcessCycleTimeMin = 0.0002300739288330078; LogProcessCycleTimeStd = 0.05272416133690798; LogProcessCycleTimeSum = 0.2664279937744141; SleepCycleTimeAvg = 5.004754129731865; SleepCycleTimeCount = 456.0; SleepCycleTimeMax = 5.005378007888794; SleepCycleTimeMin = 5.000267028808594; SleepCycleTimeStd = 0.0008848965072942529; SleepCycleTimeSum = 2282.16788315773; SubmitCycleTimeAvg = 0.001061277264317485; SubmitCycleTimeCount = 457.0; SubmitCycleTimeMax = 0.2525629997253418; SubmitCycleTimeMin = 3.814697265625E-06; SubmitCycleTimeStd = 0.01593970098077717; SubmitCycleTimeSum = 0.4850037097930908; ]
+11/07/23 19:07:09.230 (D_ALWAYS) Wrote metrics file IC10_abs_dag.dag.metrics.
+11/07/23 19:07:09.230 (D_ALWAYS) DAGMan Runtime Statistics: [ EventCycleTimeAvg = 0.001927854722006279; EventCycleTimeCount = 456.0; EventCycleTimeMax = 0.25295090675354; EventCycleTimeMin = 1.287460327148438E-05; EventCycleTimeStd = 0.01988523454113034; EventCycleTimeSum = 0.8791017532348633; LogProcessCycleTimeAvg = 0.01211036335338246; LogProcessCycleTimeCount = 22.0; LogProcessCycleTimeMax = 0.2481138706207275; LogProcessCycleTimeMin = 0.0002300739288330078; LogProcessCycleTimeStd = 0.05272416133690798; LogProcessCycleTimeSum = 0.2664279937744141; SleepCycleTimeAvg = 5.004754129731865; SleepCycleTimeCount = 456.0; SleepCycleTimeMax = 5.005378007888794; SleepCycleTimeMin = 5.000267028808594; SleepCycleTimeStd = 0.0008848965072942529; SleepCycleTimeSum = 2282.16788315773; SubmitCycleTimeAvg = 0.001061277264317485; SubmitCycleTimeCount = 457.0; SubmitCycleTimeMax = 0.2525629997253418; SubmitCycleTimeMin = 3.814697265625E-06; SubmitCycleTimeStd = 0.01593970098077717; SubmitCycleTimeSum = 0.4850037097930908; ]
+11/07/23 19:07:09.230 (D_ALWAYS) **** condor_scheduniv_exec.16178984.0 (condor_DAGMAN) pid 4085414 EXITING WITH STATUS 1

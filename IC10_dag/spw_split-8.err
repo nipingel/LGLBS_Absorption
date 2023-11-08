@@ -1,0 +1,26 @@
+tar: /projects/vla-processing/measurement_sets/IC10/raw_measurement_sets/IC10_C_20A-346.sb39775827.eb39922150.59376.59013269676.speclines.ms.split.tar: Cannot open: Not a directory
+tar: Error is not recoverable: exiting now
+--> CrashReporter initialized.
+casalogger: cannot connect to X server 
+Telemetry initialized. Telemetry will send anonymized usage statistics to NRAO.
+You can disable telemetry by adding the following line to the config.py file in your rcdir (e.g. ~/.casa/config.py):
+telemetry_enabled = False
+Error! The input uv data measurement set "_20A-346.sb39775827.eb39922150.59376.59013269676.speclines.ms.split"does not exist!
+Traceback (most recent call last):
+  File "/casa-6.5.0-15-py3.8/lib/py/lib/python3.8/site-packages/casashell/private/init_system.py", line 235, in __evprop__
+    run_path( args[0], init_globals=exec_globals, run_name='__main__' )
+  File "/casa-6.5.0-15-py3.8/lib/py/lib/python3.8/runpy.py", line 265, in run_path
+    return _run_module_code(code, init_globals, run_name,
+  File "/casa-6.5.0-15-py3.8/lib/py/lib/python3.8/runpy.py", line 97, in _run_module_code
+    _run_code(code, mod_globals, init_globals,
+  File "/casa-6.5.0-15-py3.8/lib/py/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "split_spw.py", line 67, in <module>
+    main()
+  File "split_spw.py", line 39, in main
+    spw_science = cvr.find_spws_for_science(infile = ms_path)
+  File "/var/lib/condor/execute/slot1/dir_894946/phangs_imaging_scripts/phangsPipeline/casaVisRoutines.py", line 642, in find_spws_for_science
+    raise Exception(
+Exception: Error! The input uv data measurement set "_20A-346.sb39775827.eb39922150.59376.59013269676.speclines.ms.split"does not exist!
+tar: _20A-346.sb39775827.eb39922150.59376.59013269676.speclines.ms.split_spw: Cannot stat: No such file or directory
+tar: Exiting with failure status due to previous errors
