@@ -76,9 +76,9 @@
 ## - src_name: source name
 ## output:
 ## - concatenated measurement set in staging area
-## JOB F concat.sub
-## VARS F src_name="IC10" extension="transformed.split_concat" outfile_name="IC10_A+B.ms"
-## PARENT F CHILD G
+JOB F concat.sub
+VARS F src_name="IC10" extension="transformed.split_concat" outfile_name="IC10_A+B.ms"
+PARENT F CHILD G
 
 ## COMBINE_SPW
 ## run mstransform again to combine all spectral windows in concatenated measurement set
@@ -89,9 +89,9 @@
 ## - src_name: source name
 ## output:
 ## - tarball of measurement sets that have been transformed to the user provided reference frame and spectral channel width
-## JOB G ms_transform_combine_spw.sub
-## VARS G input_name="IC10_A+B.ms" src_name="IC10"
-## PARENT G CHILD H
+JOB G ms_transform_combine_spw.sub
+VARS G input_name="IC10_A+B.ms" src_name="IC10"
+PARENT G CHILD H
 
 ## STATWT
 ## re-weight visibilities based on root mean square noise in emission-free regions. Use systemic velocity and velocity width to mask channels with expected emission. 
@@ -104,9 +104,9 @@
 ## - src_name: source name
 ## output:
 ## - re-weighted concatenated measurement sets with '.wt' appended to name
-## JOB H statwt.sub
-## VARS H ms_name="IC10_A+B.comb_spw" v_sys="-340" v_width="210" src_name="IC10"
-## PARENT H CHILD I
+JOB H statwt.sub
+VARS H ms_name="IC10_A+B.comb_spw" v_sys="-340" v_width="210" src_name="IC10"
+PARENT H CHILD I
 
 ## NARROWBAND IMAGING
 ## create a narrow-band continuum image of IC10 to identify background sources with which to measure HI absorption against
@@ -120,9 +120,9 @@
 ## - threshold: global rms threshold to stop cleaning in mJy (e.g., "2.0")
 ## output:
 ## - narrowband continuum image
-## JOB I narrowband_cont_image.sub
-## VARS I ms_name="IC10_A+B_full.comb_spw.wt" src_name="IC10" ra_str="00h20m17.34s" dec_str="59d18m13.6s" threshold="2.0"
-## PARENT I CHILD J
+JOB I narrowband_cont_image.sub
+VARS I ms_name="IC10_A+B.comb_spw.wt" src_name="IC10" ra_str="00h20m17.34s" dec_str="59d18m13.6s" threshold="2.0"
+PARENT I CHILD J
 
 ## SOURCE FINDING
 ## run the source finder, aegean, to produce a csv file that summarizes the sources in narrowband continuum image
@@ -136,9 +136,9 @@
 ## - int_threshold: continuum intensity threshold to determine sources with sigma_cont < 0.33 (in Jy/beam from narrowband contiuum image)
 ## output:
 ## - a csv file produced by aegean and phase-center-list.txt (input for cubelet generation)
-## JOB J source_finding.sub
-## VARS J image_name="IC10_A+B_full.comb_spw.wt_nbcont" src_name="IC10" int_threshold="0.0001"
-## PARENT J CHILD K
+JOB J source_finding.sub
+VARS J image_name="IC10_A+B.comb_spw.wt_nbcont" src_name="IC10" int_threshold="0.00065"
+PARENT J CHILD K
 
 ## CUBELETS
 ## run tclean to get cubelets centered on each background source
@@ -155,7 +155,7 @@
 ## - output:
 ## - tarball of 2D cubelets for each source
 JOB K abs_cubelet.sub
-VARS K ms_name="IC10_A+B_full.comb_spw.wt" start_velocity="-475" chan_nums="750" src_name="IC10"
+VARS K ms_name="IC10_A+B.comb_spw.wt" start_velocity="-475" chan_nums="750" src_name="IC10"
 #PARENT K CHILD M
 
 ## COMBINE CUBELETS

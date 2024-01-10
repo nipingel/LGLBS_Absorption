@@ -20,9 +20,9 @@ executable = narrowband_cont_image.sh
 
 ## determine channel to image
 arguments = $(ms_name) $(src_name) $(ra_str) $(dec_str) $(threshold)
-log = NGC6822_nb_image.log
-output = NGC6822_nb_image.out
-error = NGC6822_nb_image.err
+log = IC10_nb_image.log
+output = IC10_nb_image.out
+error = IC10_nb_image.err
 
 # Specify that HTCondor should transfer files to and from the
 #  computer where each job runs. The last of these lines *would* be

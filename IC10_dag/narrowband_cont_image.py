@@ -89,6 +89,15 @@ def main():
 
 	## run tclean
 	tclean(**tclean_params)
+	
+	## run exportfits
+	exportfits_params={
+		'imagename':'%s.image' % output_name,
+		'fitsimage':'%s.image.fits' % output_name,
+		'dropstokes':True,
+		'dropdeg':True
+		}
+	exportfits(**exportfits_params)
 if __name__=='__main__':
 	main()
 	exit()

@@ -1,10 +1,7 @@
 Unable to find image 'nipingel/casa:latest' locally
 latest: Pulling from nipingel/casa
-2d473b07cdd5: Pulling fs layer
+2d473b07cdd5: Already exists
 2293ec255fc6: Pulling fs layer
-2d473b07cdd5: Verifying Checksum
-2d473b07cdd5: Download complete
-2d473b07cdd5: Pull complete
 2293ec255fc6: Verifying Checksum
 2293ec255fc6: Download complete
 2293ec255fc6: Pull complete
