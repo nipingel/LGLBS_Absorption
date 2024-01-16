@@ -13,6 +13,10 @@ universe = vanilla
 #  output (or "screen output").
 #  $(Process) will be a integer number for each job, starting with "0"
 #  and increasing for the relevant number of jobs.
+
+## manually added arguments
+src_name=IC10
+
 executable = untar_measurement_sets.sh
 arguments = $(src_name) $(file_name) 
 output = decompress_$(Process).out
@@ -27,8 +31,8 @@ Requirements=(Target.HasCHTCStaging == true)
 # Tell HTCondor what amount of compute resources
 #  each job will need on the computer where it runs.
 request_cpus = 1
-request_memory = 10GB
-request_disk = 10GB
+request_memory = 1GB
+request_disk = 1GB
 #
 # Tell HTCondor to run 1 instances of our job:
 queue file_name from untar-list.txt

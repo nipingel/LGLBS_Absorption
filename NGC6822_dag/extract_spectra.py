@@ -180,10 +180,12 @@ def extract_emission_spectrum(em_cube_name, ra, dec):
 	r_pixs[r_pixs < 0.5*beam_maj/pix_size] = float('nan')
 	
 	s = np.zeros(em_cube.shape[0])
+	s_err = np.zeros(em_cube.shape[0])
 	for i in range(em_cube.shape[0]):
 		plane = em_cube[i, :, :]
 		s[i] = np.nanmean(plane[r_pixs < 2*beam_maj/pix_size])*6.07e5/(beam_maj*beam_min) ## Jy/beam -> Tb
-	return s
+		s_err[i] = np.nanstd(plane[r_pixs < 2*beam_maj/pix_size])*6.07e5/(beam_maj*beam_min) ## Jy/beam -> Tb
+	return s, s_err
 
 ## function to compute mean emission spectrum
 def compute_mean_em_spectrum(em_cube_name):
@@ -280,9 +282,8 @@ def generate_plot(vel_axis, abs_spectrum, em_spectrum, three_sig_env, one_sig_en
 	plt.close()
 
 ## function to compute spin temperature
-def compute_mean_spin_temperature(em_profile, rms, abs_profile, abs_profile_err, dv):
+def compute_mean_spin_temperature(em_profile, em_profile_err, abs_profile, abs_profile_err, dv):
 	tb_integral = np.sum(em_profile)*dv
-	em_profile_err = np.full(shape = len(em_profile), fill_value = rms)
 	tb_integral_err = np.sqrt(np.sum(em_profile_err**2))*dv
 	abs_integral = np.sum(1-np.exp(-1*abs_profile))*dv
 	abs_integral_err = np.sqrt(np.sum(np.exp(-2*abs_profile)*abs_profile_err**2))*dv
@@ -329,7 +330,11 @@ def main():
 		HI_abs_spectrum = extract_mean_pixel_spectrum(mask, cubelet_name, abs_vel_axis, bmaj, bmin, bpa, comp_ra[i], comp_dec[i], comp_a[i], comp_b[i], comp_pa[i])
 
 		## extract emission spectrum 
-		em_spectrum = extract_emission_spectrum(combined_name, comp_ra[i], comp_dec[i])
+		em_spectrum, em_spectrum_err = extract_emission_spectrum(combined_name, comp_ra[i], comp_dec[i])
+		## add em_spectrum in quadrature with rms; -> just use std of emission mean
+		#rms_K_spectrum = np.empty(len(em_spectrum_err))
+		#rms_K_spectrum.fill(rms_K)
+		#em_spectrum_err_final = np.sqrt(em_spectrum_err**2+rms_K_spectrum**2)
 
 		## compute mean emission spectrum
 		mean_em_spectrum, em_vel_axis = compute_mean_em_spectrum(combined_name)
@@ -342,9 +347,11 @@ def main():
 		abs_noise_func = interp1d(em_vel_axis, abs_noise_env, kind = 'linear', fill_value = 0.1/3, bounds_error = False)
 		abs_noise_env = abs_noise_func(abs_vel_axis)
 		three_sigma_env = 1-3*abs_noise_env
-		## interpolate em_spectrum to velocity axis of absorption
+		## interpolate em_spectrum/em_spectrum_err to velocity axis of absorption
 		em_spectrum_func = interp1d(em_vel_axis, em_spectrum, kind = 'linear', fill_value = 0.0, bounds_error = False)
 		em_spectrum_interp = em_spectrum_func(abs_vel_axis)
+		em_spectrum_err_func = interp1d(em_vel_axis, em_spectrum_err, kind = 'linear', fill_value = 0.0, bounds_error = False)
+		em_spectrum_err_interp = em_spectrum_err_func(abs_vel_axis)
 
 		## determine where absorption features are > 3-sigma dectection
 		detection_inds = np.array(np.where((HI_abs_spectrum) <= three_sigma_env)[0])
@@ -359,11 +366,11 @@ def main():
 		for l in detection_sort:
 			if len(l) > 2:
 				## compute spin temperature and add to lists
-				spin_temp, spin_temp_err = compute_mean_spin_temperature(em_spectrum_interp[l[0]:l[-1]], rms_K, HI_abs_spectrum[l[0]:l[-1]], abs_noise_env[l[0]:l[-1]], 0.41)
+				spin_temp, spin_temp_err = compute_mean_spin_temperature(em_spectrum_interp[l[0]:l[-1]], em_spectrum_err_interp[l[0]:l[-1]], HI_abs_spectrum[l[0]:l[-1]], abs_noise_env[l[0]:l[-1]], 0.41)
 				spin_temp_list.append(spin_temp)
 				spin_temp_err_list.append(spin_temp_err)
 		## save out results
-		pickle_results(abs_vel_axis, HI_abs_spectrum, em_spectrum_interp, three_sigma_env, abs_noise_env, rms_K, detection_sort, str_ra, str_dec, spin_temp_list, spin_temp_err_list)
+		pickle_results(abs_vel_axis, HI_abs_spectrum, em_spectrum_interp, three_sigma_env, abs_noise_env, em_spectrum_err_interp, detection_sort, str_ra, str_dec, spin_temp_list, spin_temp_err_list)
 if __name__=='__main__':
 	main()
 	exit()
