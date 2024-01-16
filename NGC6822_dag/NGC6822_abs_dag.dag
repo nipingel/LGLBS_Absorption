@@ -170,7 +170,7 @@ PARENT K CHILD M
 ## output
 ## fits file of 30' region around each source feathered with GBT data
 JOB L combine_SD.sub
-VARS L src_name="NGC6822" vla_name="NGC6822_ABCD.combImage" sd_name="N6822_GBT_Jy.eq.nostokes.fits"
+VARS L src_name="NGC6822" vla_name="NGC6822_A+B+C+D_HI_0p4kms.fits" sd_name="N6822_GBT_Jy.eq.nostokes.fits"
 PARENT L CHILD M
 
 

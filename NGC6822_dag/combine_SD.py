@@ -36,9 +36,17 @@ def main():
 	}
 	importfits(**importfits_params)
 
+	## read in vla_cube
+	int_path_casa_name = int_path.replace('.fits', '.im')
+	importfits_params = {
+		'fitsimage': int_path,
+		'imagename': int_path_casa_name, 
+	}
+	importfits(**importfits_params)
+	
 	## extract 30' subregion around source
 	imsubimage_params = {
-		'imagename': int_path,
+		'imagename': int_path_casa_name,
 		'outfile': 'VLA_ABCD_%s_%s_30arcmin.imsub' % (ra_phase_center, dec_phase_center),
 		'region': 'circle[[%s, %s], 15arcmin]' % (ra_phase_center, dec_phase_center),
 		'dropdeg': True,

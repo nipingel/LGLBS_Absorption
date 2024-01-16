@@ -16,7 +16,7 @@ vla_cube_path=/projects/vla-processing/images/${src_name}/${vla_cube_name}
 HOME=$PWD
 
 ## copy the data products to working area
-cp /projects/vla-processing/images/${src_name}/${src_name}/Absorption/${ra_phase_center}_${dec_phase_center}.image.pbcor.fits .
+cp /projects/vla-processing/images//${src_name}/Absorption/${ra_phase_center}_${dec_phase_center}.image.pbcor.fits .
 cp /projects/vla-processing/images/${src_name}/${sd_cube_name} .
 
 ## run script to pull out a 30' subregion around source & feather in single dish
