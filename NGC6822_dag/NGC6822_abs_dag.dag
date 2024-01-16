@@ -156,7 +156,7 @@
 ## - tarball of 2D cubelets for each source
 JOB K abs_cubelet.sub
 VARS K ms_name="NGC6822_A+B.comb_spw.wt" start_velocity="-200" chan_nums="750" src_name="NGC6822"
-PARENT K CHILD M
+PARENT K CHILD L
 
 ## COMBINE CUBELETS
 ## runs combine_SD.py to extract 30' region around each source
