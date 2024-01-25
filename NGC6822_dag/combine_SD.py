@@ -13,6 +13,7 @@ __status__="Production"
 """
 # imports
 import argparse
+import os
 
 ## parse user inputs
 parser = argparse.ArgumentParser()
@@ -42,8 +43,9 @@ def main():
 		'fitsimage': int_path,
 		'imagename': int_path_casa_name, 
 	}
-	importfits(**importfits_params)
-	
+	if not os.path.exists(int_path_casa_name):
+		importfits(**importfits_params)	
+
 	## extract 30' subregion around source
 	imsubimage_params = {
 		'imagename': int_path_casa_name,
