@@ -147,13 +147,13 @@ def extract_mean_pixel_spectrum(mask, cubelet_name, vel_axis, bmaj, bmin, bpa, r
 	
 	## create a boolean array for pixels that fall within source ellipse
 	source_image_mask = np.zeros([cubelet.shape[1], cubelet.shape[2]])
-    source_image_mask[np.where(z<1)] = 1.0
-    ## extend spatial pixel mask along entire spectral axis
-    source_cube_mask = np.repeat(source_image_mask[np.newaxis, :, :], len(vel_axis), axis=0)
-    ## compute mean brightness temperature along each sightline
-    mean_tb_image = np.nanmean(cubelet, axis = 0)
-    ## compute weighted sum
-    spectrum = np.nansum(mean_tb_image**2*cubelet, axis = (1,2), where = source_cube_mask.astype(bool))
+	source_image_mask[np.where(z<1)] = 1.0
+	## extend spatial pixel mask along entire spectral axis
+	source_cube_mask = np.repeat(source_image_mask[np.newaxis, :, :], len(vel_axis), axis=0)
+	## compute mean brightness temperature along each sightline
+	mean_tb_image = np.nanmean(cubelet, axis = 0)
+	## compute weighted sum
+	spectrum = np.nansum(mean_tb_image**2*cubelet, axis = (1,2), where = source_cube_mask.astype(bool))
 	## compute continuum level
 	c = np.mean(spectrum[mask])
 	return spectrum/c
@@ -180,16 +180,16 @@ def extract_emission_spectrum(em_cube_name, ra, dec):
 	y0 = c_pix[1]-y_len/2
 	x0 = c_pix[0]-y_len/2
 	r_pixs = np.sqrt((yy-y0)**2 + (xx-x0)**2)
-    ## make a mask based on radius from source
-    radial_mask = np.zeros([em_cube.shape[1], em_cube.shape[2]])
-    ## center an annulus on souce 2x beamwidths wide
-    radial_mask[r_pixs < 2*beam_maj/pix_size] = 1
-    ## mask inner pixels corresponding to single synthesized beam
-    radial_mask[r_pixs < beam_maj/pix_size] = 0 
-    ## extend spatial pixel mask along entire spectral axis
-    radial_cube_mask = np.repeat(radial_mask[np.newaxis, :, :], em_cube.shape[0], axis=0)
-    s = np.nanmean(em_cube, axis = (1,2), where = radial_cube_mask.astype(bool))
-    s_err = np.nanstd(em_cube, axis = (1,2), where = radial_cube_mask.astype(bool))
+	## make a mask based on radius from source
+	radial_mask = np.zeros([em_cube.shape[1], em_cube.shape[2]])
+	## center an annulus on souce 2x beamwidths wide
+	radial_mask[r_pixs < 2*beam_maj/pix_size] = 1
+	## mask inner pixels corresponding to single synthesized beam
+	radial_mask[r_pixs < beam_maj/pix_size] = 0 
+	## extend spatial pixel mask along entire spectral axis
+	radial_cube_mask = np.repeat(radial_mask[np.newaxis, :, :], em_cube.shape[0], axis=0)
+	s = np.nanmean(em_cube, axis = (1,2), where = radial_cube_mask.astype(bool))
+	s_err = np.nanstd(em_cube, axis = (1,2), where = radial_cube_mask.astype(bool))
 	return s, s_err
 
 ## function to compute mean emission spectrum
