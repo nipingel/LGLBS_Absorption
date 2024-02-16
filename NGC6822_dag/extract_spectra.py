@@ -144,16 +144,17 @@ def extract_mean_pixel_spectrum(mask, cubelet_name, vel_axis, bmaj, bmin, bpa, r
 	z = (np.sin(pa_rad)**2/a_pix**2+np.cos(pa_rad)**2/b_pix**2)*(yy-y0)**2 + \
 		2*np.cos(pa_rad)*np.sin(pa_rad)*(1/a_pix**2-1/b_pix**2)*(yy-y0)*(xx-x0) + \
 		((xx-x0))**2*(np.sin(pa_rad)**2/b_pix**2+np.cos(pa_rad)**2/a_pix**2)
-	good_inds = np.where(z < 1)
 	
-	spectrum = np.zeros(len(vel_axis))
-	for j in range(len(vel_axis)):
-		s = 0 
-		for y in good_inds[0][:]:
-			for x in good_inds[1][:]:
-				mean_tb = np.mean(cubelet[mask, y, x])
-				s += mean_tb**2*cubelet[j, y, x]
-		spectrum[j] = s
+	## create a boolean array for pixels that fall within source ellipse
+	source_image_mask = np.zeros([cubelet.shape[1], cubelet.shape[2]])
+    source_image_mask[np.where(z<1)] = 1.0
+    ## extend spatial pixel mask along entire spectral axis
+    source_cube_mask = np.repeat(source_image_mask[np.newaxis, :, :], len(vel_axis), axis=0)
+    ## compute mean brightness temperature along each sightline
+    mean_tb_image = np.nanmean(cubelet, axis = 0)
+    ## compute weighted sum
+    spectrum = np.nansum(mean_tb_image**2*cubelet, axis = (1,2), where = source_cube_mask.astype(bool))
+	## compute continuum level
 	c = np.mean(spectrum[mask])
 	return spectrum/c
 
@@ -165,6 +166,8 @@ def extract_emission_spectrum(em_cube_name, ra, dec):
 	beam_maj = hdu[0].header['BMAJ']*3600
 	beam_min = hdu[0].header['BMIN']*3600
 	pix_size = np.abs(hdu[0].header['CDELT1'])*3600
+	## convert to units of brightness temperature K
+	em_cube_Tb = em_cube*6.07e5/(beam_maj*beam_min) ## Jy/beam->Tb
 	em_wcs = WCS(hdu[0].header)
 	central_c = SkyCoord(ra, dec, frame = 'fk5', unit = u.deg)
 	c_pix = central_c.to_pixel(em_wcs)
@@ -177,14 +180,16 @@ def extract_emission_spectrum(em_cube_name, ra, dec):
 	y0 = c_pix[1]-y_len/2
 	x0 = c_pix[0]-y_len/2
 	r_pixs = np.sqrt((yy-y0)**2 + (xx-x0)**2)
-	r_pixs[r_pixs < 0.5*beam_maj/pix_size] = float('nan')
-	
-	s = np.zeros(em_cube.shape[0])
-	s_err = np.zeros(em_cube.shape[0])
-	for i in range(em_cube.shape[0]):
-		plane = em_cube[i, :, :]
-		s[i] = np.nanmean(plane[r_pixs < 2*beam_maj/pix_size])*6.07e5/(beam_maj*beam_min) ## Jy/beam -> Tb
-		s_err[i] = np.nanstd(plane[r_pixs < 2*beam_maj/pix_size])*6.07e5/(beam_maj*beam_min) ## Jy/beam -> Tb
+    ## make a mask based on radius from source
+    radial_mask = np.zeros([em_cube.shape[1], em_cube.shape[2]])
+    ## center an annulus on souce 2x beamwidths wide
+    radial_mask[r_pixs < 2*beam_maj/pix_size] = 1
+    ## mask inner pixels corresponding to single synthesized beam
+    radial_mask[r_pixs < beam_maj/pix_size] = 0 
+    ## extend spatial pixel mask along entire spectral axis
+    radial_cube_mask = np.repeat(radial_mask[np.newaxis, :, :], em_cube.shape[0], axis=0)
+    s = np.nanmean(em_cube, axis = (1,2), where = radial_cube_mask.astype(bool))
+    s_err = np.nanstd(em_cube, axis = (1,2), where = radial_cube_mask.astype(bool))
 	return s, s_err
 
 ## function to compute mean emission spectrum
