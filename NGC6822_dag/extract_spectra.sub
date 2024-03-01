@@ -29,8 +29,8 @@ Requirements=(Target.HasCHTCStaging == true) && (OpSysMajorVer =?= 8)
 #  each job will need on the computer where it runs.
 transfer_input_files = extract_spectra.py, extract_spectra.sh
 request_cpus = 1
-request_memory = 20GB
+request_memory = 50GB
 request_disk = 30GB
 #
 # Tell HTCondor to run  instances of our job:
-queue phase_ra,phase_dec from phase-center-list.txt
+queue phase_ra,phase_dec from phase-center-list_leftover.txt

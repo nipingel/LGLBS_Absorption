@@ -33,6 +33,7 @@ python3 extract_spectra.py -n ${ra_phase_center}_${dec_phase_center}.image.pbcor
 ## tar output
 tar -cvf ${ra_phase_center}_${dec_phase_center}_analysis_products.tar *.image.pbcor.mom0.fits *.csv *.pickle
 mv *.tar /projects/vla-processing/images/${src_name}/Absorption
+rm anaconda.sh
 rm *.pickle
 rm *.fits
 rm *.csv
