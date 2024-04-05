@@ -294,6 +294,12 @@ def compute_mean_spin_temperature(em_profile, em_profile_err, abs_profile, abs_p
 	abs_integral_err = np.sqrt(np.sum(np.exp(-2*abs_profile)*abs_profile_err**2))*dv
 	return tb_integral/abs_integral, tb_integral/abs_integral*np.sqrt((tb_integral_err/tb_integral)**2+(abs_integral_err/abs_integral)**2)
 
+## function to set ra/dec str for the output file names
+def set_ra_dec_output_name(cubelet_name):
+	ra = file_name.split('_')[0]
+	dec = file_name.split('_')[1].split('s')[0]
+	return ra, dec
+
 ## function to pickle results
 def pickle_results(vel_axis, abs_spectrum, em_spectrum, three_sig_env, one_sig_env, rms, detection_sort, ra, dec, spin_temp, spin_temp_err):
 	pickle.dump([vel_axis, abs_spectrum, em_spectrum, three_sig_env, one_sig_env, rms, detection_sort, ra, dec, spin_temp, spin_temp_err], \
@@ -330,6 +336,12 @@ def main():
 	## get ellipse parameters
 	comp_ra_str, comp_dec_str, comp_ra, comp_dec, comp_a, comp_b, comp_pa = parse_csv('%s_aegean_catalog.csv' % cubelet_name[:-5])
 	for i in range(len(comp_ra)):
+		## ensure ra/dec strings are consistent
+		str_ra_name, str_dec_name = set_ra_dec_output_name(cubelet_name[:-5])
+		if i > 0:
+			str_ra_name+= '_%s' % i
+			str_dec_name+= '_%s' % i
+
 		str_ra, str_dec = convert_hms_dms(comp_ra_str[i], comp_dec_str[i])
 		
 		HI_abs_spectrum = extract_mean_pixel_spectrum(mask, cubelet_name, abs_vel_axis, bmaj, bmin, bpa, comp_ra[i], comp_dec[i], comp_a[i], comp_b[i], comp_pa[i])
@@ -375,7 +387,7 @@ def main():
 				spin_temp_list.append(spin_temp)
 				spin_temp_err_list.append(spin_temp_err)
 		## save out results
-		pickle_results(abs_vel_axis, HI_abs_spectrum, em_spectrum_interp, three_sigma_env, abs_noise_env, em_spectrum_err_interp, detection_sort, str_ra, str_dec, spin_temp_list, spin_temp_err_list)
+		pickle_results(abs_vel_axis, HI_abs_spectrum, em_spectrum_interp, three_sigma_env, abs_noise_env, em_spectrum_err_interp, detection_sort, str_ra_name, str_dec_name, spin_temp_list, spin_temp_err_list)
 if __name__=='__main__':
 	main()
 	exit()
