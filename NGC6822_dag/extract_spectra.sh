@@ -11,16 +11,9 @@ dec_phase_center=$3
 
 ## set HOME variable
 export HOME=$PWD
-
-## get python distribution
-wget https://repo.anaconda.com/archive/Anaconda3-2023.07-1-Linux-x86_64.sh -O ~/anaconda.sh
-bash ~/anaconda.sh -b -p $HOME/anaconda3                                                  
-~/anaconda3/bin/conda clean -all -y                                                       
-## create conda env for astro tools                                                                    
-~/anaconda3/bin/conda create -c conda-forge -y -n astro_env astropy pip numpy scipy matplotlib pip texlive-core
-source ~/anaconda3/etc/profile.d/conda.sh
+                                                                   
+source ~/miniconda3/etc/profile.d/conda.sh
 conda activate astro_env
-pip install spectral_cube
 pip install AegeanTools
 
 ## copy the data products to working area
@@ -28,12 +21,11 @@ cp /projects/vla-processing/images/${src_name}/Absorption/${ra_phase_center}_${d
 cp /projects/vla-processing/images/${src_name}/Absorption/VLA_ABCD_GBT_${ra_phase_center}_${dec_phase_center}_30arcmin.fits .
 
 # run analysis script that extracts spectra
-python3 extract_spectra.py -n ${ra_phase_center}_${dec_phase_center}.image.pbcor.fits -c VLA_ABCD_GBT_${ra_phase_center}_${dec_phase_center}_30arcmin.fits
+python extract_spectra.py -n ${ra_phase_center}_${dec_phase_center}.image.pbcor.fits -c VLA_ABCD_GBT_${ra_phase_center}_${dec_phase_center}_30arcmin.fits
 
 ## tar output
 tar -cvf ${ra_phase_center}_${dec_phase_center}_analysis_products.tar *.image.pbcor.mom0.fits *.csv *.pickle
 mv *.tar /projects/vla-processing/images/${src_name}/Absorption
-rm anaconda.sh
 rm *.pickle
 rm *.fits
 rm *.csv
