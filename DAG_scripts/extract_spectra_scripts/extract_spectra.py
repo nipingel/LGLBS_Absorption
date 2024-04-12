@@ -296,8 +296,8 @@ def compute_mean_spin_temperature(em_profile, em_profile_err, abs_profile, abs_p
 
 ## function to set ra/dec str for the output file names
 def set_ra_dec_output_name(cubelet_name):
-	ra = file_name.split('_')[0]
-	dec = file_name.split('_')[1].split('s')[0]
+	ra = cubelet_name.split('_')[0]
+	dec = cubelet_name.split('_')[1].split('s')[0]
 	return ra, dec
 
 ## function to pickle results
