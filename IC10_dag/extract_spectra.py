@@ -14,7 +14,6 @@ __version__="1.0"
 __email__="nmpingel@wisc.edu"
 __status__="Production"
 """
-
 ## imports
 import numpy as np
 import os
@@ -26,13 +25,13 @@ import glob as glob
 import pickle
 from spectral_cube import SpectralCube
 from scipy.interpolate import interp1d
-import astropy.units as u 
+import astropy.units as u
 import matplotlib
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 import matplotlib.gridspec as gridspec
-matplotlib.rc('font', family='serif') 
-matplotlib.rc('text', usetex=True) 
+matplotlib.rc('font', family='serif')
+matplotlib.rc('text', usetex=True)
 matplotlib.rcParams.update({'font.size': 10})
 matplotlib.rcParams['figure.dpi']= 250
 matplotlib.rc("savefig", dpi=250)
@@ -44,7 +43,7 @@ tableau20 = [(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
 			 (227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),
 			 (188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]
 
-# Scale the RGB values to the [0, 1] range, which is the format matplotlib 
+# Scale the RGB values to the [0, 1] range, which is the format matplotlib
 # accepts.
 for i in range(len(tableau20)):
 	r, g, b = tableau20[i]
@@ -102,7 +101,7 @@ def parse_csv(f):
 	## extract the useful columns
 	ra_str_column = np.array(parse_array[:, 3], dtype = 'str')
 	dec_str_column = np.array(parse_array[:, 4], dtype = 'str')
-	ra_column = np.array(parse_array[:, 5], dtype = 'float') 
+	ra_column = np.array(parse_array[:, 5], dtype = 'float')
 	dec_column = np.array(parse_array[:, 7], dtype = 'float')
 	a_column = np.array(parse_array[:, 13], dtype = 'float')
 	b_column = np.array(parse_array[:, 15], dtype = 'float')
@@ -132,7 +131,7 @@ def extract_mean_pixel_spectrum(mask, cubelet_name, vel_axis, bmaj, bmin, bpa, r
 	## convert a/b to pixels
 	a_pix = a/pix_size
 	b_pix = b/pix_size
-	
+
 
 	## define 2D radial grid centered on source
 	y = np.arange(-cubelet.shape[1]/2, cubelet.shape[1]/2)
@@ -144,16 +143,17 @@ def extract_mean_pixel_spectrum(mask, cubelet_name, vel_axis, bmaj, bmin, bpa, r
 	z = (np.sin(pa_rad)**2/a_pix**2+np.cos(pa_rad)**2/b_pix**2)*(yy-y0)**2 + \
 		2*np.cos(pa_rad)*np.sin(pa_rad)*(1/a_pix**2-1/b_pix**2)*(yy-y0)*(xx-x0) + \
 		((xx-x0))**2*(np.sin(pa_rad)**2/b_pix**2+np.cos(pa_rad)**2/a_pix**2)
-	good_inds = np.where(z < 1)
-	
-	spectrum = np.zeros(len(vel_axis))
-	for j in range(len(vel_axis)):
-		s = 0 
-		for y in good_inds[0][:]:
-			for x in good_inds[1][:]:
-				mean_tb = np.mean(cubelet[mask, y, x])
-				s += mean_tb**2*cubelet[j, y, x]
-		spectrum[j] = s
+
+	## create a boolean array for pixels that fall within source ellipse
+	source_image_mask = np.zeros([cubelet.shape[1], cubelet.shape[2]])
+	source_image_mask[np.where(z<1)] = 1.0
+	## extend spatial pixel mask along entire spectral axis
+	source_cube_mask = np.repeat(source_image_mask[np.newaxis, :, :], len(vel_axis), axis=0)
+	## compute mean brightness temperature along each sightline
+	mean_tb_image = np.nanmean(cubelet, axis = 0)
+	## compute weighted sum
+	spectrum = np.nansum(mean_tb_image**2*cubelet, axis = (1,2), where = source_cube_mask.astype(bool))
+	## compute continuum level
 	c = np.mean(spectrum[mask])
 	return spectrum/c
 
@@ -165,6 +165,8 @@ def extract_emission_spectrum(em_cube_name, ra, dec):
 	beam_maj = hdu[0].header['BMAJ']*3600
 	beam_min = hdu[0].header['BMIN']*3600
 	pix_size = np.abs(hdu[0].header['CDELT1'])*3600
+	## convert to units of brightness temperature K
+	em_cube_Tb = 1*em_cube #*6.07e5/(beam_maj*beam_min) ## Jy/beam->Tb
 	em_wcs = WCS(hdu[0].header)
 	central_c = SkyCoord(ra, dec, frame = 'fk5', unit = u.deg)
 	c_pix = central_c.to_pixel(em_wcs)
@@ -177,13 +179,17 @@ def extract_emission_spectrum(em_cube_name, ra, dec):
 	y0 = c_pix[1]-y_len/2
 	x0 = c_pix[0]-y_len/2
 	r_pixs = np.sqrt((yy-y0)**2 + (xx-x0)**2)
-	r_pixs[r_pixs < 0.5*beam_maj/pix_size] = float('nan')
-	
-	s = np.zeros(em_cube.shape[0])
-	for i in range(em_cube.shape[0]):
-		plane = em_cube[i, :, :]
-		s[i] = np.nanmean(plane[r_pixs < 2*beam_maj/pix_size])*6.07e5/(beam_maj*beam_min) ## Jy/beam -> Tb
-	return s
+	## make a mask based on radius from source
+	radial_mask = np.zeros([em_cube_Tb.shape[1], em_cube_Tb.shape[2]])
+	## center an annulus on souce 2x beamwidths wide
+	radial_mask[r_pixs < 2*beam_maj/pix_size] = 1
+	## mask inner pixels corresponding to single synthesized beam
+	radial_mask[r_pixs < beam_maj/pix_size] = 0
+	## extend spatial pixel mask along entire spectral axis
+	radial_cube_mask = np.repeat(radial_mask[np.newaxis, :, :], em_cube_Tb.shape[0], axis=0)
+	s = np.nanmean(em_cube_Tb, axis = (1,2), where = radial_cube_mask.astype(bool))
+	s_err = np.nanstd(em_cube_Tb, axis = (1,2), where = radial_cube_mask.astype(bool))
+	return s, s_err
 
 ## function to compute mean emission spectrum
 def compute_mean_em_spectrum(em_cube_name):
@@ -198,7 +204,7 @@ def compute_mean_em_spectrum(em_cube_name):
 	em_vel_axis = em_cube_sc.spectral_axis.value/1000.0 ## km/s
 
 	## compute mean spectrum
-	mean_em_spectrum = np.nanmean(em_cube, axis = (1, 2))*6.07e5/(beam_maj*beam_min) ## Jy/beam -> Tb
+	mean_em_spectrum = np.nanmean(em_cube, axis = (1, 2)) #*6.07e5/(beam_maj*beam_min) ## Jy/beam -> Tb
 	return mean_em_spectrum, em_vel_axis
 
 ## function to find consecutive indices to identify absorption features
@@ -246,7 +252,7 @@ def generate_plot(vel_axis, abs_spectrum, em_spectrum, three_sig_env, one_sig_en
 	ax1.set_title(r"$\alpha_{\rm J2000}$=%s, $\delta_{\rm J2000}$=%s" "\n" "Absorption" % (ra, dec))
 	ax1.grid()
 
-	## EMISSION SPECTRUM ##  
+	## EMISSION SPECTRUM ##
 	## set up tick mark parameters for absorption
 	majorYLocator = MultipleLocator(10)
 	majorYFormatter = FormatStrFormatter('%d')
@@ -280,18 +286,23 @@ def generate_plot(vel_axis, abs_spectrum, em_spectrum, three_sig_env, one_sig_en
 	plt.close()
 
 ## function to compute spin temperature
-def compute_mean_spin_temperature(em_profile, rms, abs_profile, abs_profile_err, dv):
+def compute_mean_spin_temperature(em_profile, em_profile_err, abs_profile, abs_profile_err, dv):
 	tb_integral = np.sum(em_profile)*dv
-	em_profile_err = np.full(shape = len(em_profile), fill_value = rms)
 	tb_integral_err = np.sqrt(np.sum(em_profile_err**2))*dv
 	abs_integral = np.sum(1-np.exp(-1*abs_profile))*dv
 	abs_integral_err = np.sqrt(np.sum(np.exp(-2*abs_profile)*abs_profile_err**2))*dv
 	return tb_integral/abs_integral, tb_integral/abs_integral*np.sqrt((tb_integral_err/tb_integral)**2+(abs_integral_err/abs_integral)**2)
 
+## function to set ra/dec str for the output file names
+def set_ra_dec_output_name(cubelet_name):
+	ra = cubelet_name.split('_')[0]
+	dec = cubelet_name.split('_')[1].split('s')[0]
+	return ra, dec
+
 ## function to pickle results
 def pickle_results(vel_axis, abs_spectrum, em_spectrum, three_sig_env, one_sig_env, rms, detection_sort, ra, dec, spin_temp, spin_temp_err):
 	pickle.dump([vel_axis, abs_spectrum, em_spectrum, three_sig_env, one_sig_env, rms, detection_sort, ra, dec, spin_temp, spin_temp_err], \
-		open('%s_%s_analysis_variables.pickle' % (ra, dec), "wb" ))	
+		open('%s_%s_analysis_variables.pickle' % (ra, dec), "wb" ))
 
 
 ## unpack user arguments
@@ -314,7 +325,7 @@ def main():
 	## create mask
 	mask = define_mask(low_vel_list, high_vel_list, abs_vel_axis)
 
-	## get beam information 
+	## get beam information
 	bmaj, bmin, bpa = get_beam_info(cubelet_name)
 
 	## produce integrated intensity image and run source finding
@@ -324,12 +335,22 @@ def main():
 	## get ellipse parameters
 	comp_ra_str, comp_dec_str, comp_ra, comp_dec, comp_a, comp_b, comp_pa = parse_csv('%s_aegean_catalog.csv' % cubelet_name[:-5])
 	for i in range(len(comp_ra)):
+		## ensure ra/dec strings are consistent
+		str_ra_name, str_dec_name = set_ra_dec_output_name(cubelet_name[:-5])
+		if i > 0:
+			str_ra_name+= '_%s' % i
+			str_dec_name+= '_%s' % i
+
 		str_ra, str_dec = convert_hms_dms(comp_ra_str[i], comp_dec_str[i])
-		
+
 		HI_abs_spectrum = extract_mean_pixel_spectrum(mask, cubelet_name, abs_vel_axis, bmaj, bmin, bpa, comp_ra[i], comp_dec[i], comp_a[i], comp_b[i], comp_pa[i])
 
-		## extract emission spectrum 
-		em_spectrum = extract_emission_spectrum(combined_name, comp_ra[i], comp_dec[i])
+		## extract emission spectrum
+		em_spectrum, em_spectrum_err = extract_emission_spectrum(combined_name, comp_ra[i], comp_dec[i])
+		## add em_spectrum in quadrature with rms; -> just use std of emission mean
+		#rms_K_spectrum = np.empty(len(em_spectrum_err))
+		#rms_K_spectrum.fill(rms_K)
+		#em_spectrum_err_final = np.sqrt(em_spectrum_err**2+rms_K_spectrum**2)
 
 		## compute mean emission spectrum
 		mean_em_spectrum, em_vel_axis = compute_mean_em_spectrum(combined_name)
@@ -342,9 +363,11 @@ def main():
 		abs_noise_func = interp1d(em_vel_axis, abs_noise_env, kind = 'linear', fill_value = 0.1/3, bounds_error = False)
 		abs_noise_env = abs_noise_func(abs_vel_axis)
 		three_sigma_env = 1-3*abs_noise_env
-		## interpolate em_spectrum to velocity axis of absorption
+		## interpolate em_spectrum/em_spectrum_err to velocity axis of absorption
 		em_spectrum_func = interp1d(em_vel_axis, em_spectrum, kind = 'linear', fill_value = 0.0, bounds_error = False)
 		em_spectrum_interp = em_spectrum_func(abs_vel_axis)
+		em_spectrum_err_func = interp1d(em_vel_axis, em_spectrum_err, kind = 'linear', fill_value = 0.0, bounds_error = False)
+		em_spectrum_err_interp = em_spectrum_err_func(abs_vel_axis)
 
 		## determine where absorption features are > 3-sigma dectection
 		detection_inds = np.array(np.where((HI_abs_spectrum) <= three_sigma_env)[0])
@@ -359,11 +382,11 @@ def main():
 		for l in detection_sort:
 			if len(l) > 2:
 				## compute spin temperature and add to lists
-				spin_temp, spin_temp_err = compute_mean_spin_temperature(em_spectrum_interp[l[0]:l[-1]], rms_K, HI_abs_spectrum[l[0]:l[-1]], abs_noise_env[l[0]:l[-1]], 0.41)
+				spin_temp, spin_temp_err = compute_mean_spin_temperature(em_spectrum_interp[l[0]:l[-1]], em_spectrum_err_interp[l[0]:l[-1]], HI_abs_spectrum[l[0]:l[-1]], abs_noise_env[l[0]:l[-1]], 0.41)
 				spin_temp_list.append(spin_temp)
 				spin_temp_err_list.append(spin_temp_err)
 		## save out results
-		pickle_results(abs_vel_axis, HI_abs_spectrum, em_spectrum_interp, three_sigma_env, abs_noise_env, rms_K, detection_sort, str_ra, str_dec, spin_temp_list, spin_temp_err_list)
+		pickle_results(abs_vel_axis, HI_abs_spectrum, em_spectrum_interp, three_sigma_env, abs_noise_env, em_spectrum_err_interp, detection_sort, str_ra_name, str_dec_name, spin_temp_list, spin_temp_err_list)
 if __name__=='__main__':
 	main()
 	exit()
