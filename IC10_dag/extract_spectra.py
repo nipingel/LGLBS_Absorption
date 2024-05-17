@@ -316,8 +316,8 @@ rms_K = 7.5
 
 def main():
 	## useful constants
-	low_vel_list = [-200, 35]
-	high_vel_list = [-150, 100]
+	low_vel_list = [-475, -230] 
+	high_vel_list = [-445, -175]
 
 	## get velocity axis for absorption cubelet and construct mask
 	abs_vel_axis = return_spectral_axis(cubelet_name)
