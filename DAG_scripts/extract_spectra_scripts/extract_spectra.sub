@@ -34,4 +34,5 @@ request_memory = 10GB
 request_disk = 35GB
 #
 # Tell HTCondor to run  instances of our job:
-queue phase_ra,phase_dec from phase-center-list.txt
+#queue phase_ra,phase_dec from phase-center-list.txt
+queue 1
