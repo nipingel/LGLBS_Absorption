@@ -305,6 +305,95 @@ def pickle_results(vel_axis, abs_spectrum, em_spectrum, three_sig_env, one_sig_e
 		open('%s_%s_analysis_variables.pickle' % (ra, dec), "wb" ))
 
 
+
+
+
+## NEW IO CODE YAYAYAYAYAYY #######
+def get_source_apperture(mask, cubelet_name, vel_axis, bmaj, bmin, bpa, ra, dec, a, b, pa):
+	hdu = fits.open(cubelet_name, mode='readonly')
+	cubelet = hdu[0].data
+	cubelet_wcs = WCS(hdu[0].header)
+	pix_size = (hdu[0].header['CDELT1'])*3600
+	pix_area = (hdu[0].header['CDELT1'])**2*3600**2
+	hdu.close()
+
+	## define radial pixel grid and place origin at centeral ra, dec pixels
+	## get pixel indices of ellipse center
+	central_c = SkyCoord(ra, dec, frame = 'fk5', unit = u.deg)
+	central_pix = central_c.to_pixel(cubelet_wcs)
+	## convert a/b to pixels
+	a_pix = a/pix_size
+	b_pix = b/pix_size
+	## define 2D radial grid centered on source
+	y = np.arange(-cubelet.shape[1]/2, cubelet.shape[1]/2)
+	x = np.arange(-cubelet.shape[2]/2, cubelet.shape[2]/2)
+	yy, xx = np.meshgrid(y, x, indexing='ij')
+	y0 = central_pix[1]-cubelet.shape[1]/2
+	x0 = central_pix[0]-cubelet.shape[2]/2
+	pa_rad = np.pi/2+np.deg2rad(pa)
+	z = (np.sin(pa_rad)**2/a_pix**2+np.cos(pa_rad)**2/b_pix**2)*(yy-y0)**2 + \
+		2*np.cos(pa_rad)*np.sin(pa_rad)*(1/a_pix**2-1/b_pix**2)*(yy-y0)*(xx-x0) + \
+		((xx-x0))**2*(np.sin(pa_rad)**2/b_pix**2+np.cos(pa_rad)**2/a_pix**2)
+
+	## create a boolean array for pixels that fall within source ellipse
+	source_image_mask = np.zeros([cubelet.shape[1], cubelet.shape[2]])
+	source_image_mask[np.where(z<1)] = 1.0
+	
+	return source_image_mask
+
+def handle_overlaps(mask, cubelet_name, vel_axis, bmaj, bmin, bpa, ra, dec, a, b, pa):
+        
+    hdu = fits.open(cubelet_name)
+    cubelet = hdu[0].data
+    ellipse_masks = []
+    hdu.close()
+
+    for ra, dec, a, b, pa in zip(ra, dec, a, b, pa):
+        ellipse_masks.append(get_source_apperture(mask, cubelet_name, vel_axis, bmaj, bmin, bpa, ra, dec, a, b, pa))
+
+    union_mask = calculate_union_mask(ellipse_masks)
+    try:
+        if union_mask is None:
+            print('No overlap found between the sources')
+            return None
+        else:
+            source_cube_mask = np.repeat(union_mask[np.newaxis, :, :], len(vel_axis), axis=0)
+            ## compute mean brightness temperature along each sightline
+            mean_tb_image = np.nanmean(cubelet, axis = 0)
+            ## compute weighted sum
+            spectrum = np.nansum(mean_tb_image**2*cubelet, axis = (1,2), where = source_cube_mask.astype(bool))
+            ## compute continuum level
+            c = np.mean(spectrum[mask])
+
+            return spectrum/c
+    except:
+        print('No overlap found between the sources')
+        return None
+
+
+def calculate_union_mask(ellipse_masks):
+    # Check if there is more than one mask
+    if len(ellipse_masks) <= 1:
+        return ellipse_masks[0] if len(ellipse_masks) == 1 else None
+
+    # Initialize the union mask with the first mask
+    union_mask = np.copy(ellipse_masks[0])
+
+    # Flag to track if there is an overlap
+    overlap_flag = False
+
+    # Loop through the remaining masks
+    for mask in ellipse_masks[1:]:
+        # Check if there is any overlap between the current mask and the union mask
+        if np.any(np.logical_and(union_mask, mask)):
+            # Update the union mask by taking the logical OR of the current mask with the union mask
+            union_mask = np.logical_or(union_mask, mask)
+            overlap_flag = True  # Set the flag to True if overlap is found
+
+    # Return the union mask only if there was an overlap, otherwise return None
+    return union_mask if overlap_flag else None
+
+## NEW IO CODE YAYAYAYAYAYY #######
 ## unpack user arguments
 cubelet_name = args.cubelet_name
 combined_name = args.combined_name
@@ -387,6 +476,55 @@ def main():
 				spin_temp_err_list.append(spin_temp_err)
 		## save out results
 		pickle_results(abs_vel_axis, HI_abs_spectrum, em_spectrum_interp, three_sigma_env, abs_noise_env, em_spectrum_err_interp, detection_sort, str_ra_name, str_dec_name, spin_temp_list, spin_temp_err_list)
+
+  ## NEW IO CODE YAYAYAYAYAYY #######
+	## add a step here that if there is an overlap adds an additional pickle result	
+  	new_spectrum = []
+  	trial = handle_overlaps(mask, cubelet_name, abs_vel_axis, bmaj, bmin, bpa, comp_ra, comp_dec, comp_a, comp_b, comp_pa)
+  	if trial is not None:
+  		i = 0
+  		print("overlap found !")
+  		new_spectrum = trial
+  
+  		em_spectrum, em_spectrum_err = extract_emission_spectrum(combined_name, comp_ra[i], comp_dec[i])
+  	
+  		## compute mean emission spectrum
+  		mean_em_spectrum, em_vel_axis = compute_mean_em_spectrum(combined_name)
+  		## compute 1-sigma uncertainty in absorption profile
+  		sigma_cont = np.std(new_spectrum[mask])
+  		abs_noise_env = sigma_cont*((tsys+apeff*mean_em_spectrum)/tsys)
+  
+  		## interpolate noise envelope to velocity axis of absorption
+  		abs_noise_func = interp1d(em_vel_axis, abs_noise_env, kind = 'linear', fill_value = 0.1/3, bounds_error = False)
+  		abs_noise_env = abs_noise_func(abs_vel_axis)
+  		three_sigma_env = 1-3*abs_noise_env
+  		## interpolate em_spectrum/em_spectrum_err to velocity axis of absorption
+  		em_spectrum_func = interp1d(em_vel_axis, em_spectrum, kind = 'linear', fill_value = 0.0, bounds_error = False)
+  		em_spectrum_interp = em_spectrum_func(abs_vel_axis)
+  		em_spectrum_err_func = interp1d(em_vel_axis, em_spectrum_err, kind = 'linear', fill_value = 0.0, bounds_error = False)
+  		em_spectrum_err_interp = em_spectrum_err_func(abs_vel_axis)
+  
+  		## determine where absorption features are > 3-sigma dectection
+  		detection_inds = np.array(np.where((new_spectrum) <= three_sigma_env)[0])
+  		detection_sort = consecutive(detection_inds)
+  
+  		## loop through features to compute spin temperatures
+  		spin_temp_list = []
+  		spin_temp_err_list = []
+  		for l in detection_sort:
+  			if len(l) > 2:
+  				## compute spin temperature and add to lists
+  				spin_temp, spin_temp_err = compute_mean_spin_temperature(em_spectrum_interp[l[0]:l[-1]], em_spectrum_err_interp[l[0]:l[-1]], HI_abs_spectrum[l[0]:l[-1]], abs_noise_env[l[0]:l[-1]], 0.41)
+  				spin_temp_list.append(spin_temp)
+  				spin_temp_err_list.append(spin_temp_err)
+  		
+  		pickle_results(abs_vel_axis, HI_abs_spectrum, em_spectrum_interp, three_sigma_env, abs_noise_env, em_spectrum_err_interp, detection_sort, str_ra, str_dec, spin_temp_list, spin_temp_err_list)
+  	else:
+  		print('No overlap found')
+  	
+  		
+  	## NEW IO CODE YAYAYAYAYAYY #######
+
 if __name__=='__main__':
 	main()
 	exit()
