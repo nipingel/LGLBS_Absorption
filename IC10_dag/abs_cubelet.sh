@@ -15,10 +15,10 @@ n_chan=$5
 src_name=$6
 
 full_path=/projects/vla-processing/measurement_sets/${src_name}/${ms_name}
-output_path=/projects/vla-processing/images/${src_name}/Absorption
+output_path=/projects/vla-processing/images/${src_name}/Absorption/pipeline_rerun
 
 ## define input values
 output_name=${output_path}"/"$2'_'$3
 
 # make casa call to imaging script
-/casa-6.5.0-15-py3.8/bin/casa --logfile $output_name".log" -c abs_cubelet.py -v ${full_path} -o ${output_name} -r ${ra_phase_center} -d${dec_phase_center} -n ${n_chan} -s ${start_velocity}
+casa --logfile $output_name".log" -c abs_cubelet.py -v ${full_path} -o ${output_name} -r ${ra_phase_center} -d${dec_phase_center} -n ${n_chan} -s ${start_velocity}

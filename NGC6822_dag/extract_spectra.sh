@@ -9,19 +9,8 @@ src_name=$1
 ra_phase_center=$2
 dec_phase_center=$3
 
-## set HOME variable
-export HOME=$PWD
 
-## get python distribution
-wget https://repo.anaconda.com/archive/Anaconda3-2023.07-1-Linux-x86_64.sh -O ~/anaconda.sh
-bash ~/anaconda.sh -b -p $HOME/anaconda3                                                  
-~/anaconda3/bin/conda clean -all -y                                                       
-## create conda env for astro tools                                                                    
-~/anaconda3/bin/conda create -c conda-forge -y -n astro_env astropy pip numpy scipy matplotlib pip texlive-core
-source ~/anaconda3/etc/profile.d/conda.sh
-conda activate astro_env
-pip install spectral_cube
-pip install AegeanTools
+HOME=$PWD
 
 ## copy the data products to working area
 cp /projects/vla-processing/images/${src_name}/Absorption/${ra_phase_center}_${dec_phase_center}.image.pbcor.fits .

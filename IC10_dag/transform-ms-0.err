@@ -1,9 +1,0 @@
-tar: /projects/vla-processing/measurement_sets/IC10/raw_measurement_sets/20A-346.sb41456504.eb41633661.59646.7055624537.speclines.ms.split.tar: Cannot open: Not a directory
-tar: Error is not recoverable: exiting now
---> CrashReporter initialized.
-casalogger: cannot connect to X server 
-2023-11-08 01:06:54	SEVERE	mstransform::::casa	Exception Reported: Error in mstransform: the vis parameter must be a path that exists ('20A-346.sb41456504.eb41633661.59646.7055624537.speclines.ms.split' does not exist)
-Telemetry initialized. Telemetry will send anonymized usage statistics to NRAO.
-You can disable telemetry by adding the following line to the config.py file in your rcdir (e.g. ~/.casa/config.py):
-telemetry_enabled = False
-mv: cannot stat '20A-346.sb41456504.eb41633661.59646.7055624537.speclines.ms.split.transformed': No such file or directory

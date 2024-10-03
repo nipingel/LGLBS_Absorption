@@ -1,5 +1,5 @@
-imagename  = '/projects/vla-processing/images/IC10/Absorption/0h19m10.00s_59d17m44.77s.image.pbcor.commonbeam'
-fitsimage  = '/projects/vla-processing/images/IC10/Absorption/0h19m10.00s_59d17m44.77s.image.pbcor.fits'
+imagename  = 'VLA_ABCD_GBT_0h21m2.31s_58d54m33.96s_30arcmin.imsub'
+fitsimage  = 'VLA_ABCD_GBT_0h21m2.31s_58d54m33.96s_30arcmin.fits'
 velocity   = True
 optical    = False
 bitpix     = -32
@@ -10,4 +10,4 @@ dropstokes = True
 stokeslast = True
 history    = False
 dropdeg    = True
-#exportfits( imagename='/projects/vla-processing/images/IC10/Absorption/0h19m10.00s_59d17m44.77s.image.pbcor.commonbeam',fitsimage='/projects/vla-processing/images/IC10/Absorption/0h19m10.00s_59d17m44.77s.image.pbcor.fits',velocity=True,optical=False,bitpix=-32,minpix=0,maxpix=-1,overwrite=False,dropstokes=True,stokeslast=True,history=False,dropdeg=True )
+#exportfits( imagename='VLA_ABCD_GBT_0h21m2.31s_58d54m33.96s_30arcmin.imsub',fitsimage='VLA_ABCD_GBT_0h21m2.31s_58d54m33.96s_30arcmin.fits',velocity=True,optical=False,bitpix=-32,minpix=0,maxpix=-1,overwrite=False,dropstokes=True,stokeslast=True,history=False,dropdeg=True )

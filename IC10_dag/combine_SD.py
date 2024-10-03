@@ -31,10 +31,10 @@ dec_phase_center = args.dec_phase_center
 def main():
 	## read in sd_cube
 	importfits_params = {
-		'fitsimage': sd_name,
-		'imagename': sd_name.replace('.fits', '.im')
+		'fitsimage': int_path,
+		'imagename': int_path.replace('.fits', '.im')
 	}
-	importfits(**importfits_params)
+	#importfits(**importfits_params)
 
 	## extract 30' subregion around source
 	imsubimage_params = {
@@ -53,7 +53,7 @@ def main():
 		'asvelocity': True,
 		'axes': [0, 1, 2], 
 	}
-	imregrid(**regrid_params)
+	#imregrid(**regrid_params)
 
 	## run imhead to put beam info in header
 	imhead_params = {
@@ -82,7 +82,7 @@ def main():
 		'outfile': 'VLA_ABCD_%s_%s_30arcmin.imsub.imsmooth' % (ra_phase_center, dec_phase_center),
 		'kernel': 'commonbeam'
 	}
-	imsmooth(**imsmooth_params)
+	#imsmooth(**imsmooth_params)
 	## combine sd and vla cube
 	feather_params = {
 		'imagename':'VLA_ABCD_GBT_%s_%s_30arcmin.imsub' % (ra_phase_center, dec_phase_center),
@@ -90,7 +90,7 @@ def main():
 		'lowres': 'GBT_%s_%s_30arcmin.regrid' % (ra_phase_center, dec_phase_center),
 		'sdfactor': 1.0
 	}
-	feather(**feather_params)
+	#feather(**feather_params)
 
 	## export the combined subcube
 	exportfits_params = {

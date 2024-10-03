@@ -7,7 +7,7 @@
 #  your job. Wherever you see $(Cluster), HTCondor will insert the 
 #  queue number assigned to this set of jobs at the time of submission.
 universe = docker
-docker_image = nipingel/casa:6.5-amd64
+docker_image = nipingel/casa:latest
 
 # Specify your executable (single binary or a script that runs several
 #  commands), arguments, and a files for HTCondor to store standard
@@ -34,4 +34,4 @@ request_memory = 20GB
 request_disk = 150GB
 #
 # Tell HTCondor to run  instances of our job:
-queue phase_ra,phase_dec from phase-center-list-comb-cube.txt
+queue phase_ra,phase_dec from phase-center-list.txt

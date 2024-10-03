@@ -154,9 +154,9 @@
 ## - src_name: source name
 ## - output:
 ## - tarball of 2D cubelets for each source
-# JOB K abs_cubelet.sub
-# VARS K ms_name="IC10_A+B_full.comb_spw.wt" start_velocity="-475" chan_nums="750" src_name="IC10"
-#PARENT K CHILD M
+## JOB K abs_cubelet.sub
+## VARS K ms_name="IC10_A+B.comb_spw.wt" start_velocity="-475" chan_nums="750" src_name="IC10"
+## PARENT K CHILD M
 
 ## COMBINE CUBELETS
 ## runs combine_SD.py to extract 30' region around each source
@@ -170,7 +170,7 @@
 ## output
 ## fits file of 30' region around each source feathered with GBT data
 JOB L combine_SD.sub
-VARS L src_name="IC10" vla_name="IC10_ABCD.combImage" sd_name="N6822_GBT_Jy.eq.nostokes.fits"
+VARS L src_name="IC10" vla_name="IC10_A+B+C+D_HI_0p4kms_feathered.im" sd_name="N6822_GBT_Jy.eq.nostokes.fits"
 PARENT L CHILD M
 
 

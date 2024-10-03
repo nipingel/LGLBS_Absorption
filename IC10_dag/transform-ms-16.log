@@ -1,6 +1,0 @@
-000 (16178989.016.000) 2023-11-07 18:52:52 Job submitted from host: <128.104.101.92:9618?addrs=128.104.101.92-9618+[2607-f388-107c-501-a236-9fff-fe3c-caa8]-9618&alias=submit2.chtc.wisc.edu&noUDP&sock=schedd_8307_7d51>
-    DAG Node: C
-...
-009 (16178989.016.000) 2023-11-07 19:07:03 Job was aborted.
-	Node Error: DAG node C (16178989.0.0) failed with signal -1. (by user stelea)
-...

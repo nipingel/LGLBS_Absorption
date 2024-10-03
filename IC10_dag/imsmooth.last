@@ -1,11 +1,11 @@
-imagename = '/projects/vla-processing/images/IC10/Absorption/0h19m10.00s_59d17m44.77s.image.pbcor'
+imagename = '/projects/vla-processing/images/IC10/Absorption/pipeline_rerun/0h22m43.09s_59d25m25.70s.image.pbcor'
 kernel    = 'commonbeam'
 region    = ''
 box       = ''
 chans     = ''
 stokes    = ''
 mask      = ''
-outfile   = '/projects/vla-processing/images/IC10/Absorption/0h19m10.00s_59d17m44.77s.image.pbcor.commonbeam'
+outfile   = '/projects/vla-processing/images/IC10/Absorption/pipeline_rerun/0h22m43.09s_59d25m25.70s.image.pbcor.commonbeam'
 overwrite = False
 major     = ''
 minor     = ''
@@ -15,4 +15,4 @@ kimage    = ''
 scale     = -1.0
 stretch   = False
 beam      = ''
-#imsmooth( imagename='/projects/vla-processing/images/IC10/Absorption/0h19m10.00s_59d17m44.77s.image.pbcor',kernel='commonbeam',region='',box='',chans='',stokes='',mask='',outfile='/projects/vla-processing/images/IC10/Absorption/0h19m10.00s_59d17m44.77s.image.pbcor.commonbeam',overwrite=False,major='',minor='',pa='',targetres=False,kimage='',scale=-1.0,stretch=False,beam='' )
+#imsmooth( imagename='/projects/vla-processing/images/IC10/Absorption/pipeline_rerun/0h22m43.09s_59d25m25.70s.image.pbcor',kernel='commonbeam',region='',box='',chans='',stokes='',mask='',outfile='/projects/vla-processing/images/IC10/Absorption/pipeline_rerun/0h22m43.09s_59d25m25.70s.image.pbcor.commonbeam',overwrite=False,major='',minor='',pa='',targetres=False,kimage='',scale=-1.0,stretch=False,beam='' )
