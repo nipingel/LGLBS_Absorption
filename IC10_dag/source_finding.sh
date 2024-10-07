@@ -26,4 +26,4 @@ aegean ${image_name}.image.fits --out ${image_name}_source_catalog.csv
 python parse_log.py -n ${image_name}_source_catalog.csv -t ${int_threshold}
 
 ## phase-center-list.txt will be moved back to home directory after job completion, but clean up other files
-rm ${image_name}*
+rm ${image_name}.image.fits
