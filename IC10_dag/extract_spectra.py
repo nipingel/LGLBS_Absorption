@@ -132,7 +132,6 @@ def extract_mean_pixel_spectrum(mask, cubelet_name, vel_axis, bmaj, bmin, bpa, r
 	a_pix = a/pix_size
 	b_pix = b/pix_size
 
-
 	## define 2D radial grid centered on source
 	y = np.arange(-cubelet.shape[1]/2, cubelet.shape[1]/2)
 	x = np.arange(-cubelet.shape[2]/2, cubelet.shape[2]/2)
@@ -158,13 +157,14 @@ def extract_mean_pixel_spectrum(mask, cubelet_name, vel_axis, bmaj, bmin, bpa, r
 	return spectrum/c
 
 ## function to generate the emission spectrum
-def extract_emission_spectrum(em_cube_name, ra, dec):
+def extract_emission_spectrum(em_cube_name, ra, dec, rms):
 	hdu = fits.open(em_cube_name)
 	em_cube = hdu[0].data
 	y_len, x_len = em_cube.shape[1], em_cube.shape[2]
 	beam_maj = hdu[0].header['BMAJ']*3600
 	beam_min = hdu[0].header['BMIN']*3600
 	pix_size = np.abs(hdu[0].header['CDELT1'])*3600
+
 	## convert to units of brightness temperature K
 	em_cube_Tb = 1*em_cube #*6.07e5/(beam_maj*beam_min) ## Jy/beam->Tb
 	em_wcs = WCS(hdu[0].header)
@@ -187,8 +187,15 @@ def extract_emission_spectrum(em_cube_name, ra, dec):
 	radial_mask[r_pixs < beam_maj/pix_size] = 0
 	## extend spatial pixel mask along entire spectral axis
 	radial_cube_mask = np.repeat(radial_mask[np.newaxis, :, :], em_cube_Tb.shape[0], axis=0)
+	## compute mean within mask
 	s = np.nanmean(em_cube_Tb, axis = (1,2), where = radial_cube_mask.astype(bool))
-	s_err = np.nanstd(em_cube_Tb, axis = (1,2), where = radial_cube_mask.astype(bool))
+
+	## to estimate error, measure the rms within mask and divide by sqrt(N) where N is the number of beams in annulus
+	## we consider the number of beams since there is correlated noise between adjacent pixels
+	mask_area_pixels = np.sum(radial_cube_mask[0, :, :])
+	beam_area_pixels = 1.1331*beam_maj*beam_min/pix_size**2
+	n_beams_in_mask = mask_area_pixels/beam_area_pixels
+	s_err = np.full(em_cube_Tb.shape[0], rms/np.sqrt(n_beams_in_mask))
 	return s, s_err
 
 ## function to compute mean emission spectrum
@@ -312,7 +319,7 @@ combined_name = args.combined_name
 ## useful constants
 tsys = 25.0
 apeff = 0.35
-rms_K = 7.5
+rms_K = 23.1 ## K
 
 def main():
 	## useful constants
@@ -346,11 +353,7 @@ def main():
 		HI_abs_spectrum = extract_mean_pixel_spectrum(mask, cubelet_name, abs_vel_axis, bmaj, bmin, bpa, comp_ra[i], comp_dec[i], comp_a[i], comp_b[i], comp_pa[i])
 
 		## extract emission spectrum
-		em_spectrum, em_spectrum_err = extract_emission_spectrum(combined_name, comp_ra[i], comp_dec[i])
-		## add em_spectrum in quadrature with rms; -> just use std of emission mean
-		#rms_K_spectrum = np.empty(len(em_spectrum_err))
-		#rms_K_spectrum.fill(rms_K)
-		#em_spectrum_err_final = np.sqrt(em_spectrum_err**2+rms_K_spectrum**2)
+		em_spectrum, em_spectrum_err = extract_emission_spectrum(combined_name, comp_ra[i], comp_dec[i], rms_K)
 
 		## compute mean emission spectrum
 		mean_em_spectrum, em_vel_axis = compute_mean_em_spectrum(combined_name)

@@ -11,7 +11,6 @@ dec_phase_center=$3
 
 ## activate python environment
 source /miniconda3/etc/profile.d/conda.sh
-source /miniconda3/etc/profile.d/conda.sh
 conda activate astro_env
 
 ## copy the data products to working area

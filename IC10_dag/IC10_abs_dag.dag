@@ -136,9 +136,9 @@
 ## - int_threshold: continuum intensity threshold to determine sources with sigma_cont < 0.33 (in Jy/beam from narrowband contiuum image)
 ## output:
 ## - a csv file produced by aegean and phase-center-list.txt (input for cubelet generation)
-JOB J source_finding.sub
-VARS J image_name="IC10_A+B_full.comb_spw.wt_nbcont" src_name="IC10" int_threshold="0.00141"
-PARENT J CHILD K
+## JOB J source_finding.sub
+## VARS J image_name="IC10_A+B_full.comb_spw.wt_nbcont" src_name="IC10" int_threshold="0.00141"
+## PARENT J CHILD K
 
 ## CUBELETS
 ## run tclean to get cubelets centered on each background source
@@ -154,8 +154,8 @@ PARENT J CHILD K
 ## - src_name: source name
 ## - output:
 ## - tarball of 2D cubelets for each source
-JOB K abs_cubelet.sub
-VARS K ms_name="IC10_A+B.comb_spw.wt" start_velocity="-475" chan_nums="750" src_name="IC10"
+## JOB K abs_cubelet.sub
+## VARS K ms_name="IC10_A+B.comb_spw.wt" start_velocity="-475" chan_nums="750" src_name="IC10"
 ## PARENT K CHILD M
 
 ## COMBINE CUBELETS
@@ -169,10 +169,9 @@ VARS K ms_name="IC10_A+B.comb_spw.wt" start_velocity="-475" chan_nums="750" src_
 ## - sd_name: name of single dish cube
 ## output
 ## fits file of 30' region around each source feathered with GBT data
-## JOB L combine_SD.sub
-## VARS L src_name="IC10" vla_name="IC10_A+B+C+D_HI_0p4kms_feathered.im" sd_name="N6822_GBT_Jy.eq.nostokes.fits"
-## PARENT L CHILD M
-
+JOB L combine_SD.sub
+VARS L src_name="IC10" vla_name="IC10_A+B+C+D_HI_0p4kms_feathered.im" sd_name="N6822_GBT_Jy.eq.nostokes.fits"
+PARENT L CHILD M
 
 ## EXTRACT SPECTRA
 ## runs extract_spectra.py to: 
@@ -187,5 +186,5 @@ VARS K ms_name="IC10_A+B.comb_spw.wt" start_velocity="-475" chan_nums="750" src_
 ## - src_name: source name
 ## - output:
 ## - tarball containing analysis products for each source
-## JOB M extract_spectra.sub
-## VARS M src_name="IC10"
+JOB M extract_spectra.sub
+VARS M src_name="IC10"

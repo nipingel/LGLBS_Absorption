@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # combine_SD.sh
 # execution script to extract 30' region around absorption source & feather with GBT data
