@@ -1,6 +1,7 @@
 #!/bin/bash
 
 fname=$1
+src_name=$2
 ## activate globus environment
 source /miniconda3/etc/profile.d/conda.sh
 conda activate globus_env
@@ -17,7 +18,7 @@ dest_ep=90443290-c363-4880-a17e-afebd4228278
 ## start transfer
 echo "Beginning transfer of '${fname}'"
 
-task_id=$(globus transfer "${source_ep}:NGC6822/${fname}" "${dest_ep}:NGC6822/${fname}" --jmespath 'task_id' --format=UNIX)
+task_id=$(globus transfer "${source_ep}:NGC6822/${fname}" "${dest_ep}:${src_name}/${fname}" --jmespath 'task_id' --format=UNIX)
 
 echo "Waiting on 'globus transfer' task '${task_id}'"
 globus task wait ${task_id} --polling-interval 120

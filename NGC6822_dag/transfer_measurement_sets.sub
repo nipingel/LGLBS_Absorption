@@ -6,7 +6,7 @@ universe = docker
 docker_image = nipingel/casa:latest
 executable = transfer_measurement_sets.sh 
 
-arguments  = $(fname) 
+arguments  = $(fname) $(src_name)
 output     = ms-transfer-$(Process).out
 error      = ms-transfer-$(Process).err
 log        = ms-transfer-$(Process).log

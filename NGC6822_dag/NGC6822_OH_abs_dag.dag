@@ -1,0 +1,191 @@
+#!/usr/bin/env N6822_dag.dag
+
+## TRANSFER STAGED MEASUREMENT SETS
+
+#JOB A transfer.sub
+#VARS A src_name="NGC6822"
+#PARENT A CHILD B
+
+## SPLIT_SPW
+## run split_spw.sub to split off the HI or OH spectral windows
+## executable:
+## - split_spw.sh (runs split_spw.py)
+## inputs: 
+## - ms_name: file name in input textfile
+## - src_config: source and config (prefix on file name from Google drive)
+## - timebin_str: number of seconds to average visibilties (config-dependent) 
+## - v_sys: systemic velocity of source
+## - v_width: velocity width of source
+## - rest_freq: rest frequency of spectral line
+## output:
+## - tarball of measurement sets that have had spectral window split out with '_spw' appended to file name
+## JOB B split_spw.sub
+## VARS B src_name="NGC6822" v_sys="-125" v_width="210" rest_freq="1.420406"
+## PARENT B CHILD C
+
+## MSTRANSFORM
+## place all split-out measurement sets on same spectral axis & reference frame
+## executable:
+## - ms_transform.sh (runs ms_transform.py)
+## inputs:
+## - ms_name: file name in textfile
+## - ref_frame: output reference frame (e.g., 'LSRK' or 'BARY')
+## - chan_width: channel width in units of Hz
+## - src_name: source name
+## output:
+## - tarball of measurement sets that have been transformed to the user provided reference frame and spectral channel width
+#JOB C ms_transform.sub
+#VARS C ref_frame="LSRK" chan_width="1953.71094083786" src_name="NGC6822"
+#PARENT C CHILD D
+
+## GENERATE INPUT FOR SPLIT CONCAT STEP
+## call generate_split_file.py to generate input for SPLIT CONCAT step
+## executable:
+## - generate_split_file.sh (runs generate_split_file.py)
+## arguments:
+## - src_name: source name
+## - extension: file extension for measurement sets to be analyzed
+## - output: output name for generated csv file
+## output:
+## - a csv file that has three columns: name of measurement set, starting channel to split, ending channel to split for concat
+## JOB D generate_split_file.sub
+## VARS D src_name="NGC6822" extension="transformed" output_name="split_concat_list"
+## PARENT D CHILD E 
+
+## SPLIT FOR CONCAT
+## split out channels from measurement sets with more than minumum number of total channels
+## to ensure all measurement sets have same number of channels for concat step (runs in staging area)
+## executable:
+## - split_channels_concat.sh (runs split_channels.py)
+## arguments:
+## - ms_name - full path to measurement set (input text file)
+## - start_chan - starting channel to split (input text file)
+## - end_chan - ending channel to split (input text file)
+## output:
+## - split out measurement sets with equal number of channels so concat step will combine into a single spw
+## JOB E split_channels_concat.sub
+## PARENT E CHILD F
+
+## CONCAT
+## concatenate (combine) measurement sets from all VLA configurations
+## executable:
+## - concat.sh (runs concat.py)
+## arguments:
+## - outfile_name: name of concatenated measurement set
+## - extension: file extension to use for concatenation
+## - src_name: source name
+## output:
+## - concatenated measurement set in staging area
+## JOB F concat.sub
+## VARS F src_name="IC10" extension="transformed.split_concat" outfile_name="IC10_A+B_full.ms"
+## PARENT F CHILD G
+
+## COMBINE_SPW
+## run mstransform again to combine all spectral windows in concatenated measurement set
+## executable:
+## - ms_transform_combine_spw.sh (runs ms_transform_combine_spw.py)
+## inputs:
+## - input_name: name of concatenated measurement set
+## - src_name: source name
+## output:
+## - tarball of measurement sets that have been transformed to the user provided reference frame and spectral channel width
+## JOB G ms_transform_combine_spw.sub
+## VARS G input_name="NGC6822_A+B.ms" src_name="NGC6822"
+## PARENT G CHILD H
+
+## STATWT
+## re-weight visibilities based on root mean square noise in emission-free regions. Use systemic velocity and velocity width to mask channels with expected emission. 
+## executable:
+## - statwt.sh (runs statwt.py)
+## arguments:
+## - ms_name: file name of concatenated measurement set
+## - v_sys: systemic velocity of source
+## - v_width: velocity width of source
+## - src_name: source name
+## output:
+## - re-weighted concatenated measurement sets with '.wt' appended to name
+## JOB H statwt.sub
+## VARS H ms_name="IC10_A+B_full.comb_spw" v_sys="-340" v_width="210" src_name="IC10"
+## PARENT H CHILD I
+
+## NARROWBAND IMAGING
+## create a narrow-band continuum image of NGC6822 to identify background sources with which to measure HI absorption against
+## executable:
+## - narrowband_cont_image.sh (calls narrowband_cont_image.py)
+## arguments:
+## - ms_name: file name of concatenated measurement set
+## - src_name: source name
+## - ra_str: Right Acension string for phase center (e.g., "19h44m56.6s") 
+## - dec_str: Declination string for phase center (e.g., "-14d47m21s")
+## - threshold: global rms threshold to stop cleaning in mJy (e.g., "2.0")
+## output:
+## - narrowband continuum image
+## JOB I narrowband_cont_image.sub
+## VARS I ms_name="NGC6822_A+B.comb_spw" src_name="NGC6822" ra_str="19h44m56.6s" dec_str="-14d47m21s" threshold="2.0"
+## PARENT I CHILD J
+
+## SOURCE FINDING
+## run the source finder, aegean, to produce a csv file that summarizes the sources in narrowband continuum image
+## the csv file is then parsed with a custom python script that write the RA/Dec of acceptable sources (based on intensity cut)
+## to a text file that is used as input to the cubelet generation node. 
+## executable:
+## - source_finding.sh
+## arguments:
+## - image_name: path to narrowband continuum image
+## - src_name: source name
+## - int_threshold: continuum intensity threshold to determine sources with sigma_cont < 0.33 (in Jy/beam from narrowband contiuum image)
+## output:
+## - a csv file produced by aegean and phase-center-list.txt (input for cubelet generation)
+## JOB J source_finding.sub
+## VARS J image_name="NGC6822_A+B.comb_spw.wt_nbcont" src_name="NGC6822" int_threshold="0.00065"
+## PARENT J CHILD K
+
+## CUBELETS
+## run tclean to get cubelets centered on each background source
+## executable:
+## - abs_cubelet.sh (runs abs_cubelet.py)
+## inputs:
+## - RA: Right Acension string from textfile (e.g., 00h40m13.8)
+## - Dec: Declination string form textfile (e.g., +40d50m04.73)
+## - ms_name: concatenated measurement set
+## - start_velocity: starting LSRK velocity (km/s)
+## - chan_nums: number of output channels
+## - field_id: field ID for source
+## - src_name: source name
+## - output:
+## - tarball of 2D cubelets for each source
+## JOB K abs_cubelet.sub
+## VARS K ms_name="NGC6822_A+B.comb_spw.wt" start_velocity="-200" chan_nums="750" src_name="NGC6822"
+## PARENT K CHILD L
+
+## COMBINE CUBELETS
+## runs combine_SD.py to extract 30' region around each source
+## and combine with GBT data
+## inputs:
+## - RA: Right Acension string from textfile (e.g., 00h40m13.8)
+## - Dec: Declination string form textfile (e.g., +40d50m04.73)
+## - src_name: source name
+## - vla_name: name of vla cube
+## - sd_name: name of single dish cube
+## output
+## fits file of 30' region around each source feathered with GBT data
+## JOB L combine_SD.sub
+## VARS L src_name="NGC6822" vla_name="NGC6822_A+B+C+D_HI_0p4kms.fits" sd_name="N6822_GBT_Jy.eq.nostokes.fits"
+## PARENT L CHILD M
+
+
+## EXTRACT SPECTRA
+## runs extract_spectra.py to: 
+## - source find on cubelet
+## - extract region surrounding each source
+## - feather in the single-dish 
+## - extract absorption/emission spectrum
+## - compute spin temperature for all identified features
+## inputs:
+## - RA: Right Acension string from textfile (e.g., 00h40m13.8)
+## - Dec: Declination string form textfile (e.g., +40d50m04.73)
+## - src_name: source name
+## - output:
+## - tarball containing analysis products for each source
+JOB M extract_spectra.sub
+VARS M src_name="NGC6822"
