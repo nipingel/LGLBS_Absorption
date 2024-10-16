@@ -9,7 +9,7 @@
 ## SPLIT_SPW
 ## run split_spw.sub to split off the HI or OH spectral windows
 ## executable:
-## - split_spw.sh (runs split_spw.py)
+## - split_spw_OH.sub (runs split_spw.py)
 ## inputs: 
 ## - ms_name: file name in input textfile
 ## - src_config: source and config (prefix on file name from Google drive)
@@ -19,14 +19,14 @@
 ## - rest_freq: rest frequency of spectral line
 ## output:
 ## - tarball of measurement sets that have had spectral window split out with '_spw' appended to file name
-## JOB B split_spw.sub
-## VARS B src_name="NGC6822" v_sys="-125" v_width="210" rest_freq="1.420406"
-## PARENT B CHILD C
+JOB B split_spw_OH.sub
+VARS B src_name="NGC6822" v_sys="-125" v_width="210" rest_freq="1.6673590"
+PARENT B CHILD C
 
 ## MSTRANSFORM
 ## place all split-out measurement sets on same spectral axis & reference frame
 ## executable:
-## - ms_transform.sh (runs ms_transform.py)
+## - ms_transform_OH.sub (runs ms_transform.py)
 ## inputs:
 ## - ms_name: file name in textfile
 ## - ref_frame: output reference frame (e.g., 'LSRK' or 'BARY')
@@ -34,9 +34,9 @@
 ## - src_name: source name
 ## output:
 ## - tarball of measurement sets that have been transformed to the user provided reference frame and spectral channel width
-#JOB C ms_transform.sub
-#VARS C ref_frame="LSRK" chan_width="1953.71094083786" src_name="NGC6822"
-#PARENT C CHILD D
+JOB C ms_transform_OH.sub
+VARS C ref_frame="LSRK" chan_width="3906" src_name="NGC6822"
+PARENT C CHILD D
 
 ## GENERATE INPUT FOR SPLIT CONCAT STEP
 ## call generate_split_file.py to generate input for SPLIT CONCAT step
@@ -48,9 +48,9 @@
 ## - output: output name for generated csv file
 ## output:
 ## - a csv file that has three columns: name of measurement set, starting channel to split, ending channel to split for concat
-## JOB D generate_split_file.sub
-## VARS D src_name="NGC6822" extension="transformed" output_name="split_concat_list"
-## PARENT D CHILD E 
+JOB D generate_split_file.sub
+VARS D src_name="NGC6822" extension="transformed" output_name="split_concat_list"
+PARENT D CHILD E 
 
 ## SPLIT FOR CONCAT
 ## split out channels from measurement sets with more than minumum number of total channels
@@ -63,8 +63,8 @@
 ## - end_chan - ending channel to split (input text file)
 ## output:
 ## - split out measurement sets with equal number of channels so concat step will combine into a single spw
-## JOB E split_channels_concat.sub
-## PARENT E CHILD F
+JOB E split_channels_concat.sub
+PARENT E CHILD F
 
 ## CONCAT
 ## concatenate (combine) measurement sets from all VLA configurations
@@ -76,9 +76,9 @@
 ## - src_name: source name
 ## output:
 ## - concatenated measurement set in staging area
-## JOB F concat.sub
-## VARS F src_name="IC10" extension="transformed.split_concat" outfile_name="IC10_A+B_full.ms"
-## PARENT F CHILD G
+JOB F concat.sub
+VARS F src_name="NGC6822" extension="transformed.split_concat" outfile_name="NGC6822_A+B_1667MHz.ms"
+PARENT F CHILD H
 
 ## COMBINE_SPW
 ## run mstransform again to combine all spectral windows in concatenated measurement set
@@ -104,8 +104,8 @@
 ## - src_name: source name
 ## output:
 ## - re-weighted concatenated measurement sets with '.wt' appended to name
-## JOB H statwt.sub
-## VARS H ms_name="IC10_A+B_full.comb_spw" v_sys="-340" v_width="210" src_name="IC10"
+JOB H statwt.sub
+VARS H ms_name="NGC6822_A+B_1667MHz.ms" v_sys="-125" v_width="210" src_name="NGC6822"
 ## PARENT H CHILD I
 
 ## NARROWBAND IMAGING
