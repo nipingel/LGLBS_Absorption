@@ -9,10 +9,10 @@ export PYTHONPATH=./analysis_scripts:$PYTHONPATH
 src_name=$1
 extension=$2
 outfile_name=$3
-path=/projects/vla-processing/measurement_sets/${src_name}/raw_measurement_sets
+path=/projects/vla-processing/measurement_sets/${src_name}
 
 ## change home directory so CASA will run
 HOME=$PWD
 
 ## make call to casa
-/casa-6.5.0-15-py3.8/bin/casa -c generate_split_file.py -p ${path} -o ${outfile_name} -e ${extension}
+casa -c generate_split_file.py -p ${path} -o ${outfile_name} -e ${extension}

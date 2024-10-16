@@ -56,6 +56,7 @@ def main():
 	intent_str = 'OBSERVE_TARGET*'
 	split_params = {
 		'vis': ms_path,
+		'field':'NGC6822*',
 		'outputvis': output_vis, 
 		'spw': spw_val,
 		'intent': intent_str,
