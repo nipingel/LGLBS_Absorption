@@ -39,7 +39,7 @@ def main():
 	## extract 30' subregion around source
 	imsubimage_params = {
 		'imagename': int_path,
-		'outfile': 'VLA_ABCD_%s_%s_30arcmin.imsub' % (ra_phase_center, dec_phase_center),
+		'outfile': 'VLA_ABCD_GBT_%s_%s_30arcmin.imsub' % (ra_phase_center, dec_phase_center),
 		'region': 'circle[[%s, %s], 15arcmin]' % (ra_phase_center, dec_phase_center),
 		'dropdeg': True,
 	}
@@ -78,11 +78,11 @@ def main():
 	}
 	#imhead(**imhead_params)
 	imsmooth_params = {
-		'imagename': 'VLA_ABCD_%s_%s_30arcmin.imsub' % (ra_phase_center, dec_phase_center),
-		'outfile': 'VLA_ABCD_%s_%s_30arcmin.imsub.imsmooth' % (ra_phase_center, dec_phase_center),
+		'imagename': 'VLA_ABCD_GBT_%s_%s_30arcmin.imsub' % (ra_phase_center, dec_phase_center),
+		'outfile': 'VLA_ABCD_GBT_%s_%s_30arcmin.imsub.imsmooth' % (ra_phase_center, dec_phase_center),
 		'kernel': 'commonbeam'
 	}
-	#imsmooth(**imsmooth_params)
+	imsmooth(**imsmooth_params)
 	## combine sd and vla cube
 	feather_params = {
 		'imagename':'VLA_ABCD_GBT_%s_%s_30arcmin.imsub' % (ra_phase_center, dec_phase_center),
@@ -94,7 +94,7 @@ def main():
 
 	## export the combined subcube
 	exportfits_params = {
-		'imagename': 'VLA_ABCD_GBT_%s_%s_30arcmin.imsub' % (ra_phase_center, dec_phase_center), 
+		'imagename': 'VLA_ABCD_GBT_%s_%s_30arcmin.imsub.imsmooth' % (ra_phase_center, dec_phase_center), 
 		'fitsimage': 'VLA_ABCD_GBT_%s_%s_30arcmin.fits' % (ra_phase_center, dec_phase_center),
 		'velocity': True, 
 		'dropdeg': True,

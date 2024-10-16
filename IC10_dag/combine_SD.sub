@@ -30,8 +30,8 @@ Requirements=(Target.HasCHTCStaging == true)
 #  each job will need on the computer where it runs.
 transfer_input_files = combine_SD.py, combine_SD.sh
 request_cpus = 1
-request_memory = 20GB
-request_disk = 150GB
+request_memory = 40GB
+request_disk = 50GB
 #
 # Tell HTCondor to run  instances of our job:
 queue phase_ra,phase_dec from phase-center-list.txt

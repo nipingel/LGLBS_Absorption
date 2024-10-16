@@ -18,7 +18,7 @@ full_path=/projects/vla-processing/measurement_sets/${src_name}/${ms_name}
 output_path=/projects/vla-processing/images/${src_name}/Absorption/pipeline_rerun
 
 ## define input values
-output_name=${output_path}"/"$2'_'$3
+output_name=${output_path}"/"${ra_phase_center}"_"${dec_phase_center}
 
 # make casa call to imaging script
 casa --logfile $output_name".log" -c abs_cubelet.py -v ${full_path} -o ${output_name} -r ${ra_phase_center} -d${dec_phase_center} -n ${n_chan} -s ${start_velocity}

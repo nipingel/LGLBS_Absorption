@@ -169,9 +169,9 @@
 ## - sd_name: name of single dish cube
 ## output
 ## fits file of 30' region around each source feathered with GBT data
-JOB L combine_SD.sub
-VARS L src_name="IC10" vla_name="IC10_A+B+C+D_HI_0p4kms_feathered.im" sd_name="N6822_GBT_Jy.eq.nostokes.fits"
-PARENT L CHILD M
+## JOB L combine_SD.sub
+## VARS L src_name="IC10" vla_name="IC10_A+B+C+D_HI_0p4kms_feathered.im" sd_name="N6822_GBT_Jy.eq.nostokes.fits"
+## PARENT L CHILD M
 
 ## EXTRACT SPECTRA
 ## runs extract_spectra.py to: 
