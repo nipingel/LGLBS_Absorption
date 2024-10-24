@@ -1,0 +1,13 @@
+imagename  = '/projects/vla-processing/images/IC10/Absorption/pipeline_rerun/0h19m16.27s_59d20m15.01s_1.5km_cut.image.pbcor.commonbeam'
+fitsimage  = '/projects/vla-processing/images/IC10/Absorption/pipeline_rerun/0h19m16.27s_59d20m15.01s_1.5km_cut.image.pbcor.fits'
+velocity   = True
+optical    = False
+bitpix     = -32
+minpix     = 0
+maxpix     = -1
+overwrite  = False
+dropstokes = True
+stokeslast = True
+history    = False
+dropdeg    = True
+#exportfits( imagename='/projects/vla-processing/images/IC10/Absorption/pipeline_rerun/0h19m16.27s_59d20m15.01s_1.5km_cut.image.pbcor.commonbeam',fitsimage='/projects/vla-processing/images/IC10/Absorption/pipeline_rerun/0h19m16.27s_59d20m15.01s_1.5km_cut.image.pbcor.fits',velocity=True,optical=False,bitpix=-32,minpix=0,maxpix=-1,overwrite=False,dropstokes=True,stokeslast=True,history=False,dropdeg=True )

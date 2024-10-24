@@ -1,0 +1,13 @@
+imagename = '/projects/vla-processing/images/IC10/IC10_A+B+C+D_HI_0p4kms_feathered.im'
+outfile   = 'VLA_ABCD_GBT_0h20m14.97s_59d18m53.94s_30arcmin.imsub'
+box       = ''
+region    = 'circle[[0h20m14.97s, 59d18m53.94s], 15arcmin]'
+chans     = ''
+stokes    = ''
+mask      = ''
+dropdeg   = True
+verbose   = True
+overwrite = False
+stretch   = False
+keepaxes  = []
+#imsubimage( imagename='/projects/vla-processing/images/IC10/IC10_A+B+C+D_HI_0p4kms_feathered.im',outfile='VLA_ABCD_GBT_0h20m14.97s_59d18m53.94s_30arcmin.imsub',box='',region='circle[[0h20m14.97s, 59d18m53.94s], 15arcmin]',chans='',stokes='',mask='',dropdeg=True,verbose=True,overwrite=False,stretch=False,keepaxes=[] )

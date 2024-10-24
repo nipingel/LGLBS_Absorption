@@ -19,9 +19,9 @@
 ## - rest_freq: rest frequency of spectral line
 ## output:
 ## - tarball of measurement sets that have had spectral window split out with '_spw' appended to file name
-JOB B split_spw_OH.sub
-VARS B src_name="NGC6822" v_sys="-125" v_width="210" rest_freq="1.6673590"
-PARENT B CHILD C
+## JOB B split_spw_OH.sub
+## VARS B src_name="NGC6822" v_sys="-125" v_width="210" rest_freq="1.6673590"
+## PARENT B CHILD C
 
 ## MSTRANSFORM
 ## place all split-out measurement sets on same spectral axis & reference frame
@@ -34,9 +34,9 @@ PARENT B CHILD C
 ## - src_name: source name
 ## output:
 ## - tarball of measurement sets that have been transformed to the user provided reference frame and spectral channel width
-JOB C ms_transform_OH.sub
-VARS C ref_frame="LSRK" chan_width="3906" src_name="NGC6822"
-PARENT C CHILD D
+## JOB C ms_transform_OH.sub
+## VARS C ref_frame="LSRK" chan_width="7812" src_name="NGC6822"
+## PARENT C CHILD D
 
 ## GENERATE INPUT FOR SPLIT CONCAT STEP
 ## call generate_split_file.py to generate input for SPLIT CONCAT step
@@ -48,9 +48,9 @@ PARENT C CHILD D
 ## - output: output name for generated csv file
 ## output:
 ## - a csv file that has three columns: name of measurement set, starting channel to split, ending channel to split for concat
-JOB D generate_split_file.sub
-VARS D src_name="NGC6822" extension="transformed" output_name="split_concat_list"
-PARENT D CHILD E 
+## JOB D generate_split_file.sub
+## VARS D src_name="NGC6822" extension="transformed" output_name="split_concat_list"
+## PARENT D CHILD E 
 
 ## SPLIT FOR CONCAT
 ## split out channels from measurement sets with more than minumum number of total channels
@@ -63,8 +63,8 @@ PARENT D CHILD E
 ## - end_chan - ending channel to split (input text file)
 ## output:
 ## - split out measurement sets with equal number of channels so concat step will combine into a single spw
-JOB E split_channels_concat.sub
-PARENT E CHILD F
+## JOB E split_channels_concat.sub
+## PARENT E CHILD F
 
 ## CONCAT
 ## concatenate (combine) measurement sets from all VLA configurations
@@ -76,9 +76,9 @@ PARENT E CHILD F
 ## - src_name: source name
 ## output:
 ## - concatenated measurement set in staging area
-JOB F concat.sub
-VARS F src_name="NGC6822" extension="transformed.split_concat" outfile_name="NGC6822_A+B_1667MHz.ms"
-PARENT F CHILD H
+## JOB F concat.sub
+## VARS F src_name="NGC6822" extension="transformed.split_concat" outfile_name="NGC6822_A+B_1667MHz.ms"
+## PARENT F CHILD H
 
 ## COMBINE_SPW
 ## run mstransform again to combine all spectral windows in concatenated measurement set
@@ -104,8 +104,8 @@ PARENT F CHILD H
 ## - src_name: source name
 ## output:
 ## - re-weighted concatenated measurement sets with '.wt' appended to name
-JOB H statwt.sub
-VARS H ms_name="NGC6822_A+B_1667MHz.ms" v_sys="-125" v_width="210" src_name="NGC6822"
+## JOB H statwt_OH.sub
+## VARS H ms_name="NGC6822_A+B_1667MHz.ms" v_sys="-125" v_width="210" src_name="NGC6822"
 ## PARENT H CHILD I
 
 ## NARROWBAND IMAGING
@@ -154,8 +154,8 @@ VARS H ms_name="NGC6822_A+B_1667MHz.ms" v_sys="-125" v_width="210" src_name="NGC
 ## - src_name: source name
 ## - output:
 ## - tarball of 2D cubelets for each source
-## JOB K abs_cubelet.sub
-## VARS K ms_name="NGC6822_A+B.comb_spw.wt" start_velocity="-200" chan_nums="750" src_name="NGC6822"
+JOB K abs_cubelet_OH.sub
+VARS K ms_name="NGC6822_A+B_1667MHz.ms.wt" src_name="NGC6822"
 ## PARENT K CHILD L
 
 ## COMBINE CUBELETS
@@ -187,5 +187,5 @@ VARS H ms_name="NGC6822_A+B_1667MHz.ms" v_sys="-125" v_width="210" src_name="NGC
 ## - src_name: source name
 ## - output:
 ## - tarball containing analysis products for each source
-JOB M extract_spectra.sub
-VARS M src_name="NGC6822"
+## JOB M extract_spectra.sub
+## VARS M src_name="NGC6822"

@@ -20,9 +20,4 @@ tar -xvf /projects/vla-processing/measurement_sets/${src_name}/${ms_name} --dire
 # make casa call to imaging script
 casa --nologfile -c ms_transform.py -p ${untar_name} -w ${chan_width} -o ${output_ms_name} -f ${output_frame}
 
-## move back to staging. DO NOT tar since files will be set up for concatenation in staging area next
-<<<<<<< Updated upstream
-mv ${output_ms_name} /projects/vla-processing/measurement_sets/raw_measurement_sets/${src_name}
-=======
 mv ${output_ms_name} /projects/vla-processing/measurement_sets/${src_name}
->>>>>>> Stashed changes

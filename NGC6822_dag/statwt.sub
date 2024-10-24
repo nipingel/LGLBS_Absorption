@@ -29,11 +29,7 @@ Requirements=(Target.HasCHTCStaging == true)
 +HasCHTCStaging=true
 # Tell HTCondor what amount of compute resources
 #  each job will need on the computer where it runs.
-<<<<<<< Updated upstream
 transfer_input_files = statwt.sh, statwt.py, /home/nmpingel/software/analysis_scripts.tar
-=======
-transfer_input_files = statwt.sh, statwt.py, /home/npingel/software/analysis_scripts.tar
->>>>>>> Stashed changes
 request_cpus = 1
 request_memory = 10GB
 request_disk = 10GB
