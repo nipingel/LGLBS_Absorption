@@ -9,16 +9,17 @@ src_name=$1
 ra_phase_center=$2
 dec_phase_center=$3
 
-HOME=$PWD                                                                   
-source ~/miniconda3/etc/profile.d/conda.sh
-conda activate astro_env
-pip install AegeanTools
 
+HOME=$PWD
+
+source /miniconda3/etc/profile.d/conda.sh
+conda activate astro_env
 ## copy the data products to working area
-cp /projects/vla-processing/images/${src_name}/Absorption/${ra_phase_center}_${dec_phase_center}.image.pbcor.fits .
-cp /projects/vla-processing/images/${src_name}/Absorption/VLA_ABCD_GBT_${ra_phase_center}_${dec_phase_center}_30arcmin.fits .
+cp /projects/vla-processing/images/${src_name}/Absorption/pipeline_rerun/${ra_phase_center}_${dec_phase_center}.image.pbcor.fits .
+cp /projects/vla-processing/images/${src_name}/Absorption/pipeline_rerun/VLA_ABCD_GBT_${ra_phase_center}_${dec_phase_center}_30arcmin.fits .
 
 # run analysis script that extracts spectra
+pip install regions
 python extract_spectra.py -n ${ra_phase_center}_${dec_phase_center}.image.pbcor.fits -c VLA_ABCD_GBT_${ra_phase_center}_${dec_phase_center}_30arcmin.fits
 
 ## tar output
