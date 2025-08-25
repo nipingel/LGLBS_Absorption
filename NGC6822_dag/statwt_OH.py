@@ -28,7 +28,7 @@ args, unknown = parser.parse_known_args()
 
 ## function to construct MW mask
 def MW_indices(freq_arr):
-	nu_0 = 1.42040575e9
+	nu_0 = 1.6673590e9
 	c_0 = 299792458.0
 	vel_axis= c_0*(1-freq_arr/nu_0)
 	inds = ((vel_axis >= -200.0*1e3) * (vel_axis <= 200*1e3))
@@ -37,7 +37,7 @@ def MW_indices(freq_arr):
 
 ## function to convert provided vsys and vwidth to high and low frequency ranges
 def compute_freq_range_hz(vsys, vwidth):
-	nu_0 = 1.42040575e9
+	nu_0 = 1.6673590e9
 	c_0 = 299792458.0
 	v_low = vsys - vwidth/2
 	v_high = vsys + vwidth/2
@@ -82,16 +82,17 @@ ms_name = args.ms_path
 ## parse velocities
 vsys = args.vsys
 vwidth = args.vwidth
+print(vsys, vwidth)
 def main():
-	fitspwStr = '0:'
-	chan_str = construct_spw_str(ms_name, vsys, vwidth)
-	fitspwStr += chan_str
-	statwt_params = {
+    fitspwStr = '0:'
+    chan_str = construct_spw_str(ms_name, vsys, vwidth)
+    fitspwStr += chan_str
+    statwt_params = {
 		'vis': ms_name,
 		'fitspw': fitspwStr,
 		'excludechans': True,
 		'datacolumn': 'data'}
-	statwt(**statwt_params)
+    statwt(**statwt_params)
 if __name__=='__main__':
 	main()
 	exit()

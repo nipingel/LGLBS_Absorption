@@ -8,11 +8,9 @@
 src_name=$1
 ra_phase_center=$2
 dec_phase_center=$3
-
-HOME=$PWD                                                                   
-source ~/miniconda3/etc/profile.d/conda.sh
+                                                                   
+source /miniconda3/etc/profile.d/conda.sh
 conda activate astro_env
-pip install AegeanTools
 
 ## copy the data products to working area
 cp /projects/vla-processing/images/${src_name}/Absorption/${ra_phase_center}_${dec_phase_center}.image.pbcor.fits .

@@ -22,7 +22,7 @@ full_path=/projects/vla-processing/measurement_sets/${src_name}/${ms_name}
 cp -r ${full_path} ${full_path}"_orig"
 
 ## make call to casa
-casa --nologfile -c statwt.py -n ${full_path} -v ${v_sys} -w ${v_width}
+casa --nologfile -c statwt_OH.py -n ${full_path} -v ${v_sys} -w ${v_width}
 
 ## append ".wt" suffix to denote that these measurement sets have been re-weighted
 mv ${full_path} ${full_path}".wt"

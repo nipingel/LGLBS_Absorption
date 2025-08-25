@@ -26,14 +26,14 @@ truncated_ms_name=(${ms_name//$src_config/ })
 untar_name=(${truncated_ms_name//.tar/ })
 
 ## untar measurement set to current working directory
-tar -xvf /projects/vla-processing/measurement_sets/${src_name}/raw_measurement_sets/${ms_name} --directory .
+tar -xvf /projects/vla-processing/measurement_sets/${src_name}/${ms_name} --directory .
 
 # make casa call to imaging script
-/casa-6.5.0-15-py3.8/bin/casa --nologfile -c split_spw.py -p ${untar_name} -v ${v_sys} -w ${v_width} -r ${rest_freq} -t ${time_bin_str}
+casa --nologfile -c split_spw.py -p ${untar_name} -v ${v_sys} -w ${v_width} -r ${rest_freq} -t ${time_bin_str}
 
 tar -cvf ${untar_name}"_spw.tar" ${untar_name}"_spw"
 
-mv ${untar_name}"_spw.tar" /projects/vla-processing/measurement_sets/${src_name}/raw_measurement_sets
+mv ${untar_name}"_spw.tar" /projects/vla-processing/measurement_sets/${src_name}
 
 ## clean up
 rm -rf ${untar_name}

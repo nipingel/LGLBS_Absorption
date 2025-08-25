@@ -15,6 +15,13 @@ docker_image = nipingel/casa:latest
 #  $(Process) will be a integer number for each job, starting with "0"
 #  and increasing for the relevant number of jobs.
 executable = split_spw.sh
+ms_name=NGC6822_A_20A-346.sb41456897.eb41786957.59697.44572935185.speclines.ms.split.tar
+src_config=NGC6822_A_
+time_bin_str=5
+v_sys=-125 
+v_width=210
+rest_freq=1.6673590
+src_name=NGC6822
 arguments = $(ms_name) $(src_config) $(time_bin_str) $(v_sys) $(v_width) $(rest_freq) $(src_name)
 output = spw_split-$(Process).out
 error = spw_split-$(Process).err
@@ -33,4 +40,5 @@ request_memory = 1GB
 request_disk = 300GB
 
 # Tell HTCondor to run 1 instances of our job:
-queue ms_name,src_config,time_bin_str from spw-split-list.txt
+#queue ms_name,src_config,time_bin_str from spw-split-list.txt
+queue 1
