@@ -41,21 +41,21 @@ def main():
 	threshold_value = '2mJy'
 	tclean_params ={
 		'vis': vis_path,
-		'imagename': output_name, 
+		'imagename': output_name,
 		'reffreq': ref_freq,
 		'restfreq': rest_freq,
 		'phasecenter': phasecenter,
-		'uvrange': uvdist, 
-		'imsize': int(50/0.75), 
+		'uvrange': uvdist,
+		'imsize': int(50/0.75),
 		'weighting': 'natural',
 		'gridder': 'standard',
-		'pbcor': True, 
-		'threshold': threshold_value, 
-		'cell': '0.75arcsec', 
-		'specmode': 'cube', 
-		'start': start_vel, 
-		'nchan': n_chan, 
-		'usemask': 'pb', 
+		'pbcor': True,
+		'threshold': threshold_value,
+		'cell': '0.75arcsec',
+		'specmode': 'cube',
+		'start': start_vel,
+		'nchan': n_chan,
+		'usemask': 'pb',
 		'niter': tot_iter
 		}
 	tclean(**tclean_params)
@@ -66,12 +66,12 @@ def main():
 		'imagename':'%s.image.pbcor' % output_name,
 		'outfile':'%s.image.pbcor.commonbeam' % output_name,
 	}
-	imsmooth(**imsmooth_params)	
+	imsmooth(**imsmooth_params)
 
 	exportfits_params = {
 		'imagename': '%s.image.pbcor.commonbeam' % output_name,
 		'fitsimage': '%s.image.pbcor.fits' % output_name,
-		'velocity': True, 
+		'velocity': True,
 		'dropdeg': True,
 		'dropstokes': True,
 		'history': False
