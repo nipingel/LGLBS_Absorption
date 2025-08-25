@@ -3,8 +3,8 @@
 #
 # Specify the HTCondor Universe (vanilla is the default and is used
 #  for almost all jobs) and your desired name of the HTCondor log file,
-#  which is where HTCondor will describe what steps it takes to run 
-#  your job. Wherever you see $(Cluster), HTCondor will insert the 
+#  which is where HTCondor will describe what steps it takes to run
+#  your job. Wherever you see $(Cluster), HTCondor will insert the
 #  queue number assigned to this set of jobs at the time of submission.
 universe = docker
 docker_image = nipingel/casa:latest
@@ -35,4 +35,4 @@ request_memory = 20GB
 request_disk = 10GB
 #
 # Tell HTCondor to run  instances of our job:
-queue phase_ra,phase_dec from phase-center-list.txt 
+queue phase_ra,phase_dec from phase-center-list.txt
